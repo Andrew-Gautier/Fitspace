@@ -10,6 +10,7 @@ import { CommunityPageComponent } from './Pages/community-page/community-page.co
 import { ProfilePageComponent } from './Pages/profile-page/profile-page.component';
 import { NavBarComponent } from './Components/nav-bar/nav-bar.component';
 import { ExercisePostCardComponent } from './Components/exercise-post-card/exercise-post-card.component';
+import { MyActivityPageComponent } from './Pages/my-activity-page/my-activity-page.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ExercisePostCardComponent } from './Components/exercise-post-card/exerc
     CommunityPageComponent,
     ProfilePageComponent,
     NavBarComponent,
-    ExercisePostCardComponent
+    ExercisePostCardComponent,
+    MyActivityPageComponent
   ],
   imports: [
     BrowserModule,

@@ -5,6 +5,7 @@ import { LoginPageComponent } from './Pages/login-page/login-page.component';
 import { CreatePostPageComponent } from './Pages/create-post-page/create-post-page.component';
 import { CommunityPageComponent } from './Pages/community-page/community-page.component';
 import { ProfilePageComponent } from './Pages/profile-page/profile-page.component';
+import { MyActivityPageComponent } from './Pages/my-activity-page/my-activity-page.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,10 @@ const routes: Routes = [
   {
     path:'Profile',
     component: ProfilePageComponent
+  },
+  {
+    path:'MyActivity',
+    component: MyActivityPageComponent
   }
 
 ];
