@@ -1,0 +1,61 @@
+.myActivity{
+    width: 100%;
+    aspect-ratio: 1/1;
+    background-image: url("/assets/barbell.png");
+    background-size: cover;
+    border: #EEEEEE solid;
+    border-width: 1vh;
+    
+}
+
+.links{
+    margin-top: 2%;
+}
+
+.boxes{
+    width: 30%;
+   text-align: center;
+}
+
+.about{
+    text-align: center;
+}
+
+h1{
+    font-size: 500%;
+    color: #0C0F0A
+}
+
+h2{
+    color: black;
+    font-size: 350%;
+    color: #123488;
+    
+}
+
+p{
+    font-size: large;
+    color: #0C0F0A;
+}
+
+.boxesText{
+    color: #123488;
+}
+
+
+.links{
+    width: 100%;
+}
+
+.community{
+    width: 100%;
+    aspect-ratio: 1/1;
+    background-image: url("/assets/Globe.png");
+    background-size: cover;
+    border: #EEEEEE solid;
+    border-width: 1vh;
+}
+
+.darkener{
+    background-color: black;
+}
