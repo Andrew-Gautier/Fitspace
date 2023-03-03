@@ -1,2 +1,12 @@
 <app-nav-bar></app-nav-bar>
-<p>Community Page</p>
+<div class="d-flex justify-content-center" style="padding-top: 2.5%; padding-bottom: 5%;">
+  <h1>Community Page</h1>
+</div>
+
+
+<div class="d-flex flex-wrap justify-content-center">
+  <div *ngFor="let item of cards" style="padding-left: 2.5%; padding-right: 2.5%; padding-bottom: 1.25%; padding-top: 1.25%;">
+    <app-exercise-post-card img={{item.img}} title={{item.title}}
+      description={{item.description}} ></app-exercise-post-card>
+  </div>
+</div>

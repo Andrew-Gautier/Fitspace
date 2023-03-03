@@ -9,6 +9,7 @@ import { CreatePostPageComponent } from './Pages/create-post-page/create-post-pa
 import { CommunityPageComponent } from './Pages/community-page/community-page.component';
 import { ProfilePageComponent } from './Pages/profile-page/profile-page.component';
 import { NavBarComponent } from './Components/nav-bar/nav-bar.component';
+import { ExercisePostCardComponent } from './Components/exercise-post-card/exercise-post-card.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { NavBarComponent } from './Components/nav-bar/nav-bar.component';
     CreatePostPageComponent,
     CommunityPageComponent,
     ProfilePageComponent,
-    NavBarComponent
+    NavBarComponent,
+    ExercisePostCardComponent
   ],
   imports: [
     BrowserModule,
