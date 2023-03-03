@@ -8,6 +8,7 @@ import { HomePageComponent } from './Pages/home-page/home-page.component';
 import { CreatePostPageComponent } from './Pages/create-post-page/create-post-page.component';
 import { CommunityPageComponent } from './Pages/community-page/community-page.component';
 import { ProfilePageComponent } from './Pages/profile-page/profile-page.component';
+import { NavBarComponent } from './Components/nav-bar/nav-bar.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { ProfilePageComponent } from './Pages/profile-page/profile-page.componen
     HomePageComponent,
     CreatePostPageComponent,
     CommunityPageComponent,
-    ProfilePageComponent
+    ProfilePageComponent,
+    NavBarComponent
   ],
   imports: [
     BrowserModule,
