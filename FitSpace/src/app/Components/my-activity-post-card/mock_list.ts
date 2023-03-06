@@ -25,5 +25,17 @@ export const mock_list = [
     img: "",
     title : "Quiz",
     description : "(Maintain, gain, or lose weight)"
-}
+  }
+  , 
+  {
+    img: "",
+    title: "Nutrtion Tracker",
+    description: "(Daily Nutrition goals / tracker)"
+  }
+  ,
+  {
+    img: "",
+    title: "Timed Workouts",
+    descrption: "(List of workouts given based of time restraints)"
+  }
 ];
