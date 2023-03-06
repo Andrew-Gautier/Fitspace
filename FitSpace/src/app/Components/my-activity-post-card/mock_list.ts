@@ -36,6 +36,6 @@ export const mock_list = [
   {
     img: "",
     title: "Timed Workouts",
-    descrption: "(List of workouts given based of time restraints)"
+    description: "(List of workouts given based of time restraints)"
   }
 ];
