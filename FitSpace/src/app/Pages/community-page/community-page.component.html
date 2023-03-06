@@ -3,10 +3,46 @@
   <h1>Community Page</h1>
 </div>
 
+<div class="d-flex justify-content-center" style="padding-top: 2.5%; padding-bottom: 5%;">
+  <h2>Trending Posts</h2>
+</div>
 
-<div class="d-flex flex-wrap justify-content-center">
-  <div *ngFor="let item of cards" style="padding-left: 2.5%; padding-right: 2.5%; padding-bottom: 1.25%; padding-top: 1.25%;">
-    <app-exercise-post-card img={{item.img}} title={{item.title}}
-      description={{item.description}} ></app-exercise-post-card>
+<div class = "container ">
+  <div class = "row allign-items-center">
+    <div class="col">
+      <div class="card justify-content-center" style="width: 18rem;">
+        <img src="assets\example-posts\CARDIOMEME.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">@NevaLegDay </h5>
+          <p class="card-text"> I aint go no time for cardio boi.</p>
+          <a href="#" class="btn btn-primary">@NevaLegDay's Post</a>
+        </div>
+      </div>
+
+    </div>
+      <div class="col">
+        <div class="card justify-content-center" style="width: 18rem;">
+          <img src="assets\example-posts\DUMBELLDORE.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">@TheBoyWhoLifted</h5>
+            <p class="card-text">Thats my Headmaster FRFR </p>
+            <a href="#" class="btn btn-primary">@TheBoyWhoLifted's Post</a>
+          </div>
+        </div>
+      </div>
+        <div class="col">
+          <div class="card justify-content-center" style="width: 18rem;">
+            <img src="assets\example-posts\POKEMON.png" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">@LemmeGetAPeekAtCHU</h5>
+              <p class="card-text">ONG</p>
+              <a href="#" class="btn btn-primary">@LemmeGetAPeekAtCHU's Post</a>
+            </div>
+          </div>
+        </div>
   </div>
 </div>
+
+
+
+
