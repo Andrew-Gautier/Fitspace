@@ -11,6 +11,12 @@ import { ProfilePageComponent } from './Pages/profile-page/profile-page.componen
 import { NavBarComponent } from './Components/nav-bar/nav-bar.component';
 import { ExercisePostCardComponent } from './Components/exercise-post-card/exercise-post-card.component';
 import { MyActivityPageComponent } from './Pages/my-activity-page/my-activity-page.component';
+import {AngularFireModule} from '@angular/fire/compat';
+import { environment } from 'src/environments/environment';
+import { provideFirebaseApp } from '@angular/fire/app';
+import { initializeApp } from 'firebase/app';
+//import {AngularFirestoreModule} from '@angular/fire/compat/firestore';
+// May need to change the above environments import, leaving for now. (If debugging, check for an error here.) ~ AG
 
 @NgModule({
   declarations: [
@@ -26,7 +32,10 @@ import { MyActivityPageComponent } from './Pages/my-activity-page/my-activity-pa
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    provideFirebaseApp(() => initializeApp(environment.firebase))
+   // AngularFirestoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]

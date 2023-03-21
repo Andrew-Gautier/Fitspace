@@ -51,7 +51,8 @@
               "vendorChunk": true,
               "extractLicenses": false,
               "sourceMap": true,
-              "namedChunks": true
+              "namedChunks": true,
+              "fileReplacements": []
             }
           },
           "defaultConfiguration": "production"
@@ -90,6 +91,16 @@
               "src/styles.css"
             ],
             "scripts": []
+          }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "FitSpace:build:production",
+            "firebaseProject": "fitspace-ba5a9",
+            "firebaseHostingSite": "fitspace-ba5a9"
           }
         }
       }

@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "fitspace-ba5a9": {
+      "hosting": {
+        "FitSpace": [
+          "fitspace-ba5a9"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "fitspace-ba5a9"
+  }
+}
