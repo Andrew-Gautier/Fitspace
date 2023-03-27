@@ -15,7 +15,9 @@ import {AngularFireModule} from '@angular/fire/compat';
 import { environment } from 'src/environments/environment';
 import { provideFirebaseApp } from '@angular/fire/app';
 import { initializeApp } from 'firebase/app';
-//import {AngularFirestoreModule} from '@angular/fire/compat/firestore';
+import {AngularFirestoreModule} from '@angular/fire/compat/firestore';
+import { provideAuth,getAuth } from '@angular/fire/auth';
+import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 // May need to change the above environments import, leaving for now. (If debugging, check for an error here.) ~ AG
 
 @NgModule({
@@ -33,8 +35,10 @@ import { initializeApp } from 'firebase/app';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AngularFireModule.initializeApp(environment.firebase),
-    provideFirebaseApp(() => initializeApp(environment.firebase))
+    provideAuth(() => getAuth()),
+    provideFirestore(() => getFirestore()),
+   // AngularFireModule.initializeApp(environment.firebase),
+    //provideFirebaseApp(() => initializeApp(environment.firebase))
    // AngularFirestoreModule
   ],
   providers: [],
