@@ -10,7 +10,7 @@ import { MyActivityPageComponent } from './Pages/my-activity-page/my-activity-pa
 const routes: Routes = [
   {
     path:'',
-    component: LoginPageComponent
+    component: HomePageComponent
   },
   {
     path:'Home',

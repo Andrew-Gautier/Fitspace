@@ -35,11 +35,9 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    provideAuth(() => getAuth()),
-    provideFirestore(() => getFirestore()),
-   // AngularFireModule.initializeApp(environment.firebase),
-    //provideFirebaseApp(() => initializeApp(environment.firebase))
-   // AngularFirestoreModule
+   
+    AngularFireModule.initializeApp(environment.firebase),
+   
   ],
   providers: [],
   bootstrap: [AppComponent]
