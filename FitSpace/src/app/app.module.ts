@@ -18,6 +18,7 @@ import { initializeApp } from 'firebase/app';
 import {AngularFirestoreModule} from '@angular/fire/compat/firestore';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { CreatePostCardComponent } from './components/create-post-card/create-post-card.component';
 // May need to change the above environments import, leaving for now. (If debugging, check for an error here.) ~ AG
 
 @NgModule({
@@ -30,7 +31,8 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
     ProfilePageComponent,
     NavBarComponent,
     ExercisePostCardComponent,
-    MyActivityPageComponent
+    MyActivityPageComponent,
+    CreatePostCardComponent
   ],
   imports: [
     BrowserModule,
