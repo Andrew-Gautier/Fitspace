@@ -43,4 +43,15 @@
         </div>
       </div>
 
+      <div class="d-flex justify-content-center" style="padding-top: 2.5%; padding-bottom: 5%;">
+        <h2>Layouts</h2>
+      </div>
+      
+      
+      <div class="d-flex flex-wrap justify-content-center">
+        <div *ngFor="let input of card"
+          style="padding-left: 2.5%; padding-right: 2.5%; padding-bottom: 1.25%; padding-top: 1.25%;">
+          <app-create-post-card img={{input.img}} title={{input.title}}
+            description={{input.description}}></app-create-post-card>
+
 
