@@ -122,3 +122,12 @@ input[type="radio"]{
 .accordion input[type="radio"]:checked + label::before{
     content: "-";
 }
+
+.slide-image{
+    margin-left: 10%;
+}
+
+.card-text{
+    text-overflow: wrap;
+    text-align: left;
+}
