@@ -1,89 +1,119 @@
-import { Component, OnInit } from "@angular/core";
-import { DatabaseManager } from "./databaseManageInterface";
-//import { Data } from "./databaseManageInterface";
+import { Component, Injectable, OnInit } from "@angular/core";
+//import { HttpClient } from '@angular/common/http';
+import * as firebase from "firebase/compat";
+import { getDatabase, get, ref, remove, set, update, child, onValue } from "firebase/database";
+
 import { app } from "src/main";
+//import { UserData } from "./userData";
+import { PostData } from "./postData";
 
 
-//implements Data
-// export class PostData {
-//   info: string | undefined;
-//   link: string | undefined;
-// }
-
-
-
+@Injectable()
 @Component({
   template: ''
 })
-export class PostManager implements DatabaseManager, OnInit {
+export class PostManager implements OnInit {//DatabaseManager, OnInit {
 
+  PostsPath = "https://fitspace-ba5a9-default-rtdb.firebaseio.com/Posts/";
+  //This needs to be implemented to prevent a magic number dependency
+  
 
   //A max count that prevents all posts from being loaded from firebase at once
-  max_count = 10;
+  max_count = 100;
 
+  dataSnapshot : any; 
 
-  //func loadDatas, takes a list of filterArgments (list of strings) and returns a list of data (user data / posts)
-  loadDatas(filterArgs : string[]) : Object[] {
-
-    //Explicitly declare the list
-    var dataList: Object[] = [];
-
-    //Load posts to list here
-
-    return dataList;
+  loadJSON(path : string, error : string, self : any) : any{
+    console.log(2);
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function (self : any) {
+      if (xhr.readyState === 4) {
+        if (xhr.status === 200) {
+          console.log(JSON.parse(xhr.responseText));
+          //console.log(3);
+          self.tempdata = JSON.parse(xhr.responseText);
+        }
+        else {
+          //Bad error handling but im done with this
+          console.log(error);
+        }
+      }
+    };
+    xhr.open('GET', path, false);
+    xhr.send();
   }
-
   
-  //func loadData 
   //Load a singular piece from firebase (like a user)
-//  (dataID : string) : data;
-  loadData(dataID : string) : Object {
+  loadData(dataID : string) : PostData {
 
-    //Explicitly declare the list
-    var data: Object = Object;
+    var postdata = new PostData(this.dataSnapshot[dataID].postID, this.dataSnapshot[dataID].userID, this.dataSnapshot[dataID].username, this.dataSnapshot[dataID].displayName);
 
-    //Use DataID to get post
-
-    return data;
+    return postdata;
   }
 
-  //func createData( listOfDataParameters, userID):
-  //Creates a new post and uploads it to firebase
-  createData(newDataInfo : Object) : boolean { //Returns true if was a success, false otherwise
+
+  //Creates a new post and uploads it to firebase, newDataInfo MUST BE A UserData OBJECT!!!
+  createData(newDataInfo : PostData) : boolean { //Returns true if was a success, false otherwise
 
     //Explicitly declare the list
-    var data: Object = Object;
+    var data: PostData = newDataInfo;
 
-    //Use DataID to get post
+
+    const db = getDatabase(app);
+
+    set(ref(db, "/Posts/" + data.postID), {
+      postID : data.postID,
+      userID : data.userID,
+      username : data.username,
+      postTitle : data.postTitle
+    });
 
     return true;
   }
  
-  //func updatePost( postID, listOfPostChanges):
+
   //updates the data that has dataID with the newDataInfo
-//  ( dataID : string, newDataInfo : data) : void
-  updateData(dataID: string, newDataInfo : Object) : boolean { //Returns true if was a success, false otherwise
+  //To properly update a user, manupulate the user opject on your own end
+  updateData(newDataInfo : PostData) : boolean { //Returns true if was a success, false otherwise
 
-    //Explicitly declare the list
-    var data: Object = Object;
 
-    //Use DataID to get post, and update it
+    var data: PostData = newDataInfo;
+
+    const db = getDatabase(app);
+
+    update(ref(db, "/Posts/" + data.postID), {
+
+      postTitle : data.postTitle,
+    });
+
 
     return true;
   }
 
-  //func deleteData
   //remove the data that has dataID from the firebase
   removeData(dataID: string) : boolean { //Returns true if was a success, false otherwise
 
-    var data: Object = Object;
+    //var data: Object = Object;
 
-    //Use DataID to get post, and remove it
+    const db = getDatabase(app);
+
+    remove(ref(db, "/Posts/" + dataID));
 
     return true;
   }
 
   ngOnInit(): void {
-    //Not implemented yet
+
   }
+
+  constructor(){
+    const db = getDatabase();
+    const dbRef = ref(db, 'Users/');
+
+    onValue(dbRef, (snapshot) => {
+      const data = snapshot.val();
+      this.dataSnapshot = data;
+    });
+  }
+
 }

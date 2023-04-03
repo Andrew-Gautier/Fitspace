@@ -1,13 +1,11 @@
 import { Component, Injectable, OnInit } from "@angular/core";
-import { DatabaseManager } from "./databaseManageInterface";
-import { HttpClient } from '@angular/common/http';
+//import { HttpClient } from '@angular/common/http';
 import * as firebase from "firebase/compat";
 import { getDatabase, get, ref, remove, set, update, child, onValue } from "firebase/database";
 
 import { app } from "src/main";
 import { UserData } from "./userData";
-//import { UserDataModel } from "./userData.model";
-//import { UserInfo } from "firebase/auth";
+
 
 @Injectable()
 @Component({
@@ -18,7 +16,6 @@ export class UserManager implements OnInit {//DatabaseManager, OnInit {
   userPath = "https://fitspace-ba5a9-default-rtdb.firebaseio.com/Users/";
   //This needs to be implemented to prevent a magic number dependency
   
-
   //A max count that prevents all posts from being loaded from firebase at once
   max_count = 1;
 
@@ -47,33 +44,9 @@ export class UserManager implements OnInit {//DatabaseManager, OnInit {
   //Load a singular piece from firebase (like a user)
   loadData(dataID : string) : UserData {
 
-    //console.log(this.dataSnapshot);
-
-    //var testData = this.dataSnapshot.get(dataID);
-
-
-    //console.log(this.dataSnapshot[dataID]);
-
-
-
     //if(this.dataSnapshot[dataID] != null){
     var userdata = new UserData(this.dataSnapshot[dataID].userID, this.dataSnapshot[dataID].displayName, this.dataSnapshot[dataID].trainerAccount, this.dataSnapshot[dataID].location, this.dataSnapshot[dataID].affilate, this.dataSnapshot[dataID].primaryService);
-   // }
 
-    //console.log(testData);
-    
-    
-    // var returnValue = this.loadJSON(this.userPath + dataID + ".json", 'jsonp', this);
-
-    // console.log(4);
-    // console.log(this.tempdata);
-    // var temp2 = this.tempdata;
-  
-    // this.tempdata = undefined;
-
-    // return temp2;
-    // const db = getDatabase(app);
-    // var dbRef = ref(db); 
 
     return userdata;
   }
@@ -105,15 +78,8 @@ export class UserManager implements OnInit {//DatabaseManager, OnInit {
   //To properly update a user, manupulate the user opject on your own end
   updateData(newDataInfo : UserData) : boolean { //Returns true if was a success, false otherwise
 
-    //Explicitly declare the list
-    //var data: Object = Object;
-
-    //Use DataID to get post, and update it
-    //Explicitly declare the list
     var data: UserData = newDataInfo;
 
-    //this.http.get()
-    //this.http.post()
     const db = getDatabase(app);
 
     update(ref(db, "/Users/" + data.userID), {
@@ -125,14 +91,11 @@ export class UserManager implements OnInit {//DatabaseManager, OnInit {
       primaryService : data.primaryService
     });
 
-
     return true;
   }
 
   //remove the data that has dataID from the firebase
   removeData(dataID: string) : boolean { //Returns true if was a success, false otherwise
-
-    //var data: Object = Object;
 
     const db = getDatabase(app);
 
@@ -146,6 +109,7 @@ export class UserManager implements OnInit {//DatabaseManager, OnInit {
   }
 
   constructor(){
+    //This is bad, change to on startup, get you user information, then subscribe to other users as needed
     const db = getDatabase();
     const dbRef = ref(db, 'Users/');
 
