@@ -10,11 +10,13 @@ export class CreatePostCardComponent implements OnInit{
   @Input() title: string; //username
   @Input() description: string; //input text / caption from user
   @Input() img: string; //img source
+  @Input() src: string ; //video
 
   constructor() {
     this.img = "";
     this.description = "No Caption";
     this.title = "@userName";
+    this.src = "";
 
   }
   

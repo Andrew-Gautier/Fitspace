@@ -39,6 +39,31 @@
   <h2>Recent Posts</h2>
 </div>
 
+<div class="d-flex flex-wrap justify-content-center">
+  <div *ngFor="let txt of text"
+    style="padding-left: 2.5%; padding-right: 2.5%; padding-bottom: 1.25%; padding-top: 1.25%;">
+    <app-create-post-card  title={{txt.title}}
+      description={{txt.description}}></app-create-post-card>
+
+      <p style="float: bottom;"><i>20 minutes ago</i></p>
+  </div>
+
+      <div *ngFor="let link of vid"
+      style="padding-left: 2.5%; padding-right: 2.5%; padding-bottom: 1.25%; padding-top: 1.25%;">
+      <app-create-post-card src={{link.src}} title={{link.title}}
+        description={{link.description}}></app-create-post-card>
+
+      <p style="float: bottom;"><i>43 minutes ago</i></p>
+       </div>
+
+        <div *ngFor="let pix of pic"
+        style="padding-left: 2.5%; padding-right: 2.5%; padding-bottom: 1.25%; padding-top: 1.25%;">
+        <app-create-post-card img={{pix.img}} title={{pix.title}}
+          description={{pix.description}}></app-create-post-card>
+
+          <p style="float: bottom;"><i>1 hour ago</i></p>
+        </div>
+  </div>
 
 <div class="d-flex justify-content-center" style="padding-top: 2.5%; padding-bottom: 5%;">
   <h2>Explore</h2>
