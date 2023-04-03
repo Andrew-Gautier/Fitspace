@@ -1,0 +1,133 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.header {
+    min-height: 100vh;
+    width: 100%;
+    background-image: linear-gradient(rgba(4, 9, 40, 0.7), rgba(4, 9, 40, 0.7)), url(src\assets\home_page_banner.jpg);
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.text-box {
+    width: 90%;
+    color: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.text-box h1 {
+    font-size: 65px;
+}
+
+.text-box p {
+    margin: 10px 0 40px;
+    font-size: 20px;
+    color: #fff;
+}
+
+.about {
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    padding-top: 100px;
+}
+
+.about h1 {
+    font-size: 36px;
+    font-weight: 600;
+    padding-bottom: 10px;
+}
+
+.about p {
+    text-align: left;
+    color: 777;
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 26px;
+    padding: 10px;
+}
+
+.row {
+    background: rgb(240, 240, 240);
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    box-sizing: border-box;
+    transition: 0.5s;
+}
+
+.row:hover {
+    box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.2);
+}
+
+.accordion {
+    width: 80%;
+    margin: 60px auto;
+    padding: 10px;
+    background: rgb(240, 240, 240);
+}
+
+.accordion li{
+    list-style: none;
+    margin: 20px;
+    padding: 10px;
+    border-radius: 0px;
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 22px;
+}
+
+.accordion li label{
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+label::before{
+    content: "+";
+    margin-right: 10px;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+input[type="radio"]{
+    display: none;
+}
+
+.accordion .content{
+    color:black;
+    padding: 0 10px;
+    line-height: 26px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s, padding 0.5s;
+}
+
+.accordion input[type="radio"]:checked + label + .content{
+    max-height: 400px;
+    padding: 10px 10px 20px;
+}
+
+.accordion input[type="radio"]:checked + label::before{
+    content: "-";
+}
+
+.slide-image{
+    margin-left: 10%;
+}
+
+.card-text{
+    text-overflow: wrap;
+    text-align: left;
+}

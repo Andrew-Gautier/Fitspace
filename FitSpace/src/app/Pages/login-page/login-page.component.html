@@ -23,24 +23,24 @@
 
           <div class="input-group mb-3" style="width: 26vw;">
             <span class="input-group-text" id="basic-addon1">Email</span>
-            <input type="text" class="form-control" placeholder="Enter your email..." aria-label="Email"
+            <input [(ngModel)] = "email" type="email" class="form-control" placeholder="Enter your email..." aria-label="Email"
               aria-describedby="basic-addon1">
           </div>
         </div>
 
-
+        <!-- Change type to "password" later on, set to text for easier testing-->
         <div class="d-flex justify-content-center">
           <div class="input-group mb-3" style="width: 26vw;">
             <span class="input-group-text" id="basic-addon1">Password</span>
-            <input type="text" class="form-control" placeholder="Enter your password..." aria-label="Password"
+            <input type="text" [(ngModel)] = "password" class="form-control" placeholder="Enter your password..." aria-label="Password"
               aria-describedby="basic-addon1" style="">
           </div>
         </div>
 
         <div class="d-flex justify-content-center">
     
-       <button class="btn btn-primary" href="Home" role="button" style="width: 26vw; background-color: #123488;" (click)="signup('joeblow@yahoo.mail', '1234567')" ><b>Sign Up</b></button>
-       <button class="btn btn-primary" href="Home" role="button" style="width: 26vw; background-color: #123488;" (click)="login('joeblow@yahoo.mail', '1234567')" ><b>Log In</b></button>
+       
+       <button class="btn btn-primary" href="Home" role="button" style="width: 26vw; background-color: #123488;" (click)="login()" ><b>Log In</b></button>
         </div>
       </div>
 
@@ -50,7 +50,7 @@
         <a href="#" style="color:gray; font-size:12px;">Forgot your password?</a>
       </div>
       <div class="d-flex justify-content-center">
-        <p style="font-size:12px; color:gray; text-align: center;">Don’t have an account? <a href="#"
+        <p style="font-size:12px; color:gray; text-align: center;">Don’t have an account? <a href="/Signup"
             style="color:gray">Sign up</a></p>
       </div>
     </div>

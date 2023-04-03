@@ -1,140 +1,158 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, Injectable, OnInit } from "@angular/core";
 import { DatabaseManager } from "./databaseManageInterface";
 import { HttpClient } from '@angular/common/http';
 import * as firebase from "firebase/compat";
-import { getDatabase, ref, set } from "firebase/database";
-//import { Data } from "./databaseManageInterface";
-// import { initializeApp } from 'firebase/app';
-// import { getAuth } from "firebase/auth";
-// import { getFirestore } from "firebase/firestore";
+import { getDatabase, get, ref, remove, set, update, child, onValue } from "firebase/database";
 
-// Import the functions you need from the SDKs you need
+import { app } from "src/main";
+import { UserData } from "./userData";
+//import { UserDataModel } from "./userData.model";
+//import { UserInfo } from "firebase/auth";
 
-
-//FIREBASE SETUP
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-  apiKey: "AIzaSyDxQoHghtp_Imm2EmfRFbK8InLD17cphgg",
-  authDomain: "fitspace-ba5a9.firebaseapp.com",
-  databaseURL: "https://fitspace-ba5a9-default-rtdb.firebaseio.com",
-  projectId: "fitspace-ba5a9",
-  storageBucket: "fitspace-ba5a9.appspot.com",
-  messagingSenderId: "413802128221",
-  appId: "1:413802128221:web:ccf7babda4a74c52a87eb4",
-  measurementId: "G-GYLDGET2YB"
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-
-
-// const app = initializeApp();
-// const auth = getAuth(app);
-// const db = getFirestore();
-
-// export { auth, db };
-
-//implements Data
-export class UserData {
-  info: string | undefined;
-  link: string | undefined;
-}
-
-
+@Injectable()
 @Component({
   template: ''
 })
-export class UserManager implements DatabaseManager, OnInit {
+export class UserManager implements OnInit {//DatabaseManager, OnInit {
 
-  userPath = "https://fitspace-ba5a9-default-rtdb.firebaseio.com/Users.json";
+  userPath = "https://fitspace-ba5a9-default-rtdb.firebaseio.com/Users/";
   //This needs to be implemented to prevent a magic number dependency
   
 
   //A max count that prevents all posts from being loaded from firebase at once
   max_count = 1;
 
-  // constructor(private http: HttpClient){
+  dataSnapshot : any; 
 
-  // }
-
-  //Should never load multiple users at once
-  loadDatas(filterArgs : string[]) : Object[] {
-
-    throw new Error("Unsupported Method Call");
+  loadJSON(path : string, error : string, self : any) : any{
+    console.log(2);
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function (self : any) {
+      if (xhr.readyState === 4) {
+        if (xhr.status === 200) {
+          console.log(JSON.parse(xhr.responseText));
+          //console.log(3);
+          self.tempdata = JSON.parse(xhr.responseText);
+        }
+        else {
+          //Bad error handling but im done with this
+          console.log(error);
+        }
+      }
+    };
+    xhr.open('GET', path, false);
+    xhr.send();
   }
-
   
-  //func loadData 
   //Load a singular piece from firebase (like a user)
-//  (dataID : string) : data;
-  loadData(dataID : string) : Object {
+  loadData(dataID : string) : UserData {
 
-    //Explicitly declare the list
-    var data: Object = Object;
+    //console.log(this.dataSnapshot);
 
-    //Use DataID to get post
+    //var testData = this.dataSnapshot.get(dataID);
 
-    return data;
+
+    //console.log(this.dataSnapshot[dataID]);
+
+
+
+    //if(this.dataSnapshot[dataID] != null){
+    var userdata = new UserData(this.dataSnapshot[dataID].userID, this.dataSnapshot[dataID].displayName, this.dataSnapshot[dataID].trainerAccount, this.dataSnapshot[dataID].location, this.dataSnapshot[dataID].affilate, this.dataSnapshot[dataID].primaryService);
+   // }
+
+    //console.log(testData);
+    
+    
+    // var returnValue = this.loadJSON(this.userPath + dataID + ".json", 'jsonp', this);
+
+    // console.log(4);
+    // console.log(this.tempdata);
+    // var temp2 = this.tempdata;
+  
+    // this.tempdata = undefined;
+
+    // return temp2;
+    // const db = getDatabase(app);
+    // var dbRef = ref(db); 
+
+    return userdata;
   }
 
-  //func createData( listOfDataParameters, userID):
-  //Creates a new post and uploads it to firebase
-  createData(newDataInfo : Object) : boolean { //Returns true if was a success, false otherwise
+
+  //Creates a new post and uploads it to firebase, newDataInfo MUST BE A UserData OBJECT!!!
+  createData(newDataInfo : UserData) : boolean { //Returns true if was a success, false otherwise
 
     //Explicitly declare the list
-    var data: Object = Object;
+    var data: UserData = newDataInfo;
 
-    //this.http.get()
-    //this.http.post()
+
     const db = getDatabase(app);
-    set(ref(db, "/Users/Test"), {
-      username: "Kyle Mult Sleen",
-      desc: "test user",
-      account: 987
-    });
 
-    //Use DataID to get post
+    set(ref(db, "/Users/" + data.userID), {
+      userID : data.userID,
+      displayName : data.displayName,
+      trainerAccount : data.trainerAccount,
+      location : data.location,
+      affilate : data.affilate,
+      primaryService : data.primaryService
+    });
 
     return true;
   }
  
-  //func updatePost( postID, listOfPostChanges):
+
   //updates the data that has dataID with the newDataInfo
-//  ( dataID : string, newDataInfo : data) : void
-  updateData(dataID: string, newDataInfo : Object) : boolean { //Returns true if was a success, false otherwise
+  //To properly update a user, manupulate the user opject on your own end
+  updateData(newDataInfo : UserData) : boolean { //Returns true if was a success, false otherwise
 
     //Explicitly declare the list
-    var data: Object = Object;
+    //var data: Object = Object;
 
     //Use DataID to get post, and update it
+    //Explicitly declare the list
+    var data: UserData = newDataInfo;
+
+    //this.http.get()
+    //this.http.post()
+    const db = getDatabase(app);
+
+    update(ref(db, "/Users/" + data.userID), {
+      //userID : data.userID,
+      displayName : data.displayName,
+      trainerAccount : data.trainerAccount,
+      location : data.location,
+      affilate : data.affilate,
+      primaryService : data.primaryService
+    });
+
 
     return true;
   }
 
-  //func deleteData
   //remove the data that has dataID from the firebase
   removeData(dataID: string) : boolean { //Returns true if was a success, false otherwise
 
-    var data: Object = Object;
+    //var data: Object = Object;
 
-    //Use DataID to get post, and remove it
+    const db = getDatabase(app);
+
+    remove(ref(db, "/Users/" + dataID));
 
     return true;
   }
 
   ngOnInit(): void {
-    // Import Admin SDK
-   // const { getDatabase } = require('firebase-admin/database');
 
-    // Get a database reference to our blog
-  //  const db = getDatabase();
-  // const ref = db.ref('server/saving-data/fireblog');
   }
+
+  constructor(){
+    const db = getDatabase();
+    const dbRef = ref(db, 'Users/');
+
+    onValue(dbRef, (snapshot) => {
+      const data = snapshot.val();
+      this.dataSnapshot = data;
+    });
+  }
+
 }
