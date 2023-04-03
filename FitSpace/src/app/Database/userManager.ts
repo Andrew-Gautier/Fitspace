@@ -8,38 +8,37 @@ import { UserData } from "./userData";
 
 
 @Injectable()
-@Component({
-  template: ''
-})
-export class UserManager implements OnInit {//DatabaseManager, OnInit {
+// @Component({
+//   template: ''
+// })
+export class UserManager implements OnInit {
 
+  //Path to Users part of realtime database
   userPath = "https://fitspace-ba5a9-default-rtdb.firebaseio.com/Users/";
-  //This needs to be implemented to prevent a magic number dependency
   
-  //A max count that prevents all posts from being loaded from firebase at once
-  max_count = 1;
-
+  //Reference to the users snapshot data (This needs to be updated to just 1 user's snapshot)
   dataSnapshot : any; 
 
-  loadJSON(path : string, error : string, self : any) : any{
-    console.log(2);
-    var xhr = new XMLHttpRequest();
-    xhr.onreadystatechange = function (self : any) {
-      if (xhr.readyState === 4) {
-        if (xhr.status === 200) {
-          console.log(JSON.parse(xhr.responseText));
-          //console.log(3);
-          self.tempdata = JSON.parse(xhr.responseText);
-        }
-        else {
-          //Bad error handling but im done with this
-          console.log(error);
-        }
-      }
-    };
-    xhr.open('GET', path, false);
-    xhr.send();
-  }
+  //Helper method for the load func
+  // loadJSON(path : string, error : string, self : any) : any{
+  //   console.log(2);
+  //   var xhr = new XMLHttpRequest();
+  //   xhr.onreadystatechange = function (self : any) {
+  //     if (xhr.readyState === 4) {
+  //       if (xhr.status === 200) {
+  //         console.log(JSON.parse(xhr.responseText));
+  //         //console.log(3);
+  //         self.tempdata = JSON.parse(xhr.responseText);
+  //       }
+  //       else {
+  //         //Bad error handling but im done with this
+  //         console.log(error);
+  //       }
+  //     }
+  //   };
+  //   xhr.open('GET', path, false);
+  //   xhr.send();
+  // }
   
   //Load a singular piece from firebase (like a user)
   loadData(dataID : string) : UserData {
