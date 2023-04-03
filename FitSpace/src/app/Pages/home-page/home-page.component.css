@@ -5,7 +5,7 @@
     background-size: cover;
     border: #EEEEEE solid;
     border-width: 1vh;
-
+    border-radius: 5%;
 }
 
 .community {
@@ -16,6 +16,7 @@
     background-size: cover;
     border: #EEEEEE solid;
     border-width: 1vh;
+    border-radius: 5%;
 }
 
 .links {

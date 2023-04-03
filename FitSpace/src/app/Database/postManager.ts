@@ -1,12 +1,15 @@
 import { Component, OnInit } from "@angular/core";
 import { DatabaseManager } from "./databaseManageInterface";
 //import { Data } from "./databaseManageInterface";
+import { app } from "src/main";
+
 
 //implements Data
-export class PostData {
-  info: string | undefined;
-  link: string | undefined;
-}
+// export class PostData {
+//   info: string | undefined;
+//   link: string | undefined;
+// }
+
 
 
 @Component({

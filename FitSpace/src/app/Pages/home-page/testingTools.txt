@@ -1,0 +1,33 @@
+
+home page html:
+<!-- Test button for database components -->
+<button (click)="testCreateUser()">Test Create</button>
+<button (click)="testUpdateUser()">Test Update</button>
+<button (click)="testRemoveUser()">Test Remove</button>
+<button (click)="testLoadUser()">Test Load</button>
+
+Home page ts:
+
+testCreateUser(){
+    var testData = new UserData(1234, "TEST-USER", true);
+    USER_MANAGER.createData(testData);
+  }
+
+  testUpdateUser(){ 
+    var testData = new UserData(1234, "TEST-USER-UPDATED", false);
+    USER_MANAGER.updateData(testData);
+  }
+
+  testRemoveUser(){  
+    //var testData = new UserData(1234, "TEST-USER-UPDATED", false);
+    USER_MANAGER.removeData(1234);
+  }
+
+  testLoadUser(){  
+    //var testData = new UserData(1234, "TEST-USER-UPDATED", false);
+    var data = USER_MANAGER.loadData(1234);
+
+    console.log(data);
+
+    console.log("Test name is : " + data.displayName);
+  }
