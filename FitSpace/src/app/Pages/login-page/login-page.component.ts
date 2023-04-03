@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {getAuth, signInWithEmailAndPassword} from '@angular/fire/auth'
 import { createUserWithEmailAndPassword, signOut } from '@angular/fire/auth';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-page',
@@ -8,10 +9,11 @@ import { createUserWithEmailAndPassword, signOut } from '@angular/fire/auth';
   styleUrls: ['./login-page.component.css']
 })
 export class LoginPageComponent {
-  login(username: string, password: string){
+  login(){
    signOut(getAuth())
-    signInWithEmailAndPassword (getAuth() , username, password).then(response => {
-      console.log('Success!')
+    signInWithEmailAndPassword (getAuth() , this.email, this.password).then(response => {
+      console.log('Success!') 
+      this.router.navigate(["/Home"], {relativeTo : this.route})
     })
   }
   // Passing a function into the promise . Passing the promise the code to run. Lambda
@@ -21,5 +23,9 @@ export class LoginPageComponent {
        console.log('Signup Success!')
      })
    }
+   email = "";
+   password = "";
+   constructor(private router : Router, private route: ActivatedRoute ){
 
+   }
 }

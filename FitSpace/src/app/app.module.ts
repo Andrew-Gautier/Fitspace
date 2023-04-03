@@ -19,7 +19,12 @@ import {AngularFirestoreModule} from '@angular/fire/compat/firestore';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { CreatePostCardComponent } from './Components/create-post-card/create-post-card.component';
+<<<<<<< Updated upstream
 import { HomePageBannerComponent } from './Components/home-page-banner/home-page-banner.component';
+=======
+import { FormsModule } from '@angular/forms';
+import { SignupPageComponent } from './signup-page/signup-page.component';
+>>>>>>> Stashed changes
 // May need to change the above environments import, leaving for now. (If debugging, check for an error here.) ~ AG
 
 @NgModule({
@@ -34,13 +39,18 @@ import { HomePageBannerComponent } from './Components/home-page-banner/home-page
     ExercisePostCardComponent,
     MyActivityPageComponent,
     CreatePostCardComponent,
+<<<<<<< Updated upstream
     HomePageBannerComponent
+=======
+    SignupPageComponent
+>>>>>>> Stashed changes
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
    
-    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireModule.initializeApp(environment.firebase)
    
   ],
   providers: [],

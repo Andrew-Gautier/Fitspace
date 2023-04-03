@@ -6,11 +6,16 @@ import { CreatePostPageComponent } from './Pages/create-post-page/create-post-pa
 import { CommunityPageComponent } from './Pages/community-page/community-page.component';
 import { ProfilePageComponent } from './Pages/profile-page/profile-page.component';
 import { MyActivityPageComponent } from './Pages/my-activity-page/my-activity-page.component';
+import { SignupPageComponent } from './signup-page/signup-page.component';
 
 const routes: Routes = [
   {
     path:'',
-    component: HomePageComponent
+    component: LoginPageComponent
+  },
+  {
+    path:'Signup',
+    component: SignupPageComponent
   },
   {
     path:'Home',
