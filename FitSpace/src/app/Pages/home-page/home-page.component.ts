@@ -30,8 +30,8 @@ export class HomePageComponent {
     //var testData = new UserData(1234, "TEST-USER-UPDATED", false);
     var data = USER_MANAGER.loadData("1234");
 
-    //console.log(data);
+    console.log(data);
 
-    //console.log("Test name is : " + data.displayName);
+    console.log("Test name is : " + data.displayName);
   }
 }

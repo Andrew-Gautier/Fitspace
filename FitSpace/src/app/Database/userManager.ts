@@ -2,7 +2,7 @@ import { Component, Injectable, OnInit } from "@angular/core";
 import { DatabaseManager } from "./databaseManageInterface";
 import { HttpClient } from '@angular/common/http';
 import * as firebase from "firebase/compat";
-import { getDatabase, get, ref, remove, set, update, child } from "firebase/database";
+import { getDatabase, get, ref, remove, set, update, child, onValue } from "firebase/database";
 
 import { app } from "src/main";
 import { UserData } from "./userData";
@@ -22,17 +22,7 @@ export class UserManager implements OnInit {//DatabaseManager, OnInit {
   //A max count that prevents all posts from being loaded from firebase at once
   max_count = 1;
 
-  // constructor(private http: HttpClient){
-
-  // }
-
-  //Should never load multiple users at once
-  // loadDatas(filterArgs : string[]) : Object[] {
-
-  //   throw new Error("Unsupported Method Call");
-  // }
-
-  tempdata = undefined;
+  dataSnapshot : any; 
 
   loadJSON(path : string, error : string, self : any) : any{
     console.log(2);
@@ -55,22 +45,37 @@ export class UserManager implements OnInit {//DatabaseManager, OnInit {
   }
   
   //Load a singular piece from firebase (like a user)
-  loadData(dataID : string) : any {
-    console.log(1);
-    // function myData(data : any) {
-    //   //console.log(data)
-    //   return data
-    // }
+  loadData(dataID : string) : UserData {
 
-    var returnValue = this.loadJSON(this.userPath + dataID + ".json", 'jsonp', this);
+    //console.log(this.dataSnapshot);
 
-    console.log(4);
-    console.log(this.tempdata);
-    var temp2 = this.tempdata;
+    //var testData = this.dataSnapshot.get(dataID);
+
+
+    //console.log(this.dataSnapshot[dataID]);
+
+
+
+    //if(this.dataSnapshot[dataID] != null){
+    var userdata = new UserData(this.dataSnapshot[dataID].userID, this.dataSnapshot[dataID].displayName, this.dataSnapshot[dataID].trainerAccount, this.dataSnapshot[dataID].location, this.dataSnapshot[dataID].affilate, this.dataSnapshot[dataID].primaryService);
+   // }
+
+    //console.log(testData);
+    
+    
+    // var returnValue = this.loadJSON(this.userPath + dataID + ".json", 'jsonp', this);
+
+    // console.log(4);
+    // console.log(this.tempdata);
+    // var temp2 = this.tempdata;
   
-    this.tempdata = undefined;
+    // this.tempdata = undefined;
 
-    return temp2;
+    // return temp2;
+    // const db = getDatabase(app);
+    // var dbRef = ref(db); 
+
+    return userdata;
   }
 
 
@@ -140,5 +145,14 @@ export class UserManager implements OnInit {//DatabaseManager, OnInit {
 
   }
 
+  constructor(){
+    const db = getDatabase();
+    const dbRef = ref(db, 'Users/');
+
+    onValue(dbRef, (snapshot) => {
+      const data = snapshot.val();
+      this.dataSnapshot = data;
+    });
+  }
 
 }
