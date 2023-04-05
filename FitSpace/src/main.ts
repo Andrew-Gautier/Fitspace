@@ -2,10 +2,13 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 import { AppModule } from './app/app.module';
 
+import { HttpClientModule } from '@angular/common/http';
+
 //FIREBASE SETUP
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { UserManager } from './app/Database/userManager';
+import { PostManager } from './app/Database/postManager';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -30,6 +33,7 @@ export const analytics = getAnalytics(app);
 
 //Create a database manager for userManager
 export const USER_MANAGER = new UserManager();
+export const POST_MANAGER = new PostManager();
 
 platformBrowserDynamic().bootstrapModule(AppModule)
   .catch(err => console.error(err));

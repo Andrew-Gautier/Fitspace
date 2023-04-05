@@ -1,89 +1,94 @@
-import { Component, OnInit } from "@angular/core";
-import { DatabaseManager } from "./databaseManageInterface";
-//import { Data } from "./databaseManageInterface";
+import { Component, Injectable, OnInit } from "@angular/core";
+import * as firebase from "firebase/compat";
+import { getDatabase, get, ref, remove, set, update, child, onValue } from "firebase/database";
+
 import { app } from "src/main";
+import { PostData } from "./postData";
 
 
-//implements Data
-// export class PostData {
-//   info: string | undefined;
-//   link: string | undefined;
-// }
+@Injectable()
+// @Component({
+//   template: ''
+// })
+export class PostManager implements OnInit {
 
-
-
-@Component({
-  template: ''
-})
-export class PostManager implements DatabaseManager, OnInit {
-
+   //Path to Users part of realtime database
+  PostsPath = "https://fitspace-ba5a9-default-rtdb.firebaseio.com/Posts/";
 
   //A max count that prevents all posts from being loaded from firebase at once
-  max_count = 10;
+  max_count = 100;
 
-
-  //func loadDatas, takes a list of filterArgments (list of strings) and returns a list of data (user data / posts)
-  loadDatas(filterArgs : string[]) : Object[] {
-
-    //Explicitly declare the list
-    var dataList: Object[] = [];
-
-    //Load posts to list here
-
-    return dataList;
-  }
-
+   //Reference to the posts stored in database
+  dataSnapshot : any; 
   
-  //func loadData 
   //Load a singular piece from firebase (like a user)
-//  (dataID : string) : data;
-  loadData(dataID : string) : Object {
+  loadData(dataID : string) : PostData {
 
-    //Explicitly declare the list
-    var data: Object = Object;
+    var postdata = new PostData(
+      this.dataSnapshot[dataID].postID, 
+      this.dataSnapshot[dataID].userID, 
+      this.dataSnapshot[dataID].username, 
+      this.dataSnapshot[dataID].displayName
+    );
 
-    //Use DataID to get post
-
-    return data;
+    return postdata;
   }
 
-  //func createData( listOfDataParameters, userID):
-  //Creates a new post and uploads it to firebase
-  createData(newDataInfo : Object) : boolean { //Returns true if was a success, false otherwise
+  //Creates a new post and uploads it to firebase, newDataInfo MUST BE A PostData OBJECT!!!
+  createData(newDataInfo : PostData) : boolean { //Returns true if was a success, false otherwise
 
-    //Explicitly declare the list
-    var data: Object = Object;
+    const db = getDatabase(app);
 
-    //Use DataID to get post
+    set(ref(db, "/Posts/" + newDataInfo.postID), {
+      postID : newDataInfo.postID,
+      userID : newDataInfo.userID,
+      username : newDataInfo.username,
+      postTitle : newDataInfo.postTitle
+    });
 
     return true;
   }
  
-  //func updatePost( postID, listOfPostChanges):
-  //updates the data that has dataID with the newDataInfo
-//  ( dataID : string, newDataInfo : data) : void
-  updateData(dataID: string, newDataInfo : Object) : boolean { //Returns true if was a success, false otherwise
 
-    //Explicitly declare the list
-    var data: Object = Object;
+  //Updates the ID associated with the given object to the new PostData object given (Essentially just manupulate on your end)
+  updateData(newDataInfo : PostData) : boolean { //Returns true if was a success, false otherwise
 
-    //Use DataID to get post, and update it
+
+    var data: PostData = newDataInfo;
+
+    const db = getDatabase(app);
+
+    update(ref(db, "/Posts/" + data.postID), {
+      postTitle : data.postTitle,
+      //Need more things to change
+    });
 
     return true;
   }
 
-  //func deleteData
-  //remove the data that has dataID from the firebase
+  //remove the post that has dataID from the firebase
   removeData(dataID: string) : boolean { //Returns true if was a success, false otherwise
 
-    var data: Object = Object;
+    const db = getDatabase(app);
 
-    //Use DataID to get post, and remove it
+    remove(ref(db, "/Posts/" + dataID));
 
     return true;
   }
 
   ngOnInit(): void {
-    //Not implemented yet
+
   }
+
+  constructor(){
+    //This might be ok for the posts?
+    const db = getDatabase();
+    const dbRef = ref(db, 'Posts/');
+
+    onValue(dbRef, (snapshot) => {
+      const data = snapshot.val();
+      this.dataSnapshot = data;
+    });
+  }
+
 }
