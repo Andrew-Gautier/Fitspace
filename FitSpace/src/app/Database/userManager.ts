@@ -1,5 +1,4 @@
 import { Component, Injectable, OnInit } from "@angular/core";
-//import { HttpClient } from '@angular/common/http';
 import * as firebase from "firebase/compat";
 import { getDatabase, get, ref, remove, set, update, child, onValue } from "firebase/database";
 
@@ -19,75 +18,50 @@ export class UserManager implements OnInit {
   //Reference to the users snapshot data (This needs to be updated to just 1 user's snapshot)
   dataSnapshot : any; 
 
-  //Helper method for the load func
-  // loadJSON(path : string, error : string, self : any) : any{
-  //   console.log(2);
-  //   var xhr = new XMLHttpRequest();
-  //   xhr.onreadystatechange = function (self : any) {
-  //     if (xhr.readyState === 4) {
-  //       if (xhr.status === 200) {
-  //         console.log(JSON.parse(xhr.responseText));
-  //         //console.log(3);
-  //         self.tempdata = JSON.parse(xhr.responseText);
-  //       }
-  //       else {
-  //         //Bad error handling but im done with this
-  //         console.log(error);
-  //       }
-  //     }
-  //   };
-  //   xhr.open('GET', path, false);
-  //   xhr.send();
-  // }
-  
-  //Load a singular piece from firebase (like a user)
+  //Load a singular User from firebase
   loadData(dataID : string) : UserData {
-
-    //if(this.dataSnapshot[dataID] != null){
-    var userdata = new UserData(this.dataSnapshot[dataID].userID, this.dataSnapshot[dataID].displayName, this.dataSnapshot[dataID].trainerAccount, this.dataSnapshot[dataID].location, this.dataSnapshot[dataID].affilate, this.dataSnapshot[dataID].primaryService);
-
+    
+    var userdata = new UserData(
+      this.dataSnapshot[dataID].userID,
+      this.dataSnapshot[dataID].displayName,
+      this.dataSnapshot[dataID].trainerAccount, 
+      this.dataSnapshot[dataID].location, 
+      this.dataSnapshot[dataID].affilate, 
+      this.dataSnapshot[dataID].primaryService
+    );
 
     return userdata;
   }
 
-
   //Creates a new post and uploads it to firebase, newDataInfo MUST BE A UserData OBJECT!!!
-  createData(newDataInfo : UserData) : boolean { //Returns true if was a success, false otherwise
-
-    //Explicitly declare the list
-    var data: UserData = newDataInfo;
-
+  createData(newDataInfo : UserData) : boolean { //Returns true if was a success (theoretically would return false if it fails, but theres not fail state)
 
     const db = getDatabase(app);
 
-    set(ref(db, "/Users/" + data.userID), {
-      userID : data.userID,
-      displayName : data.displayName,
-      trainerAccount : data.trainerAccount,
-      location : data.location,
-      affilate : data.affilate,
-      primaryService : data.primaryService
+    set(ref(db, "/Users/" + newDataInfo.userID), {
+      userID : newDataInfo.userID,
+      displayName : newDataInfo.displayName,
+      trainerAccount : newDataInfo.trainerAccount,
+      location : newDataInfo.location,
+      affilate : newDataInfo.affilate,
+      primaryService : newDataInfo.primaryService
     });
 
     return true;
   }
  
-
-  //updates the data that has dataID with the newDataInfo
-  //To properly update a user, manupulate the user opject on your own end
+  //Updates userdata to the new userdata object given
   updateData(newDataInfo : UserData) : boolean { //Returns true if was a success, false otherwise
-
-    var data: UserData = newDataInfo;
 
     const db = getDatabase(app);
 
-    update(ref(db, "/Users/" + data.userID), {
-      //userID : data.userID,
-      displayName : data.displayName,
-      trainerAccount : data.trainerAccount,
-      location : data.location,
-      affilate : data.affilate,
-      primaryService : data.primaryService
+    update(ref(db, "/Users/" + newDataInfo.userID), {
+      userID : newDataInfo.userID,
+      displayName : newDataInfo.displayName,
+      trainerAccount : newDataInfo.trainerAccount,
+      location : newDataInfo.location,
+      affilate : newDataInfo.affilate,
+      primaryService : newDataInfo.primaryService
     });
 
     return true;
