@@ -24,6 +24,7 @@ import { HomePageBannerComponent } from './Components/home-page-banner/home-page
 
 import { FormsModule } from '@angular/forms';
 import { SignupPageComponent } from './signup-page/signup-page.component';
+import { CommentsComponent } from './Components/comments/comments.component';
 // May need to change the above environments import, leaving for now. (If debugging, check for an error here.) ~ AG
 
 @NgModule({
@@ -40,7 +41,8 @@ import { SignupPageComponent } from './signup-page/signup-page.component';
     CreatePostCardComponent,
     HomePageBannerComponent,
 
-    SignupPageComponent
+    SignupPageComponent,
+      CommentsComponent
 
   ],
   imports: [

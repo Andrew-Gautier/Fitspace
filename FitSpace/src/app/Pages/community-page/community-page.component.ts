@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ExercisePostModel } from '../../Components/exercise-post-card/exercise-post.model';
 import { mock_list } from '../../Components/exercise-post-card/mock_list';
 import {CreateImageModel} from '../../Components/create-post-card/create-post.model';
@@ -7,6 +7,9 @@ import {CreateVidModel} from '../../Components/create-post-card/create-post.mode
 import { recent1 } from '../../Components/create-post-card/mock_lists';
 import { recent2 } from '../../Components/create-post-card/mock_lists';
 import { recent3 } from '../../Components/create-post-card/mock_lists';
+import { Router } from '@angular/router';
+
+
 
 
 @Component({
@@ -21,7 +24,14 @@ export class CommunityPageComponent {
   text: CreateTextModel [] = [];
   vid: CreateVidModel [] = [];
 
-  constructor(){
+  //the posts array is mock data for testing out comment component
+  posts: any[] = [
+    { id: 1, title: 'Post 1', body: 'Lorem ipsum dolor sit amet.' },
+    { id: 2, title: 'Post 2', body: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem.' },
+    { id: 3, title: 'Post 3', body: 'At vero eos et accusamus et iusto odio dignissimos.' },
+  ];
+
+  constructor(private router: Router){
     for (var item of mock_list){
       console.log(item);
       this.cards.push(item);
@@ -43,6 +53,12 @@ export class CommunityPageComponent {
     }
 
 
+
+  }
+
+  //This routes to a new unique page based on id 
+   viewComments(id: number): void {
+    this.router.navigate(['comments', id]);
   }
 
   

@@ -7,6 +7,7 @@ import { CommunityPageComponent } from './Pages/community-page/community-page.co
 import { ProfilePageComponent } from './Pages/profile-page/profile-page.component';
 import { MyActivityPageComponent } from './Pages/my-activity-page/my-activity-page.component';
 import { SignupPageComponent } from './signup-page/signup-page.component';
+import { CommentsComponent } from './Components/comments/comments.component';
 
 const routes: Routes = [
   {
@@ -36,6 +37,10 @@ const routes: Routes = [
   {
     path:'MyActivity',
     component: MyActivityPageComponent
+  },
+  {
+    path: 'comments/:id', 
+    component: CommentsComponent
   }
 
 ];
