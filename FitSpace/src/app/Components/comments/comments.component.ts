@@ -17,14 +17,27 @@ export class CommentsComponent implements OnInit {
    
   ];
   postComments: any[];
+  newCommentText: string;
 
-  constructor(private route: ActivatedRoute) { this.postComments = []; }
+
+  constructor(private route: ActivatedRoute) { this.postComments = []; this.newCommentText = '' }
 
   ngOnInit(): void {
     const idParam = this.route.snapshot.paramMap.get('id');
     if (idParam) {
       this.postId = +idParam;
     }
+    this.postComments = this.comments.filter(comment => comment.postId === this.postId);
+  }
+
+  addComment(): void {
+    const newComment = {
+      id: this.comments.length + 1,
+      postId: this.postId,
+      text: this.newCommentText
+    };
+    this.comments.push(newComment);
+    this.newCommentText = '';
     this.postComments = this.comments.filter(comment => comment.postId === this.postId);
   }
 }

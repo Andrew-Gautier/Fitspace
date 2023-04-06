@@ -7,3 +7,10 @@
   </li>
 </ul>
 
+<form (ngSubmit)="addComment()">
+  <label>
+    Add a comment:
+    <input type="text" [(ngModel)]="newCommentText" name="newCommentText">
+  </label>
+  <button type="submit">Submit</button>
+</form>
