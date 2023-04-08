@@ -9,6 +9,7 @@ import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { UserManager } from './app/Database/userManager';
 import { PostManager } from './app/Database/postManager';
+import { getDatabase } from 'firebase/database';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -28,6 +29,8 @@ const firebaseConfig = {
 // Initialize Firebase
 export const app = initializeApp(firebaseConfig);
 export const analytics = getAnalytics(app);
+
+export const DATABASE = getDatabase();
 
 //The code above sets up firebase for the entire app
 

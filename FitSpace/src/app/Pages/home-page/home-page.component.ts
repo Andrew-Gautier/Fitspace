@@ -14,6 +14,7 @@ export class HomePageComponent {
   testCreateUser(){
     var testData = new UserData("1234", "TEST-USER", true);
     USER_MANAGER.createData(testData);
+    //USER_MANAGER.prepareUser("1234");
   }
 
   testUpdateUser(){ 
@@ -26,9 +27,11 @@ export class HomePageComponent {
     USER_MANAGER.removeData("1234");
   }
 
-  testLoadUser(){  
+  async testLoadUser(){  
     //var testData = new UserData(1234, "TEST-USER-UPDATED", false);
-    var data = USER_MANAGER.loadData("1234");
+
+    
+    var data = await USER_MANAGER.loadData("1234");//, USER_MANAGER.prepareUser("1234"));
 
     console.log(data);
 

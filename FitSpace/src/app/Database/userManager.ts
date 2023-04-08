@@ -2,7 +2,7 @@ import { Component, Injectable, OnInit } from "@angular/core";
 import * as firebase from "firebase/compat";
 import { getDatabase, get, ref, remove, set, update, child, onValue } from "firebase/database";
 
-import { app } from "src/main";
+import { DATABASE, app } from "src/main";
 import { UserData } from "./userData";
 
 
@@ -15,19 +15,52 @@ export class UserManager implements OnInit {
   //Path to Users part of realtime database
   userPath = "https://fitspace-ba5a9-default-rtdb.firebaseio.com/Users/";
   
-  //Reference to the users snapshot data (This needs to be updated to just 1 user's snapshot)
-  dataSnapshot : any; 
+  //Reference to the a map of different users and their data
+  dataLoaded : any;//Map<any, any>; 
+
+
+
+  // updateSnapshot(dataID : string){
+  //   const dbRef = ref(DATABASE, 'Users/' + dataID);
+  //   console.log(2)
+  //   // onValue(dbRef, (snapshot) => {
+  //   //   const data = snapshot.val();
+  //   //   this.dataLoaded.set(dataID, data);
+  //   //   return;
+  //   // });
+   
+  //   let p = new Promise((resolve, reject) =>onValue(ref(DATABASE, '/users/' + dataID), (snapshot) => {
+  //     console.log(3)
+  //     const data = snapshot.val();
+  //     this.dataLoaded.set(dataID, data);
+  //     resolve("Resolved")
+  //   }, {
+  //     onlyOnce: true
+  //   }));
+  // }
 
   //Load a singular User from firebase
-  loadData(dataID : string) : UserData {
+  async loadData(dataID : string) : Promise<UserData> {
+
+    var data = await get(ref(DATABASE, 'Users/' + dataID));
+
+    this.dataLoaded.set(dataID, data.toJSON());
+
+    // console.log(this.dataLoaded);
+    // console.log(this.dataLoaded.has(dataID));
+    // console.log(this.dataLoaded.get(dataID));
+    // console.log(this.dataLoaded.keys().next());
+
     
+    var user = this.dataLoaded.get(dataID);
+
     var userdata = new UserData(
-      this.dataSnapshot[dataID].userID,
-      this.dataSnapshot[dataID].displayName,
-      this.dataSnapshot[dataID].trainerAccount, 
-      this.dataSnapshot[dataID].location, 
-      this.dataSnapshot[dataID].affilate, 
-      this.dataSnapshot[dataID].primaryService
+      user.userID,
+      user.displayName,
+      user.trainerAccount, 
+      user.location, 
+      user.affilate, 
+      user.primaryService
     );
 
     return userdata;
@@ -36,9 +69,7 @@ export class UserManager implements OnInit {
   //Creates a new post and uploads it to firebase, newDataInfo MUST BE A UserData OBJECT!!!
   createData(newDataInfo : UserData) : boolean { //Returns true if was a success (theoretically would return false if it fails, but theres not fail state)
 
-    const db = getDatabase(app);
-
-    set(ref(db, "/Users/" + newDataInfo.userID), {
+    set(ref(DATABASE, "/Users/" + newDataInfo.userID), {
       userID : newDataInfo.userID,
       displayName : newDataInfo.displayName,
       trainerAccount : newDataInfo.trainerAccount,
@@ -48,14 +79,16 @@ export class UserManager implements OnInit {
     });
 
     return true;
+
   }
  
-  //Updates userdata to the new userdata object given
+  //Updates userdata of dataID with the parameters given
   updateData(newDataInfo : UserData) : boolean { //Returns true if was a success, false otherwise
 
-    const db = getDatabase(app);
+    //const db = getDatabase(app);
+ //   const 
 
-    update(ref(db, "/Users/" + newDataInfo.userID), {
+    update(ref(DATABASE, "/Users/" + newDataInfo.userID), {
       userID : newDataInfo.userID,
       displayName : newDataInfo.displayName,
       trainerAccount : newDataInfo.trainerAccount,
@@ -81,15 +114,11 @@ export class UserManager implements OnInit {
 
   }
 
-  constructor(){
-    //This is bad, change to on startup, get you user information, then subscribe to other users as needed
-    const db = getDatabase();
-    const dbRef = ref(db, 'Users/');
+  
 
-    onValue(dbRef, (snapshot) => {
-      const data = snapshot.val();
-      this.dataSnapshot = data;
-    });
+  constructor(){
+    this.dataLoaded = new Map();
+
   }
 
 }

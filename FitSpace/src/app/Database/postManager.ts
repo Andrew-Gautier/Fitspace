@@ -1,8 +1,8 @@
 import { Component, Injectable, OnInit } from "@angular/core";
 import * as firebase from "firebase/compat";
-import { getDatabase, get, ref, remove, set, update, child, onValue } from "firebase/database";
+import { getDatabase, get, ref, remove, set, update, child, onValue, query, limitToLast } from "firebase/database";
 
-import { app } from "src/main";
+import { DATABASE, app } from "src/main";
 import { PostData } from "./postData";
 
 
@@ -20,16 +20,51 @@ export class PostManager implements OnInit {
 
    //Reference to the posts stored in database
   dataSnapshot : any; 
+
+  dataLoaded : any;
+
+  //Unimplemented
+  async loadAllPosts(): Promise<Array<PostData>>{
+
+    var posts = new Array();
+
+    const recentPostsRef = query(ref(DATABASE, 'Posts/'), limitToLast(this.max_count));
+    var jsonPosts = recentPostsRef.toJSON();
+   
+    //get list of objects from jsonPosts to post objects
+
+    return posts;
+  }
   
   //Load a singular piece from firebase (like a user)
-  loadData(dataID : string) : PostData {
+  async loadData(dataID : string) : Promise<PostData> {
+
+    var data = await get(ref(DATABASE, 'Posts/' + dataID));
+
+    this.dataLoaded.set(dataID, data.toJSON());
+
+    // console.log(this.dataLoaded);
+    // console.log(this.dataLoaded.has(dataID));
+    // console.log(this.dataLoaded.get(dataID));
+    // console.log(this.dataLoaded.keys().next());
+
+    
+    var post = this.dataLoaded.get(dataID);
 
     var postdata = new PostData(
-      this.dataSnapshot[dataID].postID, 
-      this.dataSnapshot[dataID].userID, 
-      this.dataSnapshot[dataID].username, 
-      this.dataSnapshot[dataID].displayName
+      post.postID, 
+      post.userID, 
+      post.username, 
+      post.displayName
     );
+
+
+    // var postdata = new PostData(
+    //   this.dataSnapshot[dataID].postID, 
+    //   this.dataSnapshot[dataID].userID, 
+    //   this.dataSnapshot[dataID].username, 
+    //   this.dataSnapshot[dataID].displayName
+    // );
 
     return postdata;
   }
@@ -82,13 +117,15 @@ export class PostManager implements OnInit {
 
   constructor(){
     //This might be ok for the posts?
-    const db = getDatabase();
-    const dbRef = ref(db, 'Posts/');
+    //const db = getDatabase();
+    // const dbRef = ref(DATABASE, 'Posts/');
 
-    onValue(dbRef, (snapshot) => {
-      const data = snapshot.val();
-      this.dataSnapshot = data;
-    });
+    // onValue(dbRef, (snapshot) => {
+    //   const data = snapshot.val();
+    //   this.dataSnapshot = data;
+    // });
+
+    this.dataLoaded = new Map();
   }
 
 }
