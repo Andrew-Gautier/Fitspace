@@ -6,8 +6,9 @@ import { CreatePostPageComponent } from './Pages/create-post-page/create-post-pa
 import { CommunityPageComponent } from './Pages/community-page/community-page.component';
 import { ProfilePageComponent } from './Pages/profile-page/profile-page.component';
 import { MyActivityPageComponent } from './Pages/my-activity-page/my-activity-page.component';
-import { SignupPageComponent } from './signup-page/signup-page.component';
+import { SignupPageComponent } from './Pages/signup-page/signup-page.component';
 import { CommentsComponent } from './Components/comments/comments.component';
+import { ForgotpassPageComponent } from './Pages/forgotpass-page/forgotpass-page.component';
 
 const routes: Routes = [
   {
@@ -17,6 +18,10 @@ const routes: Routes = [
   {
     path:'Signup',
     component: SignupPageComponent
+  },
+  {
+    path:'ForgotPass',
+    component: ForgotpassPageComponent
   },
   {
     path:'Home',

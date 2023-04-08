@@ -23,8 +23,9 @@ import { CreatePostCardComponent } from './Components/create-post-card/create-po
 import { HomePageBannerComponent } from './Components/home-page-banner/home-page-banner.component';
 
 import { FormsModule } from '@angular/forms';
-import { SignupPageComponent } from './signup-page/signup-page.component';
+import { SignupPageComponent } from './Pages/signup-page/signup-page.component';
 import { CommentsComponent } from './Components/comments/comments.component';
+import { ForgotpassPageComponent } from './Pages/forgotpass-page/forgotpass-page.component';
 // May need to change the above environments import, leaving for now. (If debugging, check for an error here.) ~ AG
 
 @NgModule({
@@ -42,7 +43,8 @@ import { CommentsComponent } from './Components/comments/comments.component';
     HomePageBannerComponent,
 
     SignupPageComponent,
-      CommentsComponent
+      CommentsComponent,
+      ForgotpassPageComponent
 
   ],
   imports: [
