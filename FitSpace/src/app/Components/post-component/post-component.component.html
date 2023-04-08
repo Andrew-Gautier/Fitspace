@@ -1,13 +1,13 @@
 <div class="post">
   <div class="content justify-content-center">
     <!-- <a href="#" class="justify-content-center" > -->
-    <h3 class="justify-content-center">Standard post title</h3>
+    <h3 class="justify-content-center">{{PostTitle}}</h3>
     <!-- </a> -->
 
 
     <ul class="post-meta list-inline" style="margin-bottom: 2.5vh;">
       <li class="list-inline-item">
-        <i class=""></i> <a href="#">John Doe</a>
+        <i class=""></i> <a href="#">{{Username}}</a>
       </li>
     </ul>
 
@@ -50,7 +50,8 @@
         <i class=""></i> <a href="#">25 June 2020</a>
       </li> -->
       <li class="list-inline-item justify-content-end">
-        <i class="justify-content-end"></i> <a href="#">Comments</a>
+        <!-- <i class="justify-content-end"></i> <a href="#">Comments</a> -->
+        <button (click)="viewComments(PostID)" class="btn btn-secondary">View Comments</button>
       </li>
     </ul><br>
   </div>

@@ -3,9 +3,10 @@
   <h1>Community Page</h1>
 </div>
 
-<app-post-component></app-post-component>
+<!-- Slides would be databinded to an imported list of slide objects -->
+<app-post-component PostTitle="Standard post title" Username="Test-User" PostID="1234567" ></app-post-component>
 
-
+<!-- 
 <div class="d-flex justify-content-center" style="padding-top: 2.5%; padding-bottom: 5%;">
   <h2>Trending Posts</h2>
 </div>
@@ -75,7 +76,7 @@
     <app-exercise-post-card img={{item.img}} title={{item.title}} description={{item.description}}>
     </app-exercise-post-card>
   </div>
-</div>
+</div> -->
 
 <!-- This code here is testing out commenting  -->
 <div *ngFor="let post of posts">
