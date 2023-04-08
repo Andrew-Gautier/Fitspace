@@ -1,0 +1,57 @@
+<div class="post">
+  <div class="content justify-content-center">
+    <!-- <a href="#" class="justify-content-center" > -->
+    <h3 class="justify-content-center">Standard post title</h3>
+    <!-- </a> -->
+
+
+    <ul class="post-meta list-inline" style="margin-bottom: 2.5vh;">
+      <li class="list-inline-item">
+        <i class=""></i> <a href="#">John Doe</a>
+      </li>
+    </ul>
+
+
+    <!-- Start of carosel -->
+    <!-- <a href="#"><img src="https://via.placeholder.com/700x400" alt="" class="img-fluid mb20"></a> -->
+    <!-- <img src="assets/example-posts/DUMBELLDORE.jpg" alt="" class="img-fluid mb20">
+
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur in iaculis ex. Etiam volutpat laoreet urna.
+      Morbi ut tortor nec nulla commodo malesuada sit amet vel lacus. Fusce eget efficitur libero. Morbi dapibus porta
+      quam laoreet placerat.
+    </p> -->
+
+    <div id="carouselExampleIndicators" class="carousel slide">
+      <div class="carousel-inner">
+        
+        <div *ngFor="let slide of slides let i = index" class="carousel-item" [ngClass]="{'active': i == 0 }"> 
+        <!-- <div class="carousel-item active"> -->
+          <app-slide-component img={{slide.img}} text={{slide.text}}></app-slide-component>
+        </div>
+
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+        data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+        data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+
+    <!-- End of Carosel -->
+
+    <ul class="post-meta list-inline">
+      <!-- <li class="list-inline-item">
+        <i class=""></i> <a href="#">25 June 2020</a>
+      </li> -->
+      <li class="list-inline-item justify-content-end">
+        <i class="justify-content-end"></i> <a href="#">Comments</a>
+      </li>
+    </ul><br>
+  </div>
+</div>
