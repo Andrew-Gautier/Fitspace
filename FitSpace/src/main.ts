@@ -32,6 +32,8 @@ export const analytics = getAnalytics(app);
 
 export const DATABASE = getDatabase();
 
+
+
 //The code above sets up firebase for the entire app
 
 //Create a database manager for userManager

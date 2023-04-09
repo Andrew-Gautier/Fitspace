@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
 import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword, signOut } from 'firebase/auth';
+import { UserData } from 'src/app/Database/userData';
+import { USER_MANAGER } from 'src/main';
+
+
+
 
 @Component({
   selector: 'app-signup-page',
@@ -9,11 +14,24 @@ import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword, si
 export class SignupPageComponent {
   
    
-   signup(){
+   async signup(){
      signOut(getAuth())
-      createUserWithEmailAndPassword(getAuth() , this.email, this.password).then(response => {
-        console.log('Signup Success!')
-      })
+      let test = await createUserWithEmailAndPassword(getAuth() , this.email, this.password).then(response => {
+        console.log('Signup Success!');
+      });
+   
+      const user = getAuth().currentUser;
+
+      console.log(user);
+      console.log("???");
+ 
+      if(user != undefined){
+       var newUser = new UserData(user.uid, user.email, false);
+      
+       USER_MANAGER.createData(newUser);
+      } else {
+       console.log("Failed to create user");
+      }
     }
     email = "";
     password = "";

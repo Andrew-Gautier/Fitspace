@@ -28,6 +28,7 @@ import { CommentsComponent } from './Components/comments/comments.component';
 import { ForgotpassPageComponent } from './Pages/forgotpass-page/forgotpass-page.component';
 import { PostComponentComponent } from './Components/post-component/post-component.component';
 import { SlideComponentComponent } from './Components/slide-component/slide-component.component';
+import { ProfileInfoComponent } from './Components/profile-info/profile-info.component';
 // May need to change the above environments import, leaving for now. (If debugging, check for an error here.) ~ AG
 
 @NgModule({
@@ -48,7 +49,8 @@ import { SlideComponentComponent } from './Components/slide-component/slide-comp
       CommentsComponent,
       ForgotpassPageComponent,
       PostComponentComponent,
-      SlideComponentComponent
+      SlideComponentComponent,
+      ProfileInfoComponent
 
   ],
   imports: [

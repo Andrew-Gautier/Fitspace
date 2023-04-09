@@ -6,7 +6,7 @@ export class UserData {
   userID : string;
 
   //Whats displayed on the screen
-  displayName : string;
+  displayName : string | undefined | null;
 
   //True if they are verified trainer / have posting permissions
   trainerAccount : boolean;
@@ -17,10 +17,12 @@ export class UserData {
   primaryService : string | undefined; //What type of fitness are they associated with (not crossfit)
 
   //Create a UserData object, contains 
-  constructor(id : string, name : string, trainerFlag : boolean = false, location : string = "", affilate : string = "", primaryService : string = ""){
+  constructor(id : string, name : string | undefined | null, trainerFlag : boolean = false, location : string = "", affilate : string = "", primaryService : string = ""){
     
     this.userID = id;
-    this.displayName = name;
+    if(name != undefined){
+      this.displayName = name;
+    }
     this.trainerAccount = trainerFlag;
     this.location = location;
     this.affilate = affilate;
