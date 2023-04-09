@@ -10,6 +10,9 @@ import { USER_MANAGER } from 'src/main';
 export class ProfileInfoComponent {
   
   @Input() displayname : string | null | undefined;
+  @Input() trainerText : string | undefined;
+  @Input() location : string | undefined;
+
 
   constructor(){
     this.displayname = "";
@@ -26,7 +29,16 @@ export class ProfileInfoComponent {
       var data = await USER_MANAGER.loadData(userID);
       if(data != null && data != undefined){
         this.displayname = data.displayName;
+        this.location = data.location
+        if(data.trainerAccount == true){
+          this.trainerText = "Trainer";
+        }
+      }else {
+      //  this.trainerText = "";
       }
+    } else {
+     // this.trainerText = "";
     }
+
   }
 }

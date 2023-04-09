@@ -55,7 +55,9 @@ export class PostManager implements OnInit {
       post.postID, 
       post.userID, 
       post.username, 
-      post.displayName
+      post.displayName,
+      post.slides,
+      post.comments
     );
 
 
