@@ -5,6 +5,9 @@ import { CreateTextModel } from '../../Components/create-post-card/create-post.m
 import { textTemp } from '../../Components/create-post-card/mock_lists';
 import { vidTemp } from '../../Components/create-post-card/mock_lists';
 import { picTemp } from '../../Components/create-post-card/mock_lists';
+import { PostData } from 'src/app/Database/postData';
+import { POST_MANAGER, USER_MANAGER, hashFunction } from 'src/main';
+import { SlideData } from 'src/app/Database/slideData';
 
 @Component({
   selector: 'app-create-post-page',
@@ -32,6 +35,45 @@ export class CreatePostPageComponent {
       this.pic.push(pix);
     }
 
-    
   }
+  
+
+  async postWorkout(){
+    let date = new Date();
+
+    //This entire thing sets the postID to the UserID plus the hash of the current time stamp
+    const userID = sessionStorage.getItem("currentUserID");
+    var data = null;
+    if(userID != null){
+      data = await USER_MANAGER.loadData(userID);
+    }
+
+    let postID = hashFunction(date.getTime().toString()).toString(); 
+    if(data?.userID != undefined){
+       postID = postID + data?.userID;
+    }
+    //Excessive I know
+
+    var postTitleInput = ((document.getElementById("titleInput") as HTMLInputElement).value);
+    let newPost;
+
+    var imgInput = ((document.getElementById("imageLinkInput") as HTMLInputElement).value);
+    var textInput = ((document.getElementById("textInput") as HTMLInputElement).value);
+    var newSlide = new SlideData(imgInput, textInput);
+    let slides = new Array<SlideData>(); 
+    slides.push(newSlide)
+
+    //document.getElementById("titleInput")
+    if(userID != null && data?.displayName != null){
+      newPost = new PostData(postID, userID, data?.displayName, postTitleInput, slides);
+    }
+    
+    if(newPost != undefined){
+      POST_MANAGER.createData(newPost);
+    }
+
+    console.log(newPost)
+    console.log(slides)
+  }
+
 }

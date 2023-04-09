@@ -9,7 +9,7 @@ import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { UserManager } from './app/Database/userManager';
 import { PostManager } from './app/Database/postManager';
-import { getDatabase } from 'firebase/database';
+import { get, getDatabase, ref } from 'firebase/database';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -32,13 +32,25 @@ export const analytics = getAnalytics(app);
 
 export const DATABASE = getDatabase();
 
-console.log("Launched");
-
 //The code above sets up firebase for the entire app
 
 //Create a database manager for userManager
 export const USER_MANAGER = new UserManager();
 export const POST_MANAGER = new PostManager();
 
+// SIMPLE HASH FUNCTION
+export const hashFunction = (code : string) => {
+  var hash = 0;
+  for (var i = 0; i < code.length; i++) {
+      var char = code.charCodeAt(i);
+      hash = ((hash<<5)-hash)+char;
+      hash = hash & hash; // Convert to 32bit integer
+  }
+  return hash;
+}
+
+
 platformBrowserDynamic().bootstrapModule(AppModule)
   .catch(err => console.error(err));
+
+  

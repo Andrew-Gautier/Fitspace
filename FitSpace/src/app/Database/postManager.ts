@@ -56,7 +56,7 @@ export class PostManager implements OnInit {
       post.userID, 
       post.username, 
       post.displayName,
-      post.slides,
+      post.postSlides,
       post.comments
     );
 
@@ -80,7 +80,8 @@ export class PostManager implements OnInit {
       postID : newDataInfo.postID,
       userID : newDataInfo.userID,
       username : newDataInfo.username,
-      postTitle : newDataInfo.postTitle
+      postTitle : newDataInfo.postTitle,
+      postSlides : newDataInfo.slides
     });
 
     return true;

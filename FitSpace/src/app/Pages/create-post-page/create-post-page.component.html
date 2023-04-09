@@ -1,32 +1,34 @@
 <app-nav-bar></app-nav-bar>
 <!-->just has username at top to identify you're signed in<!-->
 
+<div class="d-flex justify-content-center">
+  <div class="new post-container">
+    <p>Workout Post</p>
+    <div class="">
+      
+      <div class="row">
+        <p>Post Title</p>
+        <textarea id="titleInput" class="new post-content" style="width:65%;"></textarea>
+      </div>
 
-<div class="new post-container">
-  <p>Post-Workout</p>
-  <div class="">
-    <div class="col">
-      <textarea class="new post-content" style="
-            width:65%
-            "></textarea>
+      <!-- Needs to be additional slides based on this upload -->
+          <div class="row">
+            <p>Image Link (Needs to be blob upload)</p>
+            <textarea id="imageLinkInput" class="new post-content" style="width:65%;"></textarea>
+          </div>
 
+          <div class="row">
+            <p>Slide Description</p>
+            <textarea id="textInput" class="new post-content" style="width:65%;"></textarea>
+          </div>
+
+      <div class="row">
+        <button class="btn btn-primary" style="width: 11%;" (click)="postWorkout()">Create</button>
+      </div>
     </div>
-
-
-    <div class="row">
-      <button class="btn btn-primary" style="
-            width: 11%
-            
-            
-            ">Create Post</button>
-    </div>
-
-
 
   </div>
-
 </div>
-
 
 <div class="d-flex justify-content-center" style="padding-top: 2.5%; padding-bottom: 5%;">
   <h2>Pick A Post Layout</h2>
@@ -34,30 +36,22 @@
     //has the three options to pick from- text, video, image
     //click on one and direct you to the layout?
     <!-->
- </div>
+</div>
 
-    <!--> Trying to figure out how to align these horizontally-->
-    <div class="d-flex flex-wrap justify-content-center">
-      <div *ngFor="let txt of text"
-        style="padding-left: 2.5%; padding-right: 2.5%; padding-bottom: 1.25%; padding-top: 1.25%;">
-        <app-create-post-card  title={{txt.title}}
-          description={{txt.description}}></app-create-post-card>
-      </div>
-    
-          <div *ngFor="let link of vid"
-          style="padding-left: 2.5%; padding-right: 2.5%; padding-bottom: 1.25%; padding-top: 1.25%;">
-          <app-create-post-card src={{link.src}} title={{link.title}}
-            description={{link.description}}></app-create-post-card>
-           </div>
-    
-            <div *ngFor="let pix of pic"
-            style="padding-left: 2.5%; padding-right: 2.5%; padding-bottom: 1.25%; padding-top: 1.25%;">
-            <app-create-post-card img={{pix.img}} title={{pix.title}}
-              description={{pix.description}}></app-create-post-card>
-            </div>
-      </div>
+<!--> Trying to figure out how to align these horizontally-->
+<div class="d-flex flex-wrap justify-content-center">
+  <div *ngFor="let txt of text"
+    style="padding-left: 2.5%; padding-right: 2.5%; padding-bottom: 1.25%; padding-top: 1.25%;">
+    <app-create-post-card title={{txt.title}} description={{txt.description}}></app-create-post-card>
+  </div>
 
-      
-   
+  <div *ngFor="let link of vid"
+    style="padding-left: 2.5%; padding-right: 2.5%; padding-bottom: 1.25%; padding-top: 1.25%;">
+    <app-create-post-card src={{link.src}} title={{link.title}} description={{link.description}}></app-create-post-card>
+  </div>
 
-
+  <div *ngFor="let pix of pic"
+    style="padding-left: 2.5%; padding-right: 2.5%; padding-bottom: 1.25%; padding-top: 1.25%;">
+    <app-create-post-card img={{pix.img}} title={{pix.title}} description={{pix.description}}></app-create-post-card>
+  </div>
+</div>
