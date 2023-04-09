@@ -33,22 +33,22 @@ export class CommunityPageComponent {
 
   constructor(private router: Router){
     for (var item of mock_list){
-      console.log(item);
+      //console.log(item);
       this.cards.push(item);
     }
 
     for(var txt of recent1){
-      console.log(txt);
+     // console.log(txt);
       this.text.push(txt);
     }
 
     for(var link of recent2){
-      console.log(link);
+     // console.log(link);
       this.vid.push(link);
     }
 
     for(var pix of recent3){
-      console.log(pix);
+     // console.log(pix);
       this.pic.push(pix);
     }
 

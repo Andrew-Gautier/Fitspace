@@ -18,27 +18,6 @@ export class UserManager implements OnInit {
   //Reference to the a map of different users and their data
   dataLoaded : any;//Map<any, any>; 
 
-
-
-  // updateSnapshot(dataID : string){
-  //   const dbRef = ref(DATABASE, 'Users/' + dataID);
-  //   console.log(2)
-  //   // onValue(dbRef, (snapshot) => {
-  //   //   const data = snapshot.val();
-  //   //   this.dataLoaded.set(dataID, data);
-  //   //   return;
-  //   // });
-   
-  //   let p = new Promise((resolve, reject) =>onValue(ref(DATABASE, '/users/' + dataID), (snapshot) => {
-  //     console.log(3)
-  //     const data = snapshot.val();
-  //     this.dataLoaded.set(dataID, data);
-  //     resolve("Resolved")
-  //   }, {
-  //     onlyOnce: true
-  //   }));
-  // }
-
   //Load a singular User from firebase
   async loadData(dataID : string) : Promise<UserData> {
 

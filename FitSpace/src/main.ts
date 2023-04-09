@@ -32,7 +32,7 @@ export const analytics = getAnalytics(app);
 
 export const DATABASE = getDatabase();
 
-
+console.log("Launched");
 
 //The code above sets up firebase for the entire app
 

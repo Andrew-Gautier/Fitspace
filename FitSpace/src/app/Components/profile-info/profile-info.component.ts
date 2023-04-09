@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { currentUserID } from 'src/app/Pages/login-page/login-page.component';
+import { getAuth } from 'firebase/auth';
 import { USER_MANAGER } from 'src/main';
 
 @Component({
@@ -14,11 +14,16 @@ export class ProfileInfoComponent {
   constructor(){
     this.displayname = "";
     this.loadUserData();
+    //console.log("CREATED PROFILE INFO COMPONENT");
   }
 
   async loadUserData(){
-    if(currentUserID != null ){
-      var data = await USER_MANAGER.loadData(currentUserID);
+    //const user = getAuth().currentUser;
+    //sessionStorage.setItem("currentUserID", user?.uid)
+    const userID = sessionStorage.getItem("currentUserID");
+    console.log(userID);
+    if(userID != null){
+      var data = await USER_MANAGER.loadData(userID);
       if(data != null && data != undefined){
         this.displayname = data.displayName;
       }
