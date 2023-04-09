@@ -24,7 +24,7 @@ export class ProfileInfoComponent {
     //const user = getAuth().currentUser;
     //sessionStorage.setItem("currentUserID", user?.uid)
     const userID = sessionStorage.getItem("currentUserID");
-    console.log(userID);
+    //console.log(userID);
     if(userID != null){
       var data = await USER_MANAGER.loadData(userID);
       if(data != null && data != undefined){

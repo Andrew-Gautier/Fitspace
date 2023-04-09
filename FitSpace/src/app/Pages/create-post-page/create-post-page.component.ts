@@ -72,8 +72,8 @@ export class CreatePostPageComponent {
       POST_MANAGER.createData(newPost);
     }
 
-    console.log(newPost)
-    console.log(slides)
+    console.log(newPost);
+    console.log(slides);
   }
 
 }

@@ -28,10 +28,21 @@ export class PostManager implements OnInit {
 
     var posts = new Array();
 
-    const recentPostsRef = query(ref(DATABASE, 'Posts/'), limitToLast(this.max_count));
-    var jsonPosts = recentPostsRef.toJSON();
+    //const recentPostsRef = query(ref(DATABASE, 'Posts/'), limitToLast(this.max_count));
+    //var jsonPosts = recentPostsRef.toJSON();
    
     //get list of objects from jsonPosts to post objects
+    //posts = jsonPosts
+    //console.log(jsonPosts);
+
+    var data = await get(ref(DATABASE, 'Posts'));
+    data.forEach( child => {
+      //child.val();
+      posts.push(child.val());
+    })
+
+    //var jsondata = data.toJSON();
+    //console.log(posts);
 
     return posts;
   }
@@ -48,7 +59,6 @@ export class PostManager implements OnInit {
     // console.log(this.dataLoaded.get(dataID));
     // console.log(this.dataLoaded.keys().next());
 
-    
     var post = this.dataLoaded.get(dataID);
 
     var postdata = new PostData(

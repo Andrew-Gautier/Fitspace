@@ -11,6 +11,8 @@
       </li>
     </ul>
 
+    <!-- Testing -->
+    <!-- <p>{{slides[0].textData}}</p> -->
 
     <!-- Start of carosel -->
     <!-- <a href="#"><img src="https://via.placeholder.com/700x400" alt="" class="img-fluid mb20"></a> -->
@@ -25,9 +27,9 @@
     <div id="carouselExampleIndicators" class="carousel slide">
       <div class="carousel-inner">
         
-        <div *ngFor="let slide of slides let i = index" class="carousel-item" [ngClass]="{'active': i == 0 }"> 
+        <div *ngFor="let slide of Slides let i = index" class="carousel-item" [ngClass]="{'active': i == 0 }"> 
         <!-- <div class="carousel-item active"> -->
-          <app-slide-component img={{slide.img}} text={{slide.text}}></app-slide-component>
+          <app-slide-component imgData={{slide.imgData}} textData={{slide.textData}}></app-slide-component>
         </div>
 
       </div>

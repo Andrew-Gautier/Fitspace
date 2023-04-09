@@ -8,15 +8,15 @@ import { Component, Injectable, Input, OnInit } from '@angular/core';
 })
 export class SlideComponentComponent implements OnInit {
 
-  @Input() img : string;
-  @Input() text : string;
+  @Input() imgData : string;
+  @Input() textData : string;
 
   ngOnInit(): void {
     
   }
 
   constructor() { 
-    this.img = "assets/Under-Construction.jpg";
-    this.text = "TEST Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur in iaculis ex. Etiam volutpat laoreet urna.Morbi ut tortor nec nulla commodo malesuada sit amet vel lacus. Fusce eget efficitur libero. Morbi dapibus portaquam laoreet placerat."
+    this.imgData = "assets/Under-Construction.jpg";
+    this.textData = "TEST Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur in iaculis ex. Etiam volutpat laoreet urna.Morbi ut tortor nec nulla commodo malesuada sit amet vel lacus. Fusce eget efficitur libero. Morbi dapibus portaquam laoreet placerat."
   }
 }

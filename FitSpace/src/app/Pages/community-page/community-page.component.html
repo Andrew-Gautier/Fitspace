@@ -3,9 +3,22 @@
   <h1>Community Page</h1>
 </div>
 <div class="d-flex justify-content-center" style="padding-top: 2.5%; padding-bottom: 5%;">
-<!-- Slides would be databinded to an imported list of slide objects -->
-<app-post-component PostTitle="Standard post title" Username="Test-User" PostID="1234567" ></app-post-component>
 
+
+<!-- Slides would be databinded to an imported list of slide objects -->
+<div>
+  <app-post-component PostTitle="Standard post title" Username="Test-User" PostID="1234567" ></app-post-component>
+</div>
+
+
+
+<div>
+  <h1>POSTS TEST</h1>
+  <div *ngFor="let post of posts">
+    <!-- <app-post-component id={{post.postID}} PostTitle={{post.postTitle}} Username={{post.username}} PostID={{post.postID}} [Slides]="post.postSlides"></app-post-component> -->
+    <app-post-component id={{post.postID}} PostTitle={{post.postTitle}} Username={{post.username}} PostID={{post.postID}} [Slides]="post.postSlides"></app-post-component>
+  </div>
+</div>
 
 </div>
 <!-- 
@@ -81,9 +94,9 @@
 </div> -->
 
 <!-- This code here is testing out commenting  -->
-<div *ngFor="let post of posts">
+<!-- <div *ngFor="let post of posts">
   <h2>{{ post.title }}</h2>
   <p>{{ post.body }}</p>
   <button (click)="viewComments(post.id)">View Comments</button>
-</div>
+</div> -->
 <!-- END -->
