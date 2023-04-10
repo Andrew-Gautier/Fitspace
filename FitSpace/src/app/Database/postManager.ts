@@ -4,6 +4,7 @@ import { getDatabase, get, ref, remove, set, update, child, onValue, query, limi
 
 import { DATABASE, app } from "src/main";
 import { PostData } from "./postData";
+import { CommentData } from "./commentData";
 
 
 @Injectable()
@@ -55,8 +56,8 @@ export class PostManager implements OnInit {
     this.dataLoaded.set(dataID, data.toJSON());
 
     // console.log(this.dataLoaded);
-    // console.log(this.dataLoaded.has(dataID));
-    // console.log(this.dataLoaded.get(dataID));
+    //  console.log(this.dataLoaded.has(dataID));
+    //  console.log(this.dataLoaded.get(dataID));
     // console.log(this.dataLoaded.keys().next());
 
     var post = this.dataLoaded.get(dataID);
@@ -67,7 +68,7 @@ export class PostManager implements OnInit {
       post.username, 
       post.displayName,
       post.postSlides,
-      post.comments
+      Object.values(post.comments)
     );
 
 
@@ -91,7 +92,8 @@ export class PostManager implements OnInit {
       userID : newDataInfo.userID,
       username : newDataInfo.username,
       postTitle : newDataInfo.postTitle,
-      postSlides : newDataInfo.slides
+      postSlides : newDataInfo.slides,
+      comments : newDataInfo.slides
     });
 
     return true;
@@ -104,9 +106,9 @@ export class PostManager implements OnInit {
 
     var data: PostData = newDataInfo;
 
-    const db = getDatabase(app);
+    //const db = getDatabase(app);
 
-    update(ref(db, "/Posts/" + data.postID), {
+    update(ref(DATABASE, "/Posts/" + data.postID), {
       postTitle : data.postTitle,
       //Need more things to change
     });
@@ -117,9 +119,9 @@ export class PostManager implements OnInit {
   //remove the post that has dataID from the firebase
   removeData(dataID: string) : boolean { //Returns true if was a success, false otherwise
 
-    const db = getDatabase(app);
+    //const db = getDatabase(app);
 
-    remove(ref(db, "/Posts/" + dataID));
+    remove(ref(DATABASE, "/Posts/" + dataID));
 
     return true;
   }
@@ -139,6 +141,27 @@ export class PostManager implements OnInit {
     // });
 
     this.dataLoaded = new Map();
+  }
+
+  async addComment(postID : string, newComment : CommentData){
+
+    //Get comment list
+    var post = await this.loadData(postID);
+
+    //Append to comment list
+    if (!post.comments){
+      post.comments = new Array<CommentData>;
+    } 
+    post.comments.push(newComment);
+
+    //Update database
+
+    update(ref(DATABASE, "/Posts/" + postID), {
+      comments : post.comments
+    });
+
+    console.log(post.comments);
+
   }
 
 }

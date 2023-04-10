@@ -2,15 +2,20 @@
 <h2>Comments for Post</h2>
 <div *ngIf="postComments.length == 0">No comments just yet</div>
 <ul>
+  <!-- <li *ngFor="let comment of postComments">
+    {{ comment.textData }}
+  </li> -->
   <li *ngFor="let comment of postComments">
-    {{ comment.text }}
+    <p>{{comment.textData}}</p>
   </li>
 </ul>
 
-<form (ngSubmit)="addComment()">
+<!-- <form (ngSubmit)="addComment()"> -->
+<form >
   <label>
     Add a comment:
-    <input type="text" [(ngModel)]="newCommentText" name="newCommentText">
+    <!-- <input type="text" [(ngModel)]="newCommentText" name="newCommentText"> -->
+    <textarea id="commentInput" class="new post-content" style="width:65%;"></textarea>
   </label>
-  <button type="submit">Submit</button>
+  <button type="submit" (click)="addComment()">Submit</button>
 </form>
