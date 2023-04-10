@@ -24,13 +24,10 @@ export class CommentsComponent implements OnInit {
     //this.postTitle = this.route.snapshot.paramMap.get('title');;
     this.loadComments();
     this.setTitle();
+    
   }
 
   ngOnInit(): void {
-    this.loadComments();
-    this.setTitle();
-    
-
     //this.comments.filter(comment => comment.postId === this.postId);
   }
 
