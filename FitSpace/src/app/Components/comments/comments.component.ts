@@ -54,6 +54,12 @@ export class CommentsComponent implements OnInit {
     var newComment;
     let currentID = sessionStorage.getItem("currentUserID")
     var text = ((document.getElementById("commentInput") as HTMLInputElement).value);
+    
+    if (!text.replace(/\s/g, '').length) { //Checks for whitespace
+      alert('Please type something before you try to comment.');
+      return;
+    }
+    
     if(currentID != null){
       newComment = new CommentData(currentID, text);
     }
