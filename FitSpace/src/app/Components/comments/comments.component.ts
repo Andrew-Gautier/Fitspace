@@ -23,12 +23,22 @@ export class CommentsComponent implements OnInit {
     this.postTitle = "";
     //this.postTitle = this.route.snapshot.paramMap.get('title');;
     this.loadComments();
+    this.setTitle();
   }
 
   ngOnInit(): void {
     this.loadComments();
+    this.setTitle();
+    
 
     //this.comments.filter(comment => comment.postId === this.postId);
+  }
+
+  async setTitle(): Promise<void> {
+    if (this.postID) {
+      const title = await POST_MANAGER.getPostTitle(this.postID);
+      this.postTitle = title;
+    }
   }
 
   loadComments(){
@@ -39,8 +49,6 @@ export class CommentsComponent implements OnInit {
 
       POST_MANAGER.loadData(this.postID).then( (data) => {
         this.postComments = data.comments;
-        (document.getElementById("PostTitle") as HTMLHeadingElement).textContent = "Comments for Post: " + data.postTitle;
-        this.postTitle = data.postTitle;
         console.log(this.postComments);
         console.log(this.postTitle); //how is this null while the other part isnt
       })
