@@ -31,7 +31,7 @@ export class PostData {
     this.slides = slides;
 
     if(comments == undefined){
-      this.comments = new Array<CommentData>;
+      this.comments = [];
     } else {
       this.comments = comments;
     }

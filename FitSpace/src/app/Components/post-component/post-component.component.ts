@@ -37,7 +37,7 @@ export class PostComponentComponent {
   // }
 
   //This routes to a new unique page based on id 
-  viewComments(id: string): void {
+  viewComments(id: string, title : string): void {
     this.router.navigate(['comments', id]);
   }
 }

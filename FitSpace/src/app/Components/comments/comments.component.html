@@ -1,5 +1,6 @@
+<app-nav-bar></app-nav-bar>
 
-<h2>Comments for Post</h2>
+<h2 id="PostTitle">Comments for Post: {{postTitle}}</h2>
 <div *ngIf="postComments.length == 0">No comments just yet</div>
 <ul>
   <!-- <li *ngFor="let comment of postComments">

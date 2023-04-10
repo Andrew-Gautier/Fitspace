@@ -72,6 +72,11 @@ export class CreatePostPageComponent {
       POST_MANAGER.createData(newPost);
     }
 
+    //Cleanup
+    ((document.getElementById("titleInput") as HTMLInputElement).value) = '';
+    ((document.getElementById("imageLinkInput") as HTMLInputElement).value) = '';
+    ((document.getElementById("textInput") as HTMLInputElement).value) = '';
+
     console.log(newPost);
     console.log(slides);
   }

@@ -9,24 +9,19 @@ import { POST_MANAGER } from 'src/main';
   styleUrls: ['./comments.component.css']
 })
 export class CommentsComponent implements OnInit {
-  postId!: number;
-  // comments: any[] = [
-  //   { id: 1, postId: 1, text: 'This is great 1' },
-  //   { id: 2, postId: 1, text: 'This is real good 2' },
-  //   { id: 5, postId: 1, text: 'This is very good 5'},
-  //   { id: 3, postId: 2, text: 'This is very nice 3' },
-  //   { id: 4, postId: 2, text: 'This is even better 4' },
-   
-  // ];
+  //postId!: number;
   postComments: Array<CommentData>;
   //newCommentText: string;
   postID: string | null;
+  postTitle: string | null;
 
   constructor(private route: ActivatedRoute) { 
-    this.postComments = new Array<CommentData>; 
+    this.postComments = []//new Array<CommentData>; 
     //this.newCommentText = ''; 
     //this.postID = null;
     this.postID = this.route.snapshot.paramMap.get('id');
+    this.postTitle = "";
+    //this.postTitle = this.route.snapshot.paramMap.get('title');;
     this.loadComments();
   }
 
@@ -44,7 +39,10 @@ export class CommentsComponent implements OnInit {
 
       POST_MANAGER.loadData(this.postID).then( (data) => {
         this.postComments = data.comments;
+        (document.getElementById("PostTitle") as HTMLHeadingElement).textContent = "Comments for Post: " + data.postTitle;
+        this.postTitle = data.postTitle;
         console.log(this.postComments);
+        console.log(this.postTitle);
       })
       
     }
