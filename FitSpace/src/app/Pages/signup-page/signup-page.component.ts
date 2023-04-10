@@ -26,17 +26,30 @@ export class SignupPageComponent {
       console.log("???");
  
       if(user != undefined){
-       var newUser = new UserData(user.uid, user.email, false);
-      
-       USER_MANAGER.createData(newUser);
+        var newUser = new UserData(user.uid, user.email, false);
+        
+        USER_MANAGER.createData(newUser);
+
+        alert("You have been registered, please continue to log in.");
+        setTimeout( () => {
+          document.location.href = "";
+        }, 100);
+        //  //This breaks things?
+
       } else {
        console.log("Failed to create user");
+       alert("Something went wrong with user creation")
       }
     }
+
+
+
     email = "";
     password = "";
     confirmPassword = "";
     match : boolean = false;
+
+
     passwordConfirmation(){
       return this.match = this.password == this.confirmPassword
       

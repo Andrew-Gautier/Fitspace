@@ -19,6 +19,8 @@ export class LoginPageComponent {
    let test = await signInWithEmailAndPassword (getAuth() , this.email, this.password).then(response => {
       console.log('Success!') 
       this.router.navigate(["/Home"], {relativeTo : this.route})
+    }).catch( () => {
+      alert("Invalid credentials");
     })
 
     const user = getAuth().currentUser; // Get the current user NVM i changed this

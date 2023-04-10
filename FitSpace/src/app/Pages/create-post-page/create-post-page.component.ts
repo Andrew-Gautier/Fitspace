@@ -55,30 +55,39 @@ export class CreatePostPageComponent {
     //Excessive I know
 
     var postTitleInput = ((document.getElementById("titleInput") as HTMLInputElement).value);
-    let newPost;
+   
 
     var imgInput = ((document.getElementById("imageLinkInput") as HTMLInputElement).value);
     var textInput = ((document.getElementById("textInput") as HTMLInputElement).value);
-    var newSlide = new SlideData(imgInput, textInput);
-    let slides = new Array<SlideData>(); 
-    slides.push(newSlide)
 
-    //document.getElementById("titleInput")
-    if(userID != null && data?.displayName != null){
-      newPost = new PostData(postID, userID, data?.displayName, postTitleInput, slides);
+    //Check for null values
+    if(postTitleInput != "" && imgInput != "" && textInput != ""){
+
+      let newPost;
+      var newSlide = new SlideData(imgInput, textInput);
+      let slides = new Array<SlideData>(); 
+      slides.push(newSlide)
+
+      //document.getElementById("titleInput")
+      if(userID != null && data?.displayName != null){
+        newPost = new PostData(postID, userID, data?.displayName, postTitleInput, slides);
+      }
+      
+      if(newPost != undefined){
+        POST_MANAGER.createData(newPost);
+      }
+
+      //Cleanup
+      ((document.getElementById("titleInput") as HTMLInputElement).value) = '';
+      ((document.getElementById("imageLinkInput") as HTMLInputElement).value) = '';
+      ((document.getElementById("textInput") as HTMLInputElement).value) = '';
+
+      // console.log(newPost);
+      // console.log(slides);
+    } else {
+      alert("Please fill out all boxes");
     }
     
-    if(newPost != undefined){
-      POST_MANAGER.createData(newPost);
-    }
-
-    //Cleanup
-    ((document.getElementById("titleInput") as HTMLInputElement).value) = '';
-    ((document.getElementById("imageLinkInput") as HTMLInputElement).value) = '';
-    ((document.getElementById("textInput") as HTMLInputElement).value) = '';
-
-    console.log(newPost);
-    console.log(slides);
   }
 
 }
