@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {getAuth, signInWithEmailAndPassword} from '@angular/fire/auth'
 import { createUserWithEmailAndPassword, signOut } from '@angular/fire/auth';
 import { ActivatedRoute, Router } from '@angular/router';
+import { USER_MANAGER } from 'src/main';
 
 
 
@@ -29,6 +30,13 @@ export class LoginPageComponent {
     console.log(user?.uid);
     if(user?.uid != undefined){
       sessionStorage.setItem("currentUserID", user?.uid)
+      
+      let userEntry = await USER_MANAGER.loadData(user?.uid);
+      if(userEntry.displayName != null){
+        sessionStorage.setItem("currentUsername", userEntry.displayName)
+        console.log(userEntry.displayName);
+      }
+
     }
     
   }

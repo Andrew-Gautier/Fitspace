@@ -42,7 +42,7 @@ export class CommentsComponent implements OnInit {
         (document.getElementById("PostTitle") as HTMLHeadingElement).textContent = "Comments for Post: " + data.postTitle;
         this.postTitle = data.postTitle;
         console.log(this.postComments);
-        console.log(this.postTitle);
+        console.log(this.postTitle); //how is this null while the other part isnt
       })
       
     }
@@ -53,9 +53,12 @@ export class CommentsComponent implements OnInit {
   async addComment(): Promise<void> {
     var newComment;
     let currentID = sessionStorage.getItem("currentUserID")
+    let currentUser = sessionStorage.getItem("currentUsername")
+
     var text = ((document.getElementById("commentInput") as HTMLInputElement).value);
-    if(currentID != null){
-      newComment = new CommentData(currentID, text);
+    
+    if(currentID != null && currentUser != null){
+      newComment = new CommentData(currentID, text, currentUser);
     }
     
       // {

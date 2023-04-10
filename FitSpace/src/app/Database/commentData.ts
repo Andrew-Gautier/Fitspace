@@ -2,13 +2,15 @@
 
 export class CommentData {
 
-  userID : string
+  userID : string;
+  username : string;
   textData : string;
 
   //Create a UserData object, contains 
-  constructor(userID : string, textData : string){
+  constructor(userID : string, textData : string, username : string){
     this.userID = userID;
     this.textData = textData;
+    this.username = username;
   }
 
 }

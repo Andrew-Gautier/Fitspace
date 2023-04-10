@@ -7,7 +7,8 @@
     {{ comment.textData }}
   </li> -->
   <li *ngFor="let comment of postComments">
-    <p>{{comment.textData}}</p>
+    <p>{{comment.textData}}<br></p>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;-{{comment.username}}</p>
   </li>
 </ul>
 
