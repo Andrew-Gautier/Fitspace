@@ -143,6 +143,13 @@ export class PostManager implements OnInit {
     this.dataLoaded = new Map();
   }
 
+  async getPostTitle(dataID : string) : Promise<string> {
+    const data = await get(ref(DATABASE, `Posts/${dataID}/postTitle`));
+    return data.val();
+  }
+  
+  
+
   async addComment(postID : string, newComment : CommentData){
 
     //Get comment list
