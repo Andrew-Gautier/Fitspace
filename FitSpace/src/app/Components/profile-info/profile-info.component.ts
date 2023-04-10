@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { getAuth } from 'firebase/auth';
 import { USER_MANAGER } from 'src/main';
 
@@ -7,8 +7,10 @@ import { USER_MANAGER } from 'src/main';
   templateUrl: './profile-info.component.html',
   styleUrls: ['./profile-info.component.css']
 })
-export class ProfileInfoComponent {
+export class ProfileInfoComponent implements OnInit{
   
+  @Input() userID : string;
+
   @Input() displayname : string | null | undefined;
   @Input() trainerText : string | undefined;
   @Input() location : string | undefined;
@@ -16,6 +18,8 @@ export class ProfileInfoComponent {
 
   constructor(){
     this.displayname = "";
+    this.userID = "";
+    console.log(this.userID);
     this.loadUserData();
     //console.log("CREATED PROFILE INFO COMPONENT");
   }
@@ -23,10 +27,10 @@ export class ProfileInfoComponent {
   async loadUserData(){
     //const user = getAuth().currentUser;
     //sessionStorage.setItem("currentUserID", user?.uid)
-    const userID = sessionStorage.getItem("currentUserID");
+    //const userID = sessionStorage.getItem("currentUserID");
     //console.log(userID);
-    if(userID != null){
-      var data = await USER_MANAGER.loadData(userID);
+    if(this.userID != null){
+      var data = await USER_MANAGER.loadData(this.userID);
       if(data != null && data != undefined){
         this.displayname = data.displayName;
         this.location = data.location
@@ -41,4 +45,11 @@ export class ProfileInfoComponent {
     }
 
   }
+
+  ngOnInit(): void {
+    console.log("SOMETHING ANYTHING PLEASe");
+    console.log(this.userID);
+    this.loadUserData();
+  }
+
 }

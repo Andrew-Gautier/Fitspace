@@ -46,6 +46,10 @@ const routes: Routes = [
   {
     path: 'comments/:id', 
     component: CommentsComponent
+  },
+  {
+    path: 'user/:id', 
+    component: ProfilePageComponent
   }
 
 ];

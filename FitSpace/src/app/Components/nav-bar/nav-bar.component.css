@@ -71,3 +71,33 @@ nav a::before {
 nav a:hover::before {
     width: 100%;
 }
+
+nav button {
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 500;
+    border: 0;
+    background-color: #006C67;
+}
+
+nav button:hover {
+    color: black;
+}
+
+nav button::before {
+    content: '';
+    display: block;
+    height: 5px;
+    background-color: black;
+
+    position: absolute;
+    top: 0;
+    width: 0%;
+    transition: all ease-in-out 200ms;
+}
+
+nav button:hover::before {
+    width: 100%;
+}

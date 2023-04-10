@@ -14,6 +14,7 @@ export class PostComponentComponent {
   @Input() PostTitle : string;
   @Input() Slides : SlideData[];
   @Input() Username : string;
+  @Input() userID : string;
   @Input() PostID : string;
 
   constructor(private router: Router){
@@ -21,6 +22,7 @@ export class PostComponentComponent {
     this.PostTitle = "Missing Post";
     this.Username = "Missing User";
     this.PostID = "0";
+    this.userID = "";
 
     //console.log(this.PostID);
     //console.log(this.Slides);
