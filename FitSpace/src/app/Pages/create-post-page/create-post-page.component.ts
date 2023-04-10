@@ -55,8 +55,6 @@ export class CreatePostPageComponent {
     //Excessive I know
 
     var postTitleInput = ((document.getElementById("titleInput") as HTMLInputElement).value);
-   
-
     var imgInput = ((document.getElementById("imageLinkInput") as HTMLInputElement).value);
     var textInput = ((document.getElementById("textInput") as HTMLInputElement).value);
 
