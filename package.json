@@ -1,5 +1,10 @@
 {
   "dependencies": {
-    "bootstrap": "^5.2.3"
+    "-": "^0.0.1",
+    "@angular/fire": "^7.5.0",
+    "angularfire2": "^5.4.2",
+    "bootstrap": "^5.2.3",
+    "firebase": "^7.24.0",
+    "save": "^2.9.0"
   }
 }
