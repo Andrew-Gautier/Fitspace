@@ -24,7 +24,7 @@
       quam laoreet placerat.
     </p> -->
 
-    <div id="carouselExampleIndicators" class="carousel slide">
+    <div [id]="'a'+PostID" class="carousel slide">
       <div class="carousel-inner">
         
         <div *ngFor="let slide of Slides let i = index" class="carousel-item" [ngClass]="{'active': i == 0 }"> 
@@ -33,12 +33,12 @@
         </div>
 
       </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+      <button class="carousel-control-prev" type="button" [attr.data-bs-target]="'#a'+this.PostID"
         data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Previous</span>
       </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+      <button class="carousel-control-next" type="button" [attr.data-bs-target]="'#a'+this.PostID"
         data-bs-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Next</span>
