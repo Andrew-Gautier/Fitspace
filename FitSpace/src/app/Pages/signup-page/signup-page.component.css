@@ -1,7 +1,15 @@
-
-body {
-    background-image: url('\src\assets\login-page-photo.jpg');
+.card{
+    background-image: url("/assets/signup-page-photo.jpg");
+    background-color: #cccccc; 
+    height: 1000px; 
+    background-position: center; 
     background-repeat: no-repeat;
-    background-attachment: fixed;
     background-size: cover;
+}
+h2{
+    color: #006c67;
+    font-size: 50px;
+    font-weight: 1000;
+    line-height: 1.2;
+    margin-bottom: 0;
 }

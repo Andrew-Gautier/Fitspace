@@ -23,3 +23,14 @@
     background-color: rgba(0,0,0,.03);
     border-bottom: 1px solid rgba(0,0,0,.125);
 }
+
+body{
+    background-image: url("/assets/forgot-pass-photo.jpg");
+    background-color: #cccccc; 
+    height: 1000px; 
+    background-position: center; 
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
