@@ -18,7 +18,8 @@ export class PostComponentComponent {
   @Input() PostID : string;
 
   constructor(private router: Router){
-    this.Slides = mock_list_slides;
+    //this.Slides = mock_list_slides;
+    this.Slides = [];
     this.PostTitle = "Missing Post";
     this.Username = "Missing User";
     this.PostID = "0";

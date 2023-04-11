@@ -1,4 +1,6 @@
 import { Component, Injectable, Input, OnInit } from '@angular/core';
+import { getDownloadURL, ref } from 'firebase/storage';
+import { STORAGE } from 'src/main';
 
 
 @Component({
@@ -8,15 +10,36 @@ import { Component, Injectable, Input, OnInit } from '@angular/core';
 })
 export class SlideComponentComponent implements OnInit {
 
-  @Input() imgData : string;
+  @Input() imgURL : string;
   @Input() textData : string;
 
+  imageFromURL : string | null;
+
   ngOnInit(): void {
-    
+    this.showimage();
   }
 
   constructor() { 
-    this.imgData = "assets/Under-Construction.jpg";
-    this.textData = "TEST Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur in iaculis ex. Etiam volutpat laoreet urna.Morbi ut tortor nec nulla commodo malesuada sit amet vel lacus. Fusce eget efficitur libero. Morbi dapibus portaquam laoreet placerat."
+    this.imgURL = "";
+    this.textData = ""
+    this.imageFromURL = null;
+
+    //this.showimage();
   }
+  
+
+  async showimage() {
+
+    //173427789dIZrUQFqffVfs6z0BQLJsl3NpB3.png
+    let imageReference = ref(STORAGE, this.imgURL);
+
+    //imageReference = ref(STORAGE, "images/173427789dIZrUQFqffVfs6z0BQLJsl3NpB3.png");
+
+    //console.log(imageReference);
+    getDownloadURL(imageReference).then(url => { 
+      this.imageFromURL = url; 
+    });
+
+  }
+
 }

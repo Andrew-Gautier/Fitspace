@@ -85,6 +85,7 @@ export class PostManager implements OnInit {
   //Creates a new post and uploads it to firebase, newDataInfo MUST BE A PostData OBJECT!!!
   createData(newDataInfo : PostData) : boolean { //Returns true if was a success, false otherwise
 
+    console.log(newDataInfo);
     const db = getDatabase(app);
 
     set(ref(db, "/Posts/" + newDataInfo.postID), {
@@ -95,6 +96,12 @@ export class PostManager implements OnInit {
       postSlides : newDataInfo.slides,
       comments : newDataInfo.comments
     });
+
+
+
+    // update(ref(db, "/Posts/" + newDataInfo.postID), {
+    //   postSlides : newDataInfo.slides,
+    // });
 
     return true;
   }

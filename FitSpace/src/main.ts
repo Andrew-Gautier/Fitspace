@@ -10,6 +10,9 @@ import { getAnalytics } from "firebase/analytics";
 import { UserManager } from './app/Database/userManager';
 import { PostManager } from './app/Database/postManager';
 import { get, getDatabase, ref } from 'firebase/database';
+
+import { getStorage } from "firebase/storage";
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -31,6 +34,8 @@ export const app = initializeApp(firebaseConfig);
 export const analytics = getAnalytics(app);
 
 export const DATABASE = getDatabase();
+
+export const STORAGE = getStorage(app);
 
 //The code above sets up firebase for the entire app
 

@@ -1,5 +1,5 @@
 <app-nav-bar></app-nav-bar>
-<!-->just has username at top to identify you're signed in<!-->
+<!--just has username at top to identify you're signed in<!-->
 
 <div class="d-flex justify-content-center">
   <div class="new post-container">
@@ -13,12 +13,19 @@
 
       <!-- Needs to be additional slides based on this upload -->
           <div class="row">
-            <p>Image Link (Needs to be blob upload)</p>
-            <textarea id="imageLinkInput" class="new post-content" style="width:65%;"></textarea>
+            <!-- <p>Image Link (Needs to be blob upload)</p> -->
+            <!-- <textarea id="imageLinkInput" class="new post-content" style="width:65%;"></textarea> -->
+            <p>Image Input</p>
+            <input type='file' id="imageInput" accept="image/*" (change)="changedImage()"/>
+            <!-- This needs to be resized depending on image -->
+            <div id="testImageDiv"> 
+              <!-- <img id="testImage" src="#"> -->
+            </div>
+            
           </div>
 
           <div class="row">
-            <p>Slide Description</p>
+            <p><br>Slide Description</p>
             <textarea id="textInput" class="new post-content" style="width:65%;"></textarea>
           </div>
 
