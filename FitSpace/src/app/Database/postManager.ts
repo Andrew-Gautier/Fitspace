@@ -67,9 +67,14 @@ export class PostManager implements OnInit {
       post.userID, 
       post.username, 
       post.displayName,
-      post.postSlides,
-      Object.values(post.comments)
+      post.postSlides
     );
+
+    if(post.comments != null){
+      postdata.comments = Object.values(post.comments);
+    } 
+
+    
 
 
     // var postdata = new PostData(
@@ -94,7 +99,7 @@ export class PostManager implements OnInit {
       username : newDataInfo.username,
       postTitle : newDataInfo.postTitle,
       postSlides : newDataInfo.slides,
-      comments : newDataInfo.comments
+      comments : []// newDataInfo.comments
     });
 
 
