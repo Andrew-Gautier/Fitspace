@@ -80,7 +80,7 @@ export class CreatePostPageComponent {
 
 
     //Check for null values
-    if(postTitleInput != ""){
+    if(postTitleInput != "" && this.loadedSlides.length > 0){
 
       let newPost;
       let slides = new Array<SlideData>(); 
