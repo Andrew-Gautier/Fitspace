@@ -195,7 +195,9 @@ export class CreatePostPageComponent {
   }
 
   deleteSlide(){
-
+    this.previewSlides.pop();
+    this.loadedSlides.pop();
+    this.updatePreview();
   }
 
   cancelPost(){
