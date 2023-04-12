@@ -50,7 +50,11 @@ export class UserManager implements OnInit {
       userdata.email = user.email;
     }
     
-
+    if (user.admin){
+      userdata.admin = user.admin;
+    } else {
+      userdata.admin = false;
+    }
 
     return userdata;
   }

@@ -53,8 +53,13 @@
       </li> -->
       <li class="list-inline-item justify-content-end" >
         <!-- <i class="justify-content-end"></i> <a href="#">Comments</a> -->
-        <button (click)="viewComments(PostID, PostTitle)" class="btn btn-secondary" style="font-size: 12px">Comments</button>
-        <!-- <p>{{commentsLength}}</p> -->
+        <div class="d-flex flex-row">
+          <button (click)="viewComments(PostID, PostTitle)" class="btn btn-secondary" style="font-size: 12px">Comments</button>
+          <p style="padding-left: 1vw;">{{commentCount}}</p>
+        </div>
+
+        <button (click)="likePost(PostID)" class="btn btn-secondary" style="font-size: 12px; margin-top: 1vh;">Like</button>
+        
       </li>
     </ul><br>
   </div>

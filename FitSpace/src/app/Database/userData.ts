@@ -20,6 +20,8 @@ export class UserData {
 
   likedPosts : Array<string>; //Array of post ids
 
+  admin : boolean;
+
   //Create a UserData object, contains 
   constructor(id : string, name : string | undefined | null, trainerFlag : boolean = false, location : string = "", affilate : string = "", primaryService : string = "", email : string = "", likedPosts : Array<string> | undefined = undefined){
     
@@ -39,6 +41,8 @@ export class UserData {
     }
     
     this.email = email;
+
+    this.admin = false;
 
   }
 
