@@ -9,6 +9,7 @@ import { recent2 } from '../../Components/create-post-card/mock_lists';
 import { recent3 } from '../../Components/create-post-card/mock_lists';
 import { Router } from '@angular/router';
 import { POST_MANAGER } from 'src/main';
+import { ChunkPipe } from './pipe';
 import { PostComponentComponent } from 'src/app/Components/post-component/post-component.component';
 
 
@@ -19,6 +20,7 @@ import { PostComponentComponent } from 'src/app/Components/post-component/post-c
   templateUrl: './community-page.component.html',
   styleUrls: ['./community-page.component.css']
 })
+
 export class CommunityPageComponent {
 
 

@@ -29,6 +29,7 @@ import { ForgotpassPageComponent } from './Pages/forgotpass-page/forgotpass-page
 import { PostComponentComponent } from './Components/post-component/post-component.component';
 import { SlideComponentComponent } from './Components/slide-component/slide-component.component';
 import { ProfileInfoComponent } from './Components/profile-info/profile-info.component';
+import { ChunkPipe } from './Pages/community-page/pipe';
 // May need to change the above environments import, leaving for now. (If debugging, check for an error here.) ~ AG
 
 @NgModule({
@@ -50,7 +51,8 @@ import { ProfileInfoComponent } from './Components/profile-info/profile-info.com
       ForgotpassPageComponent,
       PostComponentComponent,
       SlideComponentComponent,
-      ProfileInfoComponent
+      ProfileInfoComponent,
+      ChunkPipe,
 
   ],
   imports: [
