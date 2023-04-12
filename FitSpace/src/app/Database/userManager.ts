@@ -39,8 +39,18 @@ export class UserManager implements OnInit {
       user.trainerAccount, 
       user.location, 
       user.affilate, 
-      user.primaryService
+      user.primaryService,
     );
+
+    if (user.likedPosts){
+      userdata.likedPosts = user.likedPosts;
+    }
+
+    if (user.email){
+      userdata.email = user.email;
+    }
+    
+
 
     return userdata;
   }

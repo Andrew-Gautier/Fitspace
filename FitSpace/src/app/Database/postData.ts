@@ -18,9 +18,12 @@ export class PostData {
   slides : Array<SlideData>;
   comments : Array<CommentData>;
 
+  likes : Array<string>; //Array of user ids
+  date : number;
+
 
   //Create a UserData object, contains 
-  constructor(id : string, userID: string, username : string, postTitle : string, slides : Array<SlideData>, comments : Array<CommentData> | undefined = undefined){
+  constructor(id : string, userID: string, username : string, postTitle : string, slides : Array<SlideData>, comments : Array<CommentData> | undefined = undefined, likes : Array<string> | undefined = undefined, date : number | undefined = undefined){
     
     this.postID = id;
     this.userID = userID;
@@ -36,6 +39,19 @@ export class PostData {
       this.comments = comments;
     }
     
+    if(likes == undefined){
+      this.likes = [];
+    } else {
+      this.likes = likes;
+    }
+
+    if(date == undefined){
+      let date = new Date();
+      this.date = date.getDate();
+    } else {
+      this.date = date;
+    }
+
 
   }
 

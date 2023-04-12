@@ -67,14 +67,20 @@ export class PostManager implements OnInit {
       post.userID, 
       post.username, 
       post.displayName,
-      post.postSlides
+      post.postSlides,
     );
 
     if(post.comments != null){
       postdata.comments = Object.values(post.comments);
     } 
 
-    
+    if(post.likes != null){
+      postdata.likes = Object.values(post.likes);
+    } 
+
+    if(post.date != null){
+      postdata.date = post.date;
+    } 
 
 
     // var postdata = new PostData(
