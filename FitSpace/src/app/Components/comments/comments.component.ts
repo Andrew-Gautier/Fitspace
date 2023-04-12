@@ -15,6 +15,11 @@ export class CommentsComponent implements OnInit {
   postID: string | null;
   postTitle: string | null;
 
+  postSlides: any;
+  postUsername: any;
+  postUserID: any;
+
+
   constructor(private route: ActivatedRoute) { 
     this.postComments = []//new Array<CommentData>; 
     //this.newCommentText = ''; 
@@ -46,8 +51,26 @@ export class CommentsComponent implements OnInit {
 
       POST_MANAGER.loadData(this.postID).then( (data) => {
         this.postComments = data.comments;
-        console.log(this.postComments);
-        console.log(this.postTitle); //how is this null while the other part isnt
+        this.postSlides = data.slides;
+        this.postUserID = data.userID
+        this.postUsername = data.username;
+
+        //Update post display
+        // for(let i = 0; i <  this.postSlides.length; i++){
+        //   let currentSlide = this.postSlides[i];   
+        // }
+        
+        //Refresh document??
+        // var display = document.getElementById("display");
+        // if(display){
+        //   let content = display.innerHTML
+        //   display.innerHTML = content;
+        // }
+        
+
+        console.log(this.postSlides);
+        //console.log(this.postComments);
+        //console.log(this.postTitle); //how is this null while the other part isnt
       })
       
     }

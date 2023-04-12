@@ -105,7 +105,9 @@ export class PostManager implements OnInit {
       username : newDataInfo.username,
       postTitle : newDataInfo.postTitle,
       postSlides : newDataInfo.slides,
-      comments : []// newDataInfo.comments
+      comments : [],// newDataInfo.comments
+      likes : [],
+      date : newDataInfo.date
     });
 
 
