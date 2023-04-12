@@ -17,6 +17,8 @@ import { ref, uploadBytes } from 'firebase/storage';
 })
 export class CreatePostPageComponent {
 
+  maxSlides = 10;
+
   //?????
   // text: CreateTextModel [] = [];
   // pic: CreateImageModel [] = [];
@@ -158,40 +160,45 @@ export class CreatePostPageComponent {
 
   async createSlide(){
 
-    //Needs to create another version of slide for the loadedSlides
 
-    //Image aspect of slide
-    var imageInput = document.getElementById("imageInput") as HTMLInputElement;
-    //var imgPreview = document.getElementById("testImageDiv");
-    var textInput = (document.getElementById("textInput") as HTMLInputElement).value
+    if(this.loadedSlides.length < this.maxSlides){
+      //Needs to create another version of slide for the loadedSlides
 
-    
-    if(imageInput.files){
-      const fileReader = new FileReader();
+      //Image aspect of slide
+      var imageInput = document.getElementById("imageInput") as HTMLInputElement;
+      //var imgPreview = document.getElementById("testImageDiv");
+      var textInput = (document.getElementById("textInput") as HTMLInputElement).value
+
       
-      var file = imageInput.files[0];
-      fileReader.readAsDataURL(file);
+      if(imageInput.files){
+        const fileReader = new FileReader();
+        
+        var file = imageInput.files[0];
+        fileReader.readAsDataURL(file);
 
-      fileReader.addEventListener("load",() => {
-       // console.log(fileReader.result);
-        //return this.result;
-        this.previewSlides.push([ fileReader.result, textInput]);
-      });
+        fileReader.addEventListener("load",() => {
+        // console.log(fileReader.result);
+          //return this.result;
+          this.previewSlides.push([ fileReader.result, textInput]);
+        });
 
 
-      //ADD SLIDE TO LOADED SLIDES OF CORRECT TYPE
+        //ADD SLIDE TO LOADED SLIDES OF CORRECT TYPE
 
-      const byteFile = await this.getAsByteArray(file)
+        const byteFile = await this.getAsByteArray(file)
 
-      console.log(byteFile);
-      console.log(byteFile.length);
+        console.log(byteFile);
+        console.log(byteFile.length);
 
-      //this.loadedImage = byteFile;
-      this.loadedSlides.push([byteFile, textInput]);
+        //this.loadedImage = byteFile;
+        this.loadedSlides.push([byteFile, textInput]);
+      }
+      
+
+      this.updatePreview();
+    } else {
+      alert("You are at the maximum amount of slides!");
     }
-    
-
-    this.updatePreview();
   }
 
   deleteSlide(){
