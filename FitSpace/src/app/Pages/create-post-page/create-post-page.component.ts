@@ -18,30 +18,39 @@ import { ref, uploadBytes } from 'firebase/storage';
 export class CreatePostPageComponent {
 
   //?????
-  text: CreateTextModel [] = [];
-  pic: CreateImageModel [] = [];
-  vid: CreateVidModel [] = [];
+  // text: CreateTextModel [] = [];
+  // pic: CreateImageModel [] = [];
+  // vid: CreateVidModel [] = [];
 
-  loadedImage : any;
+  //loadedImage : any;
+  loadedSlides : Array<any>;
+
+  previewTitle : string;
+  previewUsername : string | null;
+  previewUserID : string | null;
+  previewSlides : Array<any>;
 
   constructor(){
 
     //What is this doing?
-    for(var link of vidTemp){ //video post
-      console.log(link);
-      this.vid.push(link);
-    }
-    for ( var txt of textTemp) { // text post
-      console.log(txt);
-      this.text.push(txt);
-    }
-    for(var pix of picTemp) { //picture post
-      console.log(pix);
-      this.pic.push(pix);
-    }
+    // for(var link of vidTemp){ //video post
+    //   console.log(link);
+    //   this.vid.push(link);
+    // }
+    // for ( var txt of textTemp) { // text post
+    //   console.log(txt);
+    //   this.text.push(txt);
+    // }
+    // for(var pix of picTemp) { //picture post
+    //   console.log(pix);
+    //   this.pic.push(pix);
+    // }
 
-
-
+    this.previewTitle = "Preview";
+    this.previewUsername = sessionStorage.getItem("currentUsername");;
+    this.previewUserID = sessionStorage.getItem("currentUserID");;
+    this.loadedSlides = new Array<any>();
+    this.previewSlides = new Array<any>();
   }
 
   async postWorkout(){
@@ -61,34 +70,35 @@ export class CreatePostPageComponent {
     //Excessive I know
 
 
-
-
-
-
-
-
-
-
+    //Convert slides into proper slides (URLs) (USE loadedSlides instead of preview slides)
 
     var postTitleInput = ((document.getElementById("titleInput") as HTMLInputElement).value);
     //var imgInput = ((document.getElementById("imageLinkInput") as HTMLInputElement).value);
-    var textInput = ((document.getElementById("textInput") as HTMLInputElement).value);
+    //var textInput = ((document.getElementById("textInput") as HTMLInputElement).value);
 
 
     //Check for null values
-    if(postTitleInput != "" && textInput != ""){
-
-      const newImagePath = 'images/' + postID + ".png"
-      const newImageRef = ref(STORAGE, newImagePath);
-
-      uploadBytes(newImageRef, this.loadedImage).then((snapshot) => {
-        console.log('Uploaded a blob or file!');
-      });
+    if(postTitleInput != ""){
 
       let newPost;
-      var newSlide = new SlideData(newImagePath, textInput);
       let slides = new Array<SlideData>(); 
-      slides.push(newSlide)
+
+      //Create slides for every loaded slide 
+      for(let i = 0; i <  this.loadedSlides.length; i++){
+        let slide = this.loadedSlides[i];
+
+        const newImagePath = 'images/' + postID + i + ".png"
+        const newImageRef = ref(STORAGE, newImagePath);
+
+        uploadBytes(newImageRef, slide[0]).then((snapshot) => {
+          console.log('Uploaded a blob or file!' + i);
+        });
+
+        var newSlide = new SlideData(newImagePath, slide[1]);
+        slides.push(newSlide)
+      }
+
+
 
       //document.getElementById("titleInput")
       if(userID != null && data?.displayName != null){
@@ -103,36 +113,116 @@ export class CreatePostPageComponent {
 
       
       //Cleanup
-      ((document.getElementById("titleInput") as HTMLInputElement).value) = '';
+      //((document.getElementById("titleInput") as HTMLInputElement).value) = '';
       //((document.getElementById("imageInput") as HTMLInputElement).value) = undefined;
       //(document.getElementById("imageInput") as HTMLInputElement).files = new FileList;
-      this.clearInputFile(document.getElementById("imageInput"));
+     // this.clearInputFile(document.getElementById("imageInput"));
       //((document.getElementById("imageLinkInput") as HTMLInputElement).value) = '';
-      ((document.getElementById("textInput") as HTMLInputElement).value) = '';
+      //((document.getElementById("textInput") as HTMLInputElement).value) = '';
 
       // console.log(newPost);
       // console.log(slides);
+
+      //Clears everything properly
+      this.cancelPost();
+
     } else {
       alert("Please fill out all boxes");
     }
     
   }
 
+  async updatePreview(){
+
+    //Update title
+    if(((document.getElementById("titleInput") as HTMLInputElement).value) != ""){
+      this.previewTitle = ((document.getElementById("titleInput") as HTMLInputElement).value);
+    }
+
+
+    //Update slides 
+    //this.previewSlides = this.loadedSlides;
+    //Needs to be handled differently
+    for(let i = 0; i <  this.previewSlides.length; i++){
+      // var imgPreview = document.getElementById('preview' + i);
+      // console.log(imgPreview);
+      let currentSlide = this.previewSlides[i];
+
+      //var file = currentSlide;
+
+    }
+
+    
+    
+  }
+
+  async createSlide(){
+
+    //Needs to create another version of slide for the loadedSlides
+
+    //Image aspect of slide
+    var imageInput = document.getElementById("imageInput") as HTMLInputElement;
+    //var imgPreview = document.getElementById("testImageDiv");
+    var textInput = (document.getElementById("textInput") as HTMLInputElement).value
+
+    
+    if(imageInput.files){
+      const fileReader = new FileReader();
+      
+      var file = imageInput.files[0];
+      fileReader.readAsDataURL(file);
+
+      fileReader.addEventListener("load",() => {
+       // console.log(fileReader.result);
+        //return this.result;
+        this.previewSlides.push([ fileReader.result, textInput]);
+      });
+
+
+      //ADD SLIDE TO LOADED SLIDES OF CORRECT TYPE
+
+      const byteFile = await this.getAsByteArray(file)
+
+      console.log(byteFile);
+      console.log(byteFile.length);
+
+      //this.loadedImage = byteFile;
+      this.loadedSlides.push([byteFile, textInput]);
+    }
+    
+
+    this.updatePreview();
+  }
+
+  deleteSlide(){
+
+  }
+
+  cancelPost(){
+      //Cleanup
+      ((document.getElementById("titleInput") as HTMLInputElement).value) = '';
+      //this.clearInputFile(document.getElementById("imageInput"));
+      ((document.getElementById("textInput") as HTMLInputElement).value) = '';
+
+      //Reset vars
+      this.previewTitle = "Preview";
+      this.previewUsername = sessionStorage.getItem("currentUsername");;
+      this.previewUserID = sessionStorage.getItem("currentUserID");;
+      this.loadedSlides = new Array<any>();
+      this.previewSlides = new Array<any>();
+  }
+
+
+
+  // IMAGE FUNCTIONS --------------------------------------
+
+
   async changedImage(){
     var imageInput = document.getElementById("imageInput") as HTMLInputElement;
-   // var imageInput = ref;
     var imgPreview = document.getElementById("testImageDiv");
 
-    // console.log("TEST");
 
     if(imageInput.files){
-
-      //this.loadedImage = imageInput.files[0];
-      //var test : Blob = new Blob(this.loadedImage);
-
-      //console.log(test);
-      //console.log(imageInput.files[0]);
-
       if(imgPreview != null){
         //preview.style.backgroundImage = URL.createObjectURL(imageInput.files[0]);
         const fileReader = new FileReader();
@@ -146,35 +236,12 @@ export class CreatePostPageComponent {
           }
         });
         
-        // A VERY SLOW AND ANNOYING OPTION
-        //  var reader = new FileReader();
-        //  var fileByteArray : any = [];
-        //  var array : any;
-        //  reader.readAsArrayBuffer(files);
-        //  reader.onloadend = function (evt) {
-        
-        //     if (evt.target!.readyState == FileReader.DONE) {
-        //           var arrayBuffer : ArrayBuffer = (evt.target!.result) as ArrayBuffer;
-        //           if(arrayBuffer != null){
-        //             array = new Uint8Array(arrayBuffer);
-        //           }
-    
-        //       for (var i = 0; i < array.length; i++) {
-        //           fileByteArray.push(array[i]);
-        //           console.log(fileByteArray);
-        //         }
-        //     }
-        //     console.log(fileByteArray);
-        // }
+        // const byteFile = await this.getAsByteArray(file)
 
-        //console.log("Test");
+        // console.log(byteFile);
+        // console.log(byteFile.length);
 
-        const byteFile = await this.getAsByteArray(file)
-
-        console.log(byteFile);
-        console.log(byteFile.length);
-
-        this.loadedImage = byteFile;
+        // this.loadedImage = byteFile;
         //this.loadedImage = file;
         //console.log("Made file");
       }
@@ -203,20 +270,21 @@ export class CreatePostPageComponent {
     })
   }
 
-
-  clearInputFile(f : any){
-    if(f.value){
-        try{
-            f.value = ''; //for IE11, latest Chrome/Firefox/Opera...
-        }catch(err){ }
-        if(f.value){ //for IE5 ~ IE10
-            var form = document.createElement('form'),
-                parentNode = f.parentNode, ref = f.nextSibling;
-            form.appendChild(f);
-            form.reset();
-            parentNode.insertBefore(f,ref);
-        }
-    }
-}
+  //Doesnt work?
+//   clearInputFile(f : any){
+//     //console.log("Attempt");
+//     if(f.value){
+//         try{
+//             f.value = ''; //for IE11, latest Chrome/Firefox/Opera...
+//         }catch(err){ }
+//         if(f.value){ //for IE5 ~ IE10
+//             var form = document.createElement('form'),
+//                 parentNode = f.parentNode, ref = f.nextSibling;
+//             form.appendChild(f);
+//             form.reset();
+//             parentNode.insertBefore(f,ref);
+//         }
+//     }
+// }
 
 }

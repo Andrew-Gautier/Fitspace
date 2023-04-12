@@ -16,6 +16,7 @@ export class PostComponentComponent {
   @Input() Username : string;
   @Input() userID : string;
   @Input() PostID : string;
+ // @Input() commentsLength : number | 0;
 
   constructor(private router: Router){
     //this.Slides = mock_list_slides;
@@ -24,6 +25,7 @@ export class PostComponentComponent {
     this.Username = "Missing User";
     this.PostID = "0";
     this.userID = "";
+    //this.commentsLength = 0;
 
     //console.log(this.PostID);
     //console.log(this.Slides);
