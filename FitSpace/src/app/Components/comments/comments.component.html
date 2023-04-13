@@ -2,29 +2,39 @@
 
 <!-- Post Display -->
 
-<h2 id="PostTitle">Comments for Post: {{postTitle}}</h2>
-<div *ngIf="postComments.length == 0">No comments just yet</div>
-<ul>
-  <!-- Loop through comment data and display -->
-  <div *ngFor="let comment of postComments">
-    <div class="d-flex justify-content-start py-2">
-      <div class="second py-2 px-2"> <span class="text1">{{comment.textData}}</span>
-          <div class="d-flex justify-content-between py-1 pt-2">
-              <div><a href="user/{{comment.userID}}" style=" text-decoration: none;"><span class="text2">{{comment.username}}</span></a></div>
+<body>
+  <h2 id="PostTitle">Comments for Post: {{postTitle}}</h2>
+  <button class="newestFirst" (click)="reverseComments()">Display Newest Comments First</button>
+  <div *ngIf="postComments.length == 0">No comments just yet</div>
+  <div class="d-flex flex-row ">
+    <ul>
+      <!-- Loop through comment data and display -->
+      <div class="commentBox" *ngFor="let comment of postComments">
+        <div class="d-flex justify-content-start py-2">
+          <div class="second py-2 px-2"> <span class="text1">{{comment.textData}}</span>
+            <div class="d-flex justify-content-between py-1 pt-2">
+              <div><a href="user/{{comment.userID}}" style=" text-decoration: none;"><span
+                    class="text2">-{{comment.username}}</span></a></div>
+            </div>
           </div>
-      </div>
-  </div>
-<!-- 
+        </div>
+        <!-- 
     <p>{{comment.textData}}<br></p>
     <p>&nbsp;&nbsp;&nbsp;&nbsp;<a href="user/{{comment.userID}}">{{comment.username}}</a></p> -->
-</div>
-</ul>
+      </div>
+    </ul>
 
-<!-- Comment submission form -->
-<form >
-  <label>
-    Add a comment:
-    <textarea id="commentInput" class="new post-content" style="width:65%;"></textarea>
-  </label>
-  <button type="submit" (click)="addComment()">Submit</button>
-</form>
+    <!-- Comment submission form -->
+    
+      <form>
+        <label>
+          Add a comment:
+          <textarea id="commentInput" class="new post-content" style="width:75%;"></textarea>
+        </label>
+        <div>
+          <button type="submit" (click)="addComment()">Submit</button>
+        </div>
+      </form>
+    </div>
+  
+</body>

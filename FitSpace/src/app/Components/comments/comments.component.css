@@ -1,17 +1,42 @@
-.second{
+body {
+
+	background-color: rgba(4, 9, 40, .7);
+	min-height: 95vh;
+
+}
+
+
+
+h2{
+	color: white;
+}
+
+label{
+	color: white;
+}
+
+.second {
 	width: 350px;
 	background-color: white;
 	border-radius: 4px;
-	box-shadow: 10px 10px 5px #aaaaaa;
+	box-shadow: 5px 5px 4px #aaaaaa;
 }
-.text1{
+
+.text1 {
+	font-size: 16px;
+	font-weight: 500;
+	color: black;
+}
+
+.text2 {
 	font-size: 13px;
-    font-weight: 500;
-    color: #56575b;
+	font-weight: 500;
+	margin-left: 6px;
+	text-decoration: none;
 }
-.text2{
-	font-size: 13px;
-    font-weight: 500;
-    margin-left: 6px;
-    text-decoration: none;
+
+form{
+	margin-left: 20vw;
+	
 }
+

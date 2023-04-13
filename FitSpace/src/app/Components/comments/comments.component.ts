@@ -50,6 +50,13 @@ export class CommentsComponent {
     }
   }
 
+
+  // in your component class
+  reverseComments() {
+    this.postComments.reverse();
+  }
+
+
   //Add a new comment to the database
   async addComment(): Promise<void> {
     //Get comment information
