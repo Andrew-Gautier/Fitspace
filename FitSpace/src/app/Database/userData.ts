@@ -17,12 +17,15 @@ export class UserData {
   affilate : string | undefined; //company affilated with?
   primaryService : string | undefined; //What type of fitness are they associated with (not crossfit)
 
+
+  bio : string;
+
   likedPosts : Array<string>; //Array of post ids
 
   admin : boolean;
 
   //Create a UserData object, contains 
-  constructor(id : string, name : string | undefined | null, trainerFlag : boolean = false, location : string = "", affilate : string = "", primaryService : string = "", email : string = "", likedPosts : Array<string> | undefined = undefined){
+  constructor(id : string, name : string | undefined | null, trainerFlag : boolean = false, location : string = "", affilate : string = "", primaryService : string = "", email : string = "", bio:string = "", likedPosts : Array<string> | undefined = undefined){
     
     this.userID = id;
     if(name != undefined){
@@ -40,6 +43,7 @@ export class UserData {
     }
     
     this.email = email;
+    this.bio = bio
 
     this.admin = false;
 

@@ -30,7 +30,7 @@ export class UserManager{
       user.trainerAccount, 
       user.location, 
       user.affilate, 
-      user.primaryService,
+      user.primaryService
     );
 
     if (user.likedPosts){
@@ -46,6 +46,8 @@ export class UserManager{
     } else {
       userdata.admin = false;
     }
+
+    userdata.bio = user.bio;
 
     return userdata;
   }
