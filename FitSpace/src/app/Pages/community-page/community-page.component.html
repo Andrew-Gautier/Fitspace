@@ -9,8 +9,8 @@
 <!-- Post rows -->
     <div>
       <div>
-        <div class="d-flex flex-row" *ngFor="let postPair of posts | chunk: 3">
-          <div class="d-flex flex-column" *ngFor="let post of postPair">
+        <div class="d-flex flex-row" *ngFor="let postTrio of posts | chunk: 3">
+          <div class="d-flex flex-column" *ngFor="let post of postTrio">
             <!-- Post data -->
             <app-post-component id={{post.postID}} PostTitle={{post.postTitle}} Username={{post.username}}
               PostID={{post.postID}} [Slides]="post.postSlides"></app-post-component>
