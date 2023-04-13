@@ -24,9 +24,8 @@ export class LoginPageComponent {
       alert("Invalid credentials");
     })
 
-    const user = getAuth().currentUser; // Get the current user NVM i changed this
+    const user = getAuth().currentUser;
 
-    //USER_MANAGER.setCurrentUserID(user?.uid);
     console.log(user?.uid);
     if(user?.uid != undefined){
       sessionStorage.setItem("currentUserID", user?.uid)

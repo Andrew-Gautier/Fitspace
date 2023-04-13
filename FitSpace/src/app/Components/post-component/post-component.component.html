@@ -1,9 +1,8 @@
 <div class="post">
   <div class="content justify-content-center" style="padding-bottom: 0;">
-    <!-- <a href="#" class="justify-content-center" > -->
-    <h3 class="justify-content-center">{{PostTitle}}</h3>
-    <!-- </a> -->
 
+    <!-- Heading -->
+    <h3 class="justify-content-center">{{PostTitle}}</h3>
 
     <ul class="post-meta list-inline" style="margin-bottom: 2.5vh;">
       <li class="list-inline-item">
@@ -11,19 +10,7 @@
       </li>
     </ul>
 
-    <!-- Testing -->
-    <!-- <p>{{slides[0].textData}}</p> -->
-
-    <!-- Start of carosel -->
-    <!-- <a href="#"><img src="https://via.placeholder.com/700x400" alt="" class="img-fluid mb20"></a> -->
-    <!-- <img src="assets/example-posts/DUMBELLDORE.jpg" alt="" class="img-fluid mb20">
-
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur in iaculis ex. Etiam volutpat laoreet urna.
-      Morbi ut tortor nec nulla commodo malesuada sit amet vel lacus. Fusce eget efficitur libero. Morbi dapibus porta
-      quam laoreet placerat.
-    </p> -->
-
+    <!-- SLIDES -->
     <div [id]="'a'+PostID" class="carousel slide">
       <div class="carousel-inner">
         
@@ -33,6 +20,8 @@
         </div>
 
       </div>
+
+      <!-- SLIDE BUTTONS -->
       <button class="carousel-control-prev" type="button" [attr.data-bs-target]="'#a'+this.PostID"
         data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -48,16 +37,13 @@
     <!-- End of Carosel -->
 
     <ul class="post-meta list-inline" >
-      <!-- <li class="list-inline-item">
-        <i class=""></i> <a href="#">25 June 2020</a>
-      </li> -->
       <li class="list-inline-item justify-content-end" >
-        <!-- <i class="justify-content-end"></i> <a href="#">Comments</a> -->
         <div class="d-flex flex-row">
           <button (click)="viewComments(PostID, PostTitle)" class="btn btn-secondary" style="font-size: 12px">Comments</button>
           <p style="padding-left: 1vw;">{{commentCount}}</p>
         </div>
 
+        <!-- Post control functionality -->
         <button (click)="likePost(PostID)" class="btn btn-secondary" style="font-size: 12px; margin-top: 1vh;">Like</button>
         <button *ngIf="authorized" (click)="deletePost(PostID)" class="btn btn-danger" style="font-size: 12px; margin-top: 1vh; margin-left: 0%;">Delete</button>
       </li>

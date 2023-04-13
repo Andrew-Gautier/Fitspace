@@ -51,8 +51,6 @@ export class PostData {
     } else {
       this.date = date;
     }
-
-
   }
 
 }

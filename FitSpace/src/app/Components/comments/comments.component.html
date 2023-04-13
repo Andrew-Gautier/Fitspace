@@ -1,25 +1,21 @@
 <app-nav-bar></app-nav-bar>
 
 <!-- Post Display -->
-<!-- <app-post-component id="display" PostTitle={{postTitle}} Username={{postUsername}} PostID={{postID}} userID={{postUserID}} [Slides]="postSlides"></app-post-component> -->
 
 <h2 id="PostTitle">Comments for Post: {{postTitle}}</h2>
 <div *ngIf="postComments.length == 0">No comments just yet</div>
 <ul>
-  <!-- <li *ngFor="let comment of postComments">
-    {{ comment.textData }}
-  </li> -->
+  <!-- Loop through comment data and display -->
   <li *ngFor="let comment of postComments">
     <p>{{comment.textData}}<br></p>
     <p>&nbsp;&nbsp;&nbsp;&nbsp;<a href="user/{{comment.userID}}">{{comment.username}}</a></p>
   </li>
 </ul>
 
-<!-- <form (ngSubmit)="addComment()"> -->
+<!-- Comment submission form -->
 <form >
   <label>
     Add a comment:
-    <!-- <input type="text" [(ngModel)]="newCommentText" name="newCommentText"> -->
     <textarea id="commentInput" class="new post-content" style="width:65%;"></textarea>
   </label>
   <button type="submit" (click)="addComment()">Submit</button>

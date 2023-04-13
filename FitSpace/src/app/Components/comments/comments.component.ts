@@ -8,34 +8,28 @@ import { POST_MANAGER } from 'src/main';
   templateUrl: './comments.component.html',
   styleUrls: ['./comments.component.css']
 })
-export class CommentsComponent implements OnInit {
-  //postId!: number;
+export class CommentsComponent {
+
+  //Post information
   postComments: Array<CommentData>;
-  //newCommentText: string;
   postID: string | null;
   postTitle: string | null;
-
   postSlides: any;
   postUsername: any;
   postUserID: any;
 
 
+  //Default values in case no parameter was given, should not be called
   constructor(private route: ActivatedRoute) { 
-    this.postComments = []//new Array<CommentData>; 
-    //this.newCommentText = ''; 
-    //this.postID = null;
+    this.postComments = []
     this.postID = this.route.snapshot.paramMap.get('id');
     this.postTitle = "";
-    //this.postTitle = this.route.snapshot.paramMap.get('title');;
-    this.loadComments();
+    this.loadData();
     this.setTitle();
     
   }
 
-  ngOnInit(): void {
-    //this.comments.filter(comment => comment.postId === this.postId);
-  }
-
+  // Set the title of the post 
   async setTitle(): Promise<void> {
     if (this.postID) {
       const title = await POST_MANAGER.getPostTitle(this.postID);
@@ -43,42 +37,22 @@ export class CommentsComponent implements OnInit {
     }
   }
 
-  loadComments(){
-    //this.postID = this.route.snapshot.paramMap.get('id');
-
+  //Load data related to the post 
+  loadData(){
     if (this.postID) {
-    //  this.postId = +this.postID;
 
       POST_MANAGER.loadData(this.postID).then( (data) => {
         this.postComments = data.comments;
         this.postSlides = data.slides;
         this.postUserID = data.userID
         this.postUsername = data.username;
-
-        //Update post display
-        // for(let i = 0; i <  this.postSlides.length; i++){
-        //   let currentSlide = this.postSlides[i];   
-        // }
-        
-        //Refresh document??
-        // var display = document.getElementById("display");
-        // if(display){
-        //   let content = display.innerHTML
-        //   display.innerHTML = content;
-        // }
-        
-
-        console.log(this.postSlides);
-        //console.log(this.postComments);
-        //console.log(this.postTitle); //how is this null while the other part isnt
       })
-      
     }
-
-    //console.log(this.postComments);
   }
 
+  //Add a new comment to the database
   async addComment(): Promise<void> {
+    //Get comment information
     var newComment;
     let currentID = sessionStorage.getItem("currentUserID")
     let currentUser = sessionStorage.getItem("currentUsername")
@@ -94,30 +68,18 @@ export class CommentsComponent implements OnInit {
       newComment = new CommentData(currentID, text, currentUser);
     }
     
-      // {
-    //   id: this.comments.length + 1,
-    //   postId: this.postId,
-    //   text: this.newCommentText
-    // };
-
-    //this.comments.push(newComment);
-
     //UPLOAD NEW COMMENT TO DATABASE
     if(newComment && this.postID){
       await POST_MANAGER.addComment(this.postID, newComment);
     }
   
-
     //Reset Value
-    //this.newCommentText = '';
     ((document.getElementById("commentInput") as HTMLInputElement).value) = '';
 
-
-    //this.postComments = this.comments.filter(comment => comment.postId === this.postId);
+    //Reload comments
     if (this.postID) {
       let data = await POST_MANAGER.loadData(this.postID)
       this.postComments = data.comments;
-      //console.log(data.comments);
     }
   }
 }

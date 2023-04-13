@@ -9,7 +9,6 @@ import { CreatePostPageComponent } from './Pages/create-post-page/create-post-pa
 import { CommunityPageComponent } from './Pages/community-page/community-page.component';
 import { ProfilePageComponent } from './Pages/profile-page/profile-page.component';
 import { NavBarComponent } from './Components/nav-bar/nav-bar.component';
-import { ExercisePostCardComponent } from './Components/exercise-post-card/exercise-post-card.component';
 import { MyActivityPageComponent } from './Pages/my-activity-page/my-activity-page.component';
 import {AngularFireModule} from '@angular/fire/compat';
 import { environment } from 'src/environments/environment';
@@ -18,7 +17,7 @@ import { initializeApp } from 'firebase/app';
 import {AngularFirestoreModule} from '@angular/fire/compat/firestore';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
-import { CreatePostCardComponent } from './Components/create-post-card/create-post-card.component';
+
 
 import { HomePageBannerComponent } from './Components/home-page-banner/home-page-banner.component';
 
@@ -41,9 +40,7 @@ import { ChunkPipe } from './Pages/community-page/pipe';
     CommunityPageComponent,
     ProfilePageComponent,
     NavBarComponent,
-    ExercisePostCardComponent,
     MyActivityPageComponent,
-    CreatePostCardComponent,
     HomePageBannerComponent,
 
     SignupPageComponent,

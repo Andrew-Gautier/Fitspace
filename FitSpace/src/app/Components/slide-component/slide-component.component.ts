@@ -10,36 +10,35 @@ import { STORAGE } from 'src/main';
 })
 export class SlideComponentComponent implements OnInit {
 
+  //Slide data
   @Input() imgURL : string;
   @Input() textData : string;
 
+  //Image data
   imageFromURL : string | null;
 
+  //On initialization, get the image data
   ngOnInit(): void {
     this.showimage();
   }
 
+  //Default values
   constructor() { 
     this.imgURL = "";
     this.textData = ""
     this.imageFromURL = null;
-
-    //this.showimage();
   }
   
-
+  //Display the image (Download the image data to the local browser)
   async showimage() {
 
-    //173427789dIZrUQFqffVfs6z0BQLJsl3NpB3.png
+    //Get the reference to the link in the Firebase Storage
     let imageReference = ref(STORAGE, this.imgURL);
 
-    //imageReference = ref(STORAGE, "images/173427789dIZrUQFqffVfs6z0BQLJsl3NpB3.png");
-
-    //console.log(imageReference);
+    //Download the image
     getDownloadURL(imageReference).then(url => { 
       this.imageFromURL = url; 
     });
-
   }
 
 }

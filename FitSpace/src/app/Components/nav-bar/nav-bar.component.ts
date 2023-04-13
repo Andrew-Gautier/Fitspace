@@ -11,6 +11,7 @@ export class NavBarComponent {
   userID : string;
 
   constructor(private router: Router){
+    //Setup the current user's ID
     let currentUser = sessionStorage.getItem("currentUserID");
     
     if(currentUser){
@@ -20,6 +21,7 @@ export class NavBarComponent {
     }
   }
 
+  //Navigate to the user's page
   viewUser(userID : string){
     this.router.navigate(['user', this.userID]);
   }
