@@ -14,8 +14,10 @@ export class ProfileInfoComponent implements OnInit{
   @Input() displayname : string | null | undefined;
   @Input() trainerText : string | undefined;
   @Input() location : string | undefined;
-
-
+  @Input() email : string | undefined;
+  @Input() affliate : string | undefined;
+  @Input() userType : string | undefined;
+  @Input() primaryService : string | undefined;
   constructor(){
     this.displayname = "";
     this.userID = "";
