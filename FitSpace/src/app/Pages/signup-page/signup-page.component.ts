@@ -21,9 +21,6 @@ export class SignupPageComponent {
       });
    
       const user = getAuth().currentUser;
-
-      console.log(user);
-      console.log("???");
  
       if(user != undefined){
         var newUser = new UserData(user.uid, user.email, false);
@@ -34,7 +31,7 @@ export class SignupPageComponent {
         setTimeout( () => {
           document.location.href = "";
         }, 100);
-        //  //This breaks things?
+
 
       } else {
        console.log("Failed to create user");
