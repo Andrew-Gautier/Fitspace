@@ -15,7 +15,7 @@
             <div class="d-flex justify-content-between py-1 pt-2">
               <div class="d-flex"><a href="user/{{comment.userID}}" style="text-decoration: none;"><span
                     class="text2">-{{comment.username}}</span></a></div>
-                    <button *ngIf="comment.userID == postUserID || authorized" (click)="deleteComment(comment)" class="btn btn-danger" style="font-size: 12px; margin-top: 1vh; margin-left: 0%;">Delete</button>
+                    <button *ngIf="comment.userID == currentUserID || authorized" (click)="deleteComment(comment)" class="btn btn-danger" style="font-size: 12px; margin-top: 1vh; margin-left: 0%;">Delete</button>
             </div>
            
           </div>

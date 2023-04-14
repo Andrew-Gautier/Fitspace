@@ -18,7 +18,8 @@ export class CommentsComponent {
   postSlides: any;
   postUsername: any;
   postUserID: any;
-
+  
+  currentUserID : string;
   authorized: boolean;
 
   //Default values in case no parameter was given, should not be called
@@ -26,6 +27,7 @@ export class CommentsComponent {
     this.postComments = []
     this.postID = this.route.snapshot.paramMap.get('id');
     this.postTitle = "";
+    this.currentUserID = "";
     this.authorized = false;
     this.loadData();
     this.setTitle();
@@ -53,6 +55,7 @@ export class CommentsComponent {
     }
 
     USER_MANAGER.loadData(sessionStorage.getItem("currentUserID")!).then( (data) => {
+      this.currentUserID = data.userID;
       if(data.admin == true){
         this.authorized = true;
       }
