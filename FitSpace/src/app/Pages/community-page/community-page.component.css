@@ -5,3 +5,27 @@
 h1{
     color: white;
 }
+
+.about {
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    color: white;
+}
+
+.about h1 {
+    font-size: 36px;
+    font-weight: 600;
+    padding-bottom: 10px;
+}
+
+.about p {
+    text-align: left;
+    color: 777;
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 26px;
+    padding: 10px;
+}
