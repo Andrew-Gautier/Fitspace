@@ -75,7 +75,7 @@ export class UserManager{
 
 
     //Creates a new post and uploads it to firebase, newDataInfo MUST BE A PostData OBJECT!!!
-    createData(newDataInfo : UserData){
+    async createData(newDataInfo : UserData){
 
       //console.log(newDataInfo);
   
@@ -105,6 +105,20 @@ export class UserManager{
     });
 
   }
+
+
+  updateTrainer(userID : string, trainer : boolean){
+    update(ref(DATABASE, "/Users/" + userID), {
+      trainerAccount : trainer,
+    });
+  }
+
+  updateAdmin(userID : string, admin : boolean){
+    update(ref(DATABASE, "/Users/" + userID), {
+      admin : admin,
+    });
+  }
+
 
   //remove the data that has dataID from the firebase
   removeData(dataID: string){

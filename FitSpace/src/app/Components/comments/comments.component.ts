@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { reload } from 'firebase/auth';
 import { CommentData } from 'src/app/Database/commentData';
-import { POST_MANAGER } from 'src/main';
+import { POST_MANAGER, USER_MANAGER } from 'src/main';
 
 @Component({
   selector: 'app-comments',
@@ -18,12 +19,14 @@ export class CommentsComponent {
   postUsername: any;
   postUserID: any;
 
+  authorized: boolean;
 
   //Default values in case no parameter was given, should not be called
   constructor(private route: ActivatedRoute) { 
     this.postComments = []
     this.postID = this.route.snapshot.paramMap.get('id');
     this.postTitle = "";
+    this.authorized = false;
     this.loadData();
     this.setTitle();
     
@@ -48,6 +51,12 @@ export class CommentsComponent {
         this.postUsername = data.username;
       })
     }
+
+    USER_MANAGER.loadData(sessionStorage.getItem("currentUserID")!).then( (data) => {
+      if(data.admin == true){
+        this.authorized = true;
+      }
+    })
   }
 
 
@@ -89,4 +98,12 @@ export class CommentsComponent {
       this.postComments = data.comments;
     }
   }
+
+  async deleteComment(comment : any){
+    await POST_MANAGER.deleteComment(this.postID!, comment);
+    //Reload page to make sure user can see the changes
+    location.reload();
+    
+  }
+
 }

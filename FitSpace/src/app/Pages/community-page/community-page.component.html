@@ -13,7 +13,7 @@
           <div class="d-flex flex-column" *ngFor="let post of postTrio">
             <!-- Post data -->
             <app-post-component id={{post.postID}} PostTitle={{post.postTitle}} Username={{post.username}}
-              PostID={{post.postID}} [Slides]="post.postSlides"></app-post-component>
+              PostID={{post.postID}} [Slides]="post.postSlides" [userID]="post.userID"></app-post-component>
           </div>
         </div>
       </div>

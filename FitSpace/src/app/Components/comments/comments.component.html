@@ -9,13 +9,15 @@
   <div class="d-flex flex-row ">
     <ul>
       <!-- Loop through comment data and display -->
-      <div class="commentBox" *ngFor="let comment of postComments">
+      <div class="commentBox" *ngFor="let comment of postComments; let i = index">
         <div class="d-flex justify-content-start py-2">
           <div class="second py-2 px-2"> <span class="text1">{{comment.textData}}</span>
             <div class="d-flex justify-content-between py-1 pt-2">
-              <div><a href="user/{{comment.userID}}" style=" text-decoration: none;"><span
+              <div class="d-flex"><a href="user/{{comment.userID}}" style="text-decoration: none;"><span
                     class="text2">-{{comment.username}}</span></a></div>
+                    <button *ngIf="comment.userID == postUserID || authorized" (click)="deleteComment(comment)" class="btn btn-danger" style="font-size: 12px; margin-top: 1vh; margin-left: 0%;">Delete</button>
             </div>
+           
           </div>
         </div>
       </div>

@@ -14,6 +14,7 @@ export class PostManager {
 
   //A max count that prevents all posts from being loaded from firebase at once
   max_count = 100;
+  maxCommentCount = 100;
 
   //Reference to the posts stored in database
   dataSnapshot : any; 
@@ -71,7 +72,7 @@ export class PostManager {
   }
 
   //Creates a new post and uploads it to firebase, newDataInfo MUST BE A PostData OBJECT!!!
-  createData(newDataInfo : PostData){ //Returns true if was a success, false otherwise
+  createData(newDataInfo : PostData){
 
     //console.log(newDataInfo);
 
@@ -129,11 +130,50 @@ export class PostManager {
     if (!post.comments){
       post.comments = new Array<CommentData>;
     } 
+
+    //If you hit the max amount of comments, remove the oldest comment
+    if(post.comments.length > this.maxCommentCount){
+      post.comments.shift();
+    } 
     post.comments.push(newComment);
+
+    
 
     //Update database
     update(ref(DATABASE, "/Posts/" + postID), {
       comments : post.comments
     });
+  }
+
+  async deleteComment(postID : string, comment : CommentData){
+    //Get comment list
+    var post = await this.loadData(postID);
+
+    var updatedComments = post.comments;
+
+    //Get the index and splice over it, then update the database
+    let removeIndex = this.IndexOf(updatedComments, comment);
+    if(removeIndex != -1){
+      updatedComments.splice(removeIndex, 1);
+      //Update database
+      update(ref(DATABASE, "/Posts/" + postID), {
+        comments : updatedComments
+      });
+    } else {
+      console.log("Comment not found.");
+    }
+    
+  }
+
+  //normal index of uses strict equality, which doesnt work for what i need
+  IndexOf(list : Array<CommentData>, comment: CommentData) {    
+    for (var i = 0; i < list.length; i++) {
+      //If the textdata and userdata is the same, return that index
+        if (list[i].textData == comment.textData
+           && list[i].userID == comment.userID) {
+            return i;
+        }
+    }
+    return -1;
   }
 }
