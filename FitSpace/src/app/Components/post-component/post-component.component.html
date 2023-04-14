@@ -1,4 +1,4 @@
-<div class="post">
+<div class="post" id="self">
   <div class="content justify-content-center" style="padding-bottom: 0;">
 
     <!-- Heading -->
@@ -44,7 +44,12 @@
         </div>
 
         <!-- Post control functionality -->
-        <button (click)="likePost(PostID)" class="btn btn-secondary" style="font-size: 12px; margin-top: 1vh;">Like</button>
+        <div class="d-flex flex-row">
+          <button (click)="likePost(PostID)" class="btn btn-secondary" style="font-size: 12px; margin-top: 1vh;">{{likedText}}</button>
+          <p style="padding-left: 1vw;">{{likeCount}}</p>
+        </div>
+
+
         <button *ngIf="authorized" (click)="deletePost(PostID)" class="btn btn-danger" style="font-size: 12px; margin-top: 1vh; margin-left: 0%;">Delete</button>
       </li>
     </ul><br>

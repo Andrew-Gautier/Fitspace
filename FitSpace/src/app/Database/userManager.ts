@@ -130,9 +130,57 @@ export class UserManager{
     return true;
   }
   
+  async addLikedPost(userID: string, postID : string){
+    //Get likes list
+    var user = await this.loadData(userID);
+
+    user.likedPosts = Object.values(user.likedPosts);
+    //Append to comment list
+    if (!user.likedPosts){
+      user.likedPosts = new Array<string>;
+    } 
+
+    user.likedPosts.push(postID);
+
+    //Update database
+    update(ref(DATABASE, "/Users/" + userID), {
+      likedPosts : user.likedPosts
+    });
+  }
+
+  async removeLikedPost(userID : string, postID : string){
+
+    var user = await this.loadData(userID);
+    let updatedUserLikes = Object.values(user.likedPosts);
+
+    let removeIndexUser = this.IndexOf(updatedUserLikes, postID);
+
+
+    if(removeIndexUser != -1){
+
+      updatedUserLikes.splice(removeIndexUser, 1);
+      //Update database
+      update(ref(DATABASE, "/Users/" + userID), {
+        likedPosts : updatedUserLikes
+      });
+
+    } else {
+      console.log("User Like PostID not found.");
+    }
+  }
 
   constructor(){
     this.dataLoaded = new Map();
   }
 
+
+    //normal index of uses strict equality, which doesnt work for what i need
+    IndexOf(list : Array<String>, id: string) {    
+        for (let i = 0; i < list.length; i++) {
+            if (list[i] == id){
+              return i;
+            }
+        }
+        return -1;
+      }
 }

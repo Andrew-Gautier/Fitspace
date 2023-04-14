@@ -19,6 +19,9 @@ export class PostComponentComponent implements OnInit{
   likes : any;
   commentCount : number;
 
+  likedText : string;
+
+  likeCount : number;
   //Flag for if the user has the authorization to delete the post
   authorized : boolean;
 
@@ -29,7 +32,9 @@ export class PostComponentComponent implements OnInit{
     this.Username = "Missing User";
     this.PostID = "0";
     this.userID = "";
+    this.likedText = "Like";
     this.commentCount = 0;
+    this.likeCount = 0;
 
     this.authorized = false;
    
@@ -52,6 +57,10 @@ export class PostComponentComponent implements OnInit{
       this.commentCount = postdata.comments.length;
     }
 
+    if(postdata.likes){
+      this.likeCount = postdata.likes.length;
+    }
+
     //Get the current signed in user
     let currentUser = sessionStorage.getItem("currentUserID");
 
@@ -63,6 +72,10 @@ export class PostComponentComponent implements OnInit{
       let userdata = await USER_MANAGER.loadData(currentUser);  
       if (userdata.admin == true){
         this.authorized = true;
+      }
+
+      if(this.likes.includes(currentUser)){
+        this.likedText = "Un-like";
       }
     }
   }
@@ -102,14 +115,23 @@ export class PostComponentComponent implements OnInit{
     this.router.navigate(['comments', id]);
   }
 
-  //This is not implemented yet!!!
-  likePost(id:string){
+  async likePost(id:string){
     let currentuser = sessionStorage.getItem("currentUserID");
-    if(currentuser && !(currentuser in this.likes)){
 
-    } else {
-      alert("You've already liked this post");
+    if(currentuser){
+      if(this.likes.includes(currentuser)){ //remove like
+        console.log("Removing like...");
+        await POST_MANAGER.unlikePost(this.PostID, currentuser);
+
+      } else { //add like
+        console.log("Adding like...");
+        await POST_MANAGER.likePost(this.PostID, currentuser);
+      }
     }
+    var container = document.getElementById("self");
+    var content = container!.innerHTML;
+    container!.innerHTML= content; 
+
 
   }
 }

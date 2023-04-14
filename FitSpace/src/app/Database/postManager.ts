@@ -1,7 +1,7 @@
 import { Component, Injectable, OnInit } from "@angular/core";
 import { getDatabase, get, ref, remove, set, update, child, onValue, query, limitToLast } from "firebase/database";
 
-import { DATABASE, app } from "src/main";
+import { DATABASE, USER_MANAGER, app } from "src/main";
 import { PostData } from "./postData";
 import { CommentData } from "./commentData";
 
@@ -152,7 +152,7 @@ export class PostManager {
     var updatedComments = post.comments;
 
     //Get the index and splice over it, then update the database
-    let removeIndex = this.IndexOf(updatedComments, comment);
+    let removeIndex = this.IndexOfComment(updatedComments, comment);
     if(removeIndex != -1){
       updatedComments.splice(removeIndex, 1);
       //Update database
@@ -165,8 +165,56 @@ export class PostManager {
     
   }
 
+  async likePost(postID :string, userID : string){
+    //Get likes list
+    var post = await this.loadData(postID);
+
+    //Append to comment list
+    if (!post.likes){
+      post.likes = new Array<string>;
+    } 
+
+    post.likes.push(userID);
+
+    //Update database
+    update(ref(DATABASE, "/Posts/" + postID), {
+      likes : post.likes
+    });
+
+    USER_MANAGER.addLikedPost(userID, postID);
+
+  }
+
+  async unlikePost(postID :string, userID : string){
+    //Get comment list
+    var post = await this.loadData(postID);
+
+    var updatedLikes = Object.values(post.likes);
+
+    let removeIndex = this.IndexOf(updatedLikes, userID);
+
+    if(removeIndex != -1){
+
+      updatedLikes.splice(removeIndex, 1);
+      //Update database
+      update(ref(DATABASE, "/Posts/" + postID), {
+        likes : updatedLikes
+      });
+
+    } else {
+      console.log("Like userID not found.");
+    }
+
+    //Get the index and splice over it, then update the database
+    USER_MANAGER.removeLikedPost(userID, postID);
+
+
+
+  }
+
+
   //normal index of uses strict equality, which doesnt work for what i need
-  IndexOf(list : Array<CommentData>, comment: CommentData) {    
+  IndexOfComment(list : Array<CommentData>, comment: CommentData) {    
     for (var i = 0; i < list.length; i++) {
       //If the textdata and userdata is the same, return that index
         if (list[i].textData == comment.textData
@@ -176,4 +224,16 @@ export class PostManager {
     }
     return -1;
   }
+
+    //normal index of uses strict equality, which doesnt work for what i need
+    IndexOf(list : Array<String>, id: string) {    
+      for (var i = 0; i < list.length; i++) {
+        //If the textdata and userdata is the same, return that index
+          if (list[i] == id){
+            return i;
+          }
+             
+      }
+      return -1;
+    }
 }
