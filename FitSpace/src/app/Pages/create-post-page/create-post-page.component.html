@@ -8,7 +8,7 @@
 
       <div class="row">
         <p>Post Title</p>
-        <textarea id="titleInput" class="new post-content" style="width:65%;" (change)="updatePreview()"></textarea>
+        <textarea  id="titleInput" class="new post-content" style="width:65%;" (change)="updatePreview()" maxlength="100"></textarea>
       </div>
 
       <!-- Needs to be additional slides based on this upload -->
@@ -26,7 +26,7 @@
 
       <div class="row">
         <p><br>Slide Description</p>
-        <textarea id="textInput" class="new post-content" style="width:65%;"></textarea>
+        <textarea id="textInput" class="new post-content" style="width:65%;" maxlength="1200"></textarea>
       </div>
 
       <div class="row">
@@ -69,7 +69,7 @@
           <div *ngFor="let slide of previewSlides; let i = index" class="carousel-item" [ngClass]="{'active': i == 0 }">
             <img [src]="slide[0]" alt="" class="img-fluid mb20" style="display: block;">
 
-            <p id="preview_text_{{i}}" style="font-size: 0.9em; margin: 0;">
+            <p id="preview_text_{{i}}" style="font-size: 0.9em; margin: 0; overflow-wrap: break-word;">
               {{slide[1]}}
             </p>
           </div>
@@ -99,31 +99,3 @@
     </div>
   </div>
 </div>
-
-
-
-<!-- <div class="d-flex justify-content-center" style="padding-top: 2.5%; padding-bottom: 5%;">
-  <h2>Pick A Post Layout</h2>
-
-    //has the three options to pick from- text, video, image
-    //click on one and direct you to the layout?
-
-</div> -->
-
-<!--> Trying to figure out how to align these horizontally-->
-<!-- <div class="d-flex flex-wrap justify-content-center">
-  <div *ngFor="let txt of text"
-    style="padding-left: 2.5%; padding-right: 2.5%; padding-bottom: 1.25%; padding-top: 1.25%;">
-    <app-create-post-card title={{txt.title}} description={{txt.description}}></app-create-post-card>
-  </div>
-
-  <div *ngFor="let link of vid"
-    style="padding-left: 2.5%; padding-right: 2.5%; padding-bottom: 1.25%; padding-top: 1.25%;">
-    <app-create-post-card src={{link.src}} title={{link.title}} description={{link.description}}></app-create-post-card>
-  </div>
-
-  <div *ngFor="let pix of pic"
-    style="padding-left: 2.5%; padding-right: 2.5%; padding-bottom: 1.25%; padding-top: 1.25%;">
-    <app-create-post-card img={{pix.img}} title={{pix.title}} description={{pix.description}}></app-create-post-card>
-  </div>
-</div> -->

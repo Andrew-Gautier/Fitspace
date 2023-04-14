@@ -176,7 +176,7 @@ export class CreatePostPageComponent {
     fileInput.value = '';
     fileInput.dispatchEvent(new Event('input', { bubbles: true })); // added this to trigger input event in some browsers
     (document.getElementById("textInput") as HTMLInputElement).value = '';
-
+    this.clearImagePreview();
   }
 
   //Remove the most recently added slide
@@ -186,6 +186,7 @@ export class CreatePostPageComponent {
     //Update the slide preview
     this.clearDescriptionAndImageFile(); //Im not sure if this is needed
     this.updatePreview();
+    this.clearImagePreview();
   }
 
   //Cancel the post and clear all fields
@@ -193,7 +194,7 @@ export class CreatePostPageComponent {
     //Cleanup
     (document.getElementById("titleInput") as HTMLInputElement).value = ''; //deletes title box
     this.clearDescriptionAndImageFile();
-
+    this.clearImagePreview();
     //Reset vars
     this.previewTitle = "Preview";
     this.previewUsername = sessionStorage.getItem("currentUsername");;
@@ -220,10 +221,18 @@ export class CreatePostPageComponent {
         fileReader.addEventListener("load", function () {
           if (imgPreview != null) {
             imgPreview.style.display = "block";
-            imgPreview.innerHTML = '<img src="' + this.result + '"style="width:20vw; height:20vh;" />';
+            imgPreview.innerHTML = '<img src="' + this.result + '"/>';//'"style="width:20%; height:20vh;" />';
           }
         });
       }
+    }
+  }
+
+  clearImagePreview(){
+    var imgPreview = document.getElementById("testImageDiv");
+    if (imgPreview != null) {
+      imgPreview.style.display = "block";
+      imgPreview.innerHTML = '<img src=\"\"style="" />'; //width:20vw; height:20vh;
     }
   }
 
