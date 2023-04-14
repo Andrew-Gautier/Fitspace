@@ -71,13 +71,12 @@ export class PostManager {
   }
 
   //Creates a new post and uploads it to firebase, newDataInfo MUST BE A PostData OBJECT!!!
-  createData(newDataInfo : PostData) : boolean { //Returns true if was a success, false otherwise
+  createData(newDataInfo : PostData){ //Returns true if was a success, false otherwise
 
-    console.log(newDataInfo);
-    const db = getDatabase(app);
+    //console.log(newDataInfo);
 
     //Set data in database
-    set(ref(db, "/Posts/" + newDataInfo.postID), {
+    set(ref(DATABASE, "/Posts/" + newDataInfo.postID), {
       postID : newDataInfo.postID,
       userID : newDataInfo.userID,
       username : newDataInfo.username,
@@ -88,7 +87,6 @@ export class PostManager {
       date : newDataInfo.date
     });
 
-    return true;
   }
  
 

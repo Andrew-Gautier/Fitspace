@@ -33,7 +33,7 @@ const firebaseConfig = {
 export const app = initializeApp(firebaseConfig);
 export const analytics = getAnalytics(app);
 
-export const DATABASE = getDatabase();
+export const DATABASE = getDatabase(app);
 
 export const STORAGE = getStorage(app);
 

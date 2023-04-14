@@ -16,22 +16,22 @@ export class SignupPageComponent {
    
    async signup(){
      signOut(getAuth())
-      let test = await createUserWithEmailAndPassword(getAuth() , this.email, this.password).then(response => {
+      let uid = await createUserWithEmailAndPassword(getAuth() , this.email, this.password).then( (credentials) => {
         console.log('Signup Success!');
+        return credentials.user.uid;
       });
-   
-      const user = getAuth().currentUser;
+      
+     // const user = credentials.user;//getAuth().currentUser;
  
-      if(user != undefined){
-        var newUser = new UserData(user.uid, user.email, false);
-        
+      if(uid != undefined){
+        var newUser = new UserData(uid, this.email, false);
+        console.log(newUser);
+        //setTimeout(() => {USER_MANAGER.createData(newUser)}, 100);
         USER_MANAGER.createData(newUser);
-
-        alert("You have been registered, please continue to log in.");
-        setTimeout( () => {
-          document.location.href = "";
-        }, 100);
-
+        // alert("You have been registered, please continue to log in.");
+        // setTimeout( () => {
+        //   document.location.href = "";
+        // }, 100);
 
       } else {
        console.log("Failed to create user");

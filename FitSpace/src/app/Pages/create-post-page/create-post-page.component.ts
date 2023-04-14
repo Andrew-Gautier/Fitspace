@@ -14,6 +14,10 @@ export class CreatePostPageComponent {
   //Max number of slides a post may contain (Not a magic number)
   maxSlides = 10;
 
+  megabyteSize = 1048576;
+  maxImageSize = 20; //In megabytes (get multiplied by number above)
+    //Instagrams maximum is 30mb
+
   //Array of [byte file, textdata]
   loadedSlides: Array<any>;
 
@@ -35,6 +39,7 @@ export class CreatePostPageComponent {
 
   //Runs when create post is pressed
   async postWorkout() {
+
     let date = new Date();
 
     //This entire thing sets the postID to the UserID plus the hash of the current time stamp
@@ -132,6 +137,13 @@ export class CreatePostPageComponent {
 
         //get file input
         var file = imageInput.files[0];
+
+        if(file.size > this.maxImageSize * this.megabyteSize){
+          alert("Image is too big!");
+          return;
+        }
+
+
         fileReader.readAsDataURL(file);
 
         //When the file loads, load it to the preview slides

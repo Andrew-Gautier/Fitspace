@@ -53,19 +53,44 @@ export class UserManager{
   }
 
   //Creates a new post and uploads it to firebase, newDataInfo MUST BE A UserData OBJECT!!!
-  createData(newDataInfo : UserData){ 
+  // async createData(newDataInfo : UserData){ 
+  //   console.log("MADE ACCOUNT")
+  //   console.log(newDataInfo);
+  //   //Update database
+  //   await set(ref(DATABASE, "/Users/" + newDataInfo.userID), {
+  //     userID : newDataInfo.userID,
+  //     displayName : newDataInfo.displayName,
+  //     trainerAccount : newDataInfo.trainerAccount,
+  //     location : newDataInfo.location,
+  //     affilate : newDataInfo.affilate,
+  //     primaryService : newDataInfo.primaryService
+  //   }).then(() => { 
+  //     console.log("Success?");
+  //   }).catch(error => {
+  //     console.log("There was an error setting data");
+  //     console.log(error);
+  //   });
 
-    //Update database
-    set(ref(DATABASE, "/Users/" + newDataInfo.userID), {
-      userID : newDataInfo.userID,
-      displayName : newDataInfo.displayName,
-      trainerAccount : newDataInfo.trainerAccount,
-      location : newDataInfo.location,
-      affilate : newDataInfo.affilate,
-      primaryService : newDataInfo.primaryService
-    });
+  // }
 
-  }
+
+    //Creates a new post and uploads it to firebase, newDataInfo MUST BE A PostData OBJECT!!!
+    createData(newDataInfo : UserData){
+
+      //console.log(newDataInfo);
+  
+      //Set data in database
+      set(ref(DATABASE, "/Users/" + newDataInfo.userID), {
+        userID : newDataInfo.userID,
+        displayName : newDataInfo.displayName,
+        trainerAccount : newDataInfo.trainerAccount,
+        location : newDataInfo.location,
+        affilate : newDataInfo.affilate,
+        primaryService : newDataInfo.primaryService
+      });
+  
+    }
+
  
   //Updates userdata of dataID with the parameters given
   updateData(newDataInfo : UserData){
