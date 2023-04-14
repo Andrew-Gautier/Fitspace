@@ -1,101 +1,106 @@
 <app-nav-bar></app-nav-bar>
 <!--just has username at top to identify you're signed in<!-->
+  <div class="wrap" style="color:white">
+  <p class="d-flex justify-content-center" style="font-size: 30px; padding-top: 2vh; "><b>NEW POST</b></p>
 
 <div class="d-flex justify-content-center">
-  <div class="new post-container">
-    <p>Workout Post</p>
-    <div class="">
+  <div class="d-flex flex-row justify-content-center">
+    <div class="new">
 
-      <div class="row">
-        <p>Post Title</p>
-        <textarea  id="titleInput" class="new post-content" style="width:65%;" (change)="updatePreview()" maxlength="100"></textarea>
-      </div>
 
-      <!-- Needs to be additional slides based on this upload -->
-      <div class="row">
-        <!-- <p>Image Link (Needs to be blob upload)</p> -->
-        <!-- <textarea id="imageLinkInput" class="new post-content" style="width:65%;"></textarea> -->
-        <p>Image Input</p>
-        <input type='file' id="imageInput" accept="image/*" (change)="changedImage()" />
-        <!-- This needs to be resized depending on image -->
-        <div id="testImageDiv">
-          <!-- <img id="testImage" src="#"> -->
+      <div class="">
+        <div class="row d-flex justify-content-center">
+          <p class="d-flex justify-content-center"><b>Post Title</b></p>
+          <textarea  id="titleInput" class="new post-content" style="width:65%;" (change)="updatePreview()" maxlength="100"></textarea>
         </div>
 
-      </div>
-
-      <div class="row">
-        <p><br>Slide Description</p>
-        <textarea id="textInput" class="new post-content" style="width:65%;" maxlength="1200"></textarea>
-      </div>
-
-      <div class="row">
-        <button style="padding-right: 0.5vw;" class="btn btn-primary" style="width: 16%; background-color: #006C67"
-          (click)="createSlide()">Create Slide</button>
-        <button class="btn btn-danger" style="width: 16%; padding-left: 1vw;" (click)="deleteSlide()">Delete
-          Slide</button>
-      </div>
-
-      <div class="row" style="padding-top: 1vh;">
-        <button class="btn btn-primary" style="width: 16%; background-color: #006C67" (click)="postWorkout()">Create
-          Post</button>
-        <button class="btn btn-danger" style="width: 16%; padding-left: 1vw;" (click)="cancelPost()">Cancel
-          Post</button>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<!-- Preview post -->
-<div class="d-flex justify-content-center">
-  <!-- Deconstructed post component -->
-  <div class="post">
-    <div class="content justify-content-center" style="padding-bottom: 0;">
-      <!-- <a href="#" class="justify-content-center" > -->
-      <h3 class="justify-content-center">{{previewTitle}}</h3>
-      <!-- </a> -->
-
-
-      <ul class="post-meta list-inline" style="margin-bottom: 2.5vh;">
-        <li class="list-inline-item">
-          <i class=""></i> <a href="user/{{previewUserID}}">{{previewUsername}}</a>
-        </li>
-      </ul>
-
-      <div [id]="'Preview'" class="carousel slide">
-        <div class="carousel-inner">
-
-          <div *ngFor="let slide of previewSlides; let i = index" class="carousel-item" [ngClass]="{'active': i == 0 }">
-            <img [src]="slide[0]" alt="" class="img-fluid mb20" style="display: block;">
-
-            <p id="preview_text_{{i}}" style="font-size: 0.9em; margin: 0; overflow-wrap: break-word;">
-              {{slide[1]}}
-            </p>
+        <!-- Needs to be additional slides based on this upload -->
+        <div class="row d-flex justify-content-center" style="margin-top: 5vh;">
+          <p class="d-flex justify-content-center"><b>Image Input</b></p>
+          <div class="d-flex justify-content-center">
+            <input  type='file' id="imageInput" accept="image/*" (change)="changedImage()" />
           </div>
-
+          
+          <!-- This needs to be resized depending on image -->
+          <div id="testImageDiv">
+            <!-- <img id="testImage" src="#"> -->
+          </div>
         </div>
-        <button class="carousel-control-prev" type="button" [attr.data-bs-target]="'#Preview'" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" [attr.data-bs-target]="'#Preview'" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
+
+        <div class="row d-flex justify-content-center" style="margin-top: 5vh;">
+          <p class="d-flex justify-content-center"><br><b>Slide Description</b></p>
+          <textarea id="textInput" class="new post-content" style="width:65%;" maxlength="1200"></textarea>
+        </div>
+
+        <div class="row d-flex justify-content-center" style="margin-bottom: 1vh; margin-top: 5vh;">
+          <button style="padding-right: 0.5vw;" class="btn btn-primary" style="width: 10vw; background-color: #006C67"
+            (click)="createSlide()">Create Slide</button>
+          <button class="btn btn-danger" style="width: 10vw; margin-left: 1vw" (click)="deleteSlide()">Delete
+            Slide</button>
+        </div>
+
+        <div class="row d-flex justify-content-center" tyle="padding-top: 5vh;">
+          <button class="btn btn-primary" style="width: 10vw; background-color: #006C67" (click)="postWorkout()">Create
+            Post</button>
+          <button class="btn btn-danger" style="width: 10vw; margin-left: 1vw;" (click)="cancelPost()">Cancel
+            Post</button>
+        </div>
       </div>
 
-      <!-- End of Carosel -->
+    </div>
+  </div>
 
-      <ul class="post-meta list-inline">
+  <!-- Preview post -->
+  <div class="d-flex flex-row justify-content-center">
+    <!-- Deconstructed post component -->
+    <div class="post">
+      <div class="content justify-content-center" style="padding-bottom: 0;">
+        <!-- <a href="#" class="justify-content-center" > -->
+        <h3 class="justify-content-center">{{previewTitle}}</h3>
+        <!-- </a> -->
 
-        <li class="list-inline-item justify-content-end">
 
-          <!-- No functionality -->
-          <button class="btn btn-secondary" style="font-size: 12px">Comments</button>
-          <button class="btn btn-secondary" style="font-size: 12px">Like</button>
-        </li>
-      </ul><br>
+        <ul class="post-meta list-inline" style="margin-bottom: 2.5vh;">
+          <li class="list-inline-item">
+            <i class=""></i> <a href="user/{{previewUserID}}">{{previewUsername}}</a>
+          </li>
+        </ul>
+
+        <div [id]="'Preview'" class="carousel slide">
+          <div class="carousel-inner">
+
+            <div *ngFor="let slide of previewSlides; let i = index" class="carousel-item" [ngClass]="{'active': i == 0 }">
+              <img [src]="slide[0]" alt="" class="img-fluid mb20" style="display: block;">
+
+              <p id="preview_text_{{i}}" style="font-size: 0.9em; margin: 0; overflow-wrap: break-word;">
+                {{slide[1]}}
+              </p>
+            </div>
+
+          </div>
+          <button class="carousel-control-prev" type="button" [attr.data-bs-target]="'#Preview'" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" [attr.data-bs-target]="'#Preview'" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+
+        <!-- End of Carosel -->
+
+        <ul class="post-meta list-inline">
+
+          <li class="list-inline-item justify-content-end">
+
+            <!-- No functionality -->
+            <button class="btn btn-secondary" style="font-size: 12px">Comments</button>
+            <button class="btn btn-secondary" style="font-size: 12px">Like</button>
+          </li>
+        </ul><br>
+      </div>
     </div>
   </div>
 </div>
+  </div>

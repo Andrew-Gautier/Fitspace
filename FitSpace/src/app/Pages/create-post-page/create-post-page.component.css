@@ -1,4 +1,4 @@
-.post-container {
+/* .post-container {
     margin-top: 12;
     margin-left: 12;
 }
@@ -18,7 +18,14 @@
 
 .new-post-container{
     display: flex;
+} */
+.wrap {
+
+	background-color: rgba(4, 9, 40, .7);
+	min-height: 95vh;
+
 }
+
 
 .post-name, .post-content {
     padding-left: 15px;

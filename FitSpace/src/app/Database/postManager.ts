@@ -132,7 +132,7 @@ export class PostManager {
     } 
 
     //If you hit the max amount of comments, remove the oldest comment
-    if(post.comments.length > this.maxCommentCount){
+    if(post.comments.length >= this.maxCommentCount){
       post.comments.shift();
     } 
     post.comments.push(newComment);
