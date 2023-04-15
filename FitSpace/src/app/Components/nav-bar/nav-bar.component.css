@@ -102,5 +102,24 @@ nav button:hover::before {
     width: 100%;
 }
 
+@media (max-width: 600px){
+    nav a {
+        color: white;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-size: 12px;
+        font-weight: 500;
+    }
 
+    nav button{
+        color: white;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-size: 12px;
+        font-weight: 500;
+        border: 0;
+        background-color: #006C67;
+    }
+    
+}
 

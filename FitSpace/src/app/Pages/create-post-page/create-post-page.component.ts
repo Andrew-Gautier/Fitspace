@@ -28,6 +28,8 @@ export class CreatePostPageComponent {
   //Array of [File as URL, textdata]
   previewSlides: Array<any>;
 
+  flexDirection = "";
+
   //Default values
   constructor() {
     this.previewTitle = "Preview";
@@ -35,6 +37,9 @@ export class CreatePostPageComponent {
     this.previewUserID = sessionStorage.getItem("currentUserID");;
     this.loadedSlides = new Array<any>();
     this.previewSlides = new Array<any>();
+    if(window.innerWidth < 600){
+      this.flexDirection = "flex-column"
+    }
   }
 
   //Runs when create post is pressed
