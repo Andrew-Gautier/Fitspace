@@ -32,6 +32,9 @@ export class MyActivityPageComponent implements OnInit{
           let post = await POST_MANAGER.loadData(postID);
 
           this.likedposts.push(post);
+
+          //console.log(document.getElementById(postID)!.innerHTML);
+
         } catch (error){
           USER_MANAGER.removeLikedPost(sessionStorage.getItem("currentUserID")!, postID);
         }

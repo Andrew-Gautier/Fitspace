@@ -43,13 +43,13 @@
           <p style="padding-left: 1vw;">{{commentCount}}</p>
         </div>
 
-        <!-- Post control functionality -->
-        <div class="d-flex flex-row">
+        
+        <!-- <div class="d-flex flex-row">
           <button (click)="likePost(PostID)" class="btn btn-secondary" style="font-size: 12px; margin-top: 1vh;">{{likedText}}</button>
           <p style="padding-left: 1vw;">{{likeCount}}</p>
-        </div>
+        </div> -->
 
-
+        <!-- Post control functionality -->
         <button *ngIf="authorized" (click)="deletePost(PostID)" class="btn btn-danger" style="font-size: 12px; margin-top: 1vh; margin-left: 0%;">Delete</button>
       </li>
     </ul><br>
