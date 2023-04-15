@@ -221,7 +221,7 @@ export class CreatePostPageComponent {
         fileReader.addEventListener("load", function () {
           if (imgPreview != null) {
             imgPreview.style.display = "block";
-            imgPreview.innerHTML = '<img src="' + this.result + '"/>';//'"style="width:20%; height:20vh;" />';
+            imgPreview.innerHTML = '<img src="' + this.result + '" style="max-width:25vw" />';//'"style="width:20%; height:20vh;" />';
           }
         });
       }

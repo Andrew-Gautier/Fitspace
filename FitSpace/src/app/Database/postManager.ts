@@ -45,6 +45,16 @@ export class PostManager {
 
     var post = this.dataLoaded.get(dataID);
 
+    var userdata = await USER_MANAGER.loadData(post.userID);
+
+    //If the name has been updated, update it in the database
+    if(userdata.displayName != post.username){
+      post.username = userdata.displayName;
+      this.updateUsernameData(dataID, userdata.displayName!);
+    }
+
+
+
     //Load all normal data
     var postdata = new PostData(
       post.postID, 
@@ -100,6 +110,14 @@ export class PostManager {
     update(ref(DATABASE, "/Posts/" + data.postID), {
       postTitle : data.postTitle,
       //Need more things to change
+    });
+
+  }
+
+  updateUsernameData(postID : string, newname : string){
+
+    update(ref(DATABASE, "/Posts/" + postID), {
+      username : newname
     });
 
   }

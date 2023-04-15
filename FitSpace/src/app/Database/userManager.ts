@@ -47,7 +47,11 @@ export class UserManager{
       userdata.admin = false;
     }
 
-    userdata.bio = user.bio;
+    if (user.bio){
+      userdata.bio = user.bio;
+    } else {
+      userdata.bio = "";
+    }
 
     return userdata;
   }
@@ -105,7 +109,6 @@ export class UserManager{
     });
 
   }
-
 
   updateTrainer(userID : string, trainer : boolean){
     update(ref(DATABASE, "/Users/" + userID), {
@@ -182,5 +185,42 @@ export class UserManager{
             }
         }
         return -1;
-      }
+    }
+
+
+    updateDisplayname(userID : string, newName : string){
+      update(ref(DATABASE, "/Users/" + userID), {
+        displayName : newName
+      });
+    }
+
+    updateEmail(userID : string, newName : string){
+      update(ref(DATABASE, "/Users/" + userID), {
+        email : newName
+      });
+    }
+
+    updateAffliate(userID : string, newName : string){
+      update(ref(DATABASE, "/Users/" + userID), {
+        affilate : newName
+      });
+    }
+
+    updateService(userID : string, newName : string){
+      update(ref(DATABASE, "/Users/" + userID), {
+        primaryService : newName
+      });
+    }
+
+    updateLocation(userID : string, newName : string){
+      update(ref(DATABASE, "/Users/" + userID), {
+        location : newName
+      });
+    }
+
+    updateBio(userID : string, newBio : string){
+      update(ref(DATABASE, "/Users/" + userID), {
+        bio : newBio
+      });
+    }
 }

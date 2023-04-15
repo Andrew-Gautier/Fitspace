@@ -22,7 +22,7 @@
           </div>
           
           <!-- This needs to be resized depending on image -->
-          <div id="testImageDiv">
+          <div id="testImageDiv" class="d-flex justify-content-center">
             <!-- <img id="testImage" src="#"> -->
           </div>
         </div>
@@ -72,7 +72,7 @@
             <div *ngFor="let slide of previewSlides; let i = index" class="carousel-item" [ngClass]="{'active': i == 0 }">
               <img [src]="slide[0]" alt="" class="img-fluid mb20" style="display: block;">
 
-              <p id="preview_text_{{i}}" style="font-size: 0.9em; margin: 0; overflow-wrap: break-word;">
+              <p id="preview_text_{{i}}" style="font-size: 0.9em; margin: 0; overflow-wrap: break-word; color:black">
                 {{slide[1]}}
               </p>
             </div>
@@ -96,7 +96,7 @@
 
             <!-- No functionality -->
             <button class="btn btn-secondary" style="font-size: 12px">Comments</button>
-            <button class="btn btn-secondary" style="font-size: 12px">Like</button>
+            <!-- <button class="btn btn-secondary" style="font-size: 12px">Like</button> -->
           </li>
         </ul><br>
       </div>

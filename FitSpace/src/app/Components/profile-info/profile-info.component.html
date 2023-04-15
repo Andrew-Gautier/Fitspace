@@ -11,6 +11,7 @@
             <button *ngIf="authorized" (click)="promoteAdmin()" class="btn btn-danger" style="font-size: 12px; margin-top: 1vh; margin-left: 0%; margin-right: 1vw">Promote to Admin</button>
             <button *ngIf="authorized" (click)="demoteTrainer()" class="btn btn-danger" style="font-size: 12px; margin-top: 1vh; margin-left: 0%; margin-right: 1vw">Remove Trainer</button>
             <button *ngIf="authorized" (click)="demoteAdmin()" class="btn btn-danger" style="font-size: 12px; margin-top: 1vh; margin-left: 0%; margin-right: 1vw">Remove Admin</button>
+            <button *ngIf="permission" (click)="editDisplayName()" class="btn btn-secondary" style="font-size: 12px; margin-top: 1vh; margin-left: 0%; margin-right: 1vw">Edit Display Name</button>
           </ol>
         </nav>
       </div>
@@ -90,11 +91,29 @@
 
           <div class="row">
             <div class="col-sm-3">
+              <p class="mb-0">BIO</p>
+            </div>
+            <div class="col-sm-9">
+              <p class="text-muted mb-0">{{bio}}</p>
+            </div>
+            <div class="col-sm-9">
+              <button *ngIf="permission" (click)="editBio()" class="btn btn-secondary" style="font-size: 12px; margin-top: 1vh; margin-left: 0%; margin-right: 1vw">Edit Bio</button>
+            </div>
+            
+          </div>
+          <hr>
+
+          <div class="row">
+            <div class="col-sm-3">
               <p class="mb-0">Email</p>
             </div>
             <div class="col-sm-9">
               <p class="text-muted mb-0">{{email}}</p>
             </div>
+            <div class="col-sm-9">
+              <button *ngIf="permission" (click)="editEmail()" class="btn btn-secondary" style="font-size: 12px; margin-top: 1vh; margin-left: 0%; margin-right: 1vw">Edit Email</button>
+            </div>
+            
           </div>
           <hr>
           <!-- <div class="row">
@@ -123,6 +142,9 @@
               <div class="col-sm-9">
                 <p class="text-muted mb-0">{{location}}</p>
               </div>
+              <div class="col-sm-9">
+                <button *ngIf="permission" (click)="editLocation()" class="btn btn-secondary" style="font-size: 12px; margin-top: 1vh; margin-left: 0%; margin-right: 1vw">Edit Location</button>
+              </div>
             </div>
             <hr>
 
@@ -133,18 +155,21 @@
             <div class="col-sm-9">
               <p class="text-muted mb-0">{{affliate}}</p>
             </div>
+            <div class="col-sm-9">
+              <button *ngIf="permission" (click)="editAffliate()" class="btn btn-secondary" style="font-size: 12px; margin-top: 1vh; margin-left: 0%; margin-right: 1vw">Edit Affilation</button>
+            </div>
           </div>
           <hr>
           
-          <div class="row">
+          <!-- <div class="row">
             <div class="col-sm-3">
               <p class="mb-0">Role</p>
             </div>
             <div class="col-sm-9">
               <p class="text-muted mb-0">{{userType}}</p>
             </div>
-          </div>
-          <hr>
+          </div> -->
+          <!-- <hr> -->
           <!-- Zach, I wrote this switch but not sure if its needed, either way may be helpful for you ,  AG 4-13-->
           
           <!-- <div [ngSwitch]="userType">
@@ -159,6 +184,9 @@
             </div>
             <div class="col-sm-9">
               <p class="text-muted mb-0">{{primaryService}}</p>
+            </div>
+            <div class="col-sm-9">
+              <button *ngIf="permission" (click)="editService()" class="btn btn-secondary" style="font-size: 12px; margin-top: 1vh; margin-left: 0%; margin-right: 1vw">Edit Service</button>
             </div>
           </div>
         </div>

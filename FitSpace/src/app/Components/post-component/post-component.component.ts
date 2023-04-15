@@ -81,7 +81,7 @@ export class PostComponentComponent implements OnInit{
   }
 
   // Delete the post button functionality
-  deletePost(postID : string){
+  async deletePost(postID : string){
     //Make sure the user meant to do this
     if(confirm("Are you sure you want to delete this post?")){
       //loop through slides, delete image at URL 
@@ -95,7 +95,7 @@ export class PostComponentComponent implements OnInit{
             fileRef = ref(STORAGE, slide.imgURL);
 
             //Delete the object in the Firebase Storage
-            deleteObject(fileRef).then(() => {
+            await deleteObject(fileRef).then(() => {
               // File deleted successfully
             }).catch((error) => {
               console.log("ERROR DELETEING FILE: " + error);
