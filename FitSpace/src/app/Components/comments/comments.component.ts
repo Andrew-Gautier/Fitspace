@@ -22,6 +22,8 @@ export class CommentsComponent {
   currentUserID : string;
   authorized: boolean;
 
+  flexdirection = "flex-row";
+
   //Default values in case no parameter was given, should not be called
   constructor(private route: ActivatedRoute) { 
     this.postComments = []
@@ -31,6 +33,10 @@ export class CommentsComponent {
     this.authorized = false;
     this.loadData();
     this.setTitle();
+    
+    if(window.innerWidth < 600){
+      this.flexdirection = "flex-column"
+    }
     
   }
 

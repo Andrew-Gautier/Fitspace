@@ -6,7 +6,7 @@
   <h2 id="PostTitle">Comments for Post: {{postTitle}}</h2>
   <button class="newestFirst" (click)="reverseComments()">Display Newest Comments First</button>
   <div *ngIf="postComments.length == 0">No comments just yet</div>
-  <div class="d-flex flex-row ">
+  <div class="d-flex {{flexdirection}} ">
     <ul>
       <!-- Loop through comment data and display -->
       <div class="commentBox" *ngFor="let comment of postComments; let i = index">
