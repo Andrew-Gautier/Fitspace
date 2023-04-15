@@ -12,11 +12,14 @@ export class CommunityPageComponent implements OnInit{
 
   //List of post data
   posts : any[];
+  chunkSize =3;
 
   //Default values
   constructor(private router: Router){
     this.posts = []; 
-    
+    if(window.innerWidth < 600){
+      this.chunkSize = 1;
+    }
   }
 
   //Initialize pots on load

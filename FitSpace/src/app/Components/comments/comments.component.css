@@ -40,3 +40,16 @@ form{
 	
 }
 
+textarea{
+	width:75%;
+}
+
+@media (max-width: 600px){
+    form{
+        margin-left: 5vw;
+    }
+
+	textarea{
+		width: 100%;
+	}
+}
