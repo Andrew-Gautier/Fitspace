@@ -53,7 +53,8 @@ export class PostManager {
       this.updateUsernameData(dataID, userdata.displayName!);
     }
 
-
+    //update comments
+    //await this.updateCommentUsernames(dataID);
 
     //Load all normal data
     var postdata = new PostData(
@@ -162,6 +163,28 @@ export class PostManager {
       comments : post.comments
     });
   }
+
+  async updateCommentUsernames(postID : string){
+    //Get comment list
+    var post = await this.loadData(postID);
+
+    var updatedComments = post.comments;
+
+    for(let comment of updatedComments){
+
+      let user = await USER_MANAGER.loadData(comment.userID); 
+
+      if (comment.username != user.displayName){
+        comment.username = user.displayName!;
+      }
+    }
+
+    update(ref(DATABASE, "/Posts/" + postID), {
+      comments : updatedComments
+    });
+
+  }
+
 
   async deleteComment(postID : string, comment : CommentData){
     //Get comment list

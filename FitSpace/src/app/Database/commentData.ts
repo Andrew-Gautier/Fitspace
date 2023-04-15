@@ -1,5 +1,8 @@
 //This is what a post object should contain
 
+import { OnInit } from "@angular/core";
+import { USER_MANAGER } from "src/main";
+
 export class CommentData {
 
   userID : string;
@@ -12,5 +15,7 @@ export class CommentData {
     this.textData = textData;
     this.username = username;
   }
+
+
 
 }

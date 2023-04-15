@@ -43,9 +43,9 @@ export class CommentsComponent {
   }
 
   //Load data related to the post 
-  loadData(){
+  async loadData(){
     if (this.postID) {
-
+      await POST_MANAGER.updateCommentUsernames(this.postID);
       POST_MANAGER.loadData(this.postID).then( (data) => {
         this.postComments = data.comments;
         this.postSlides = data.slides;
