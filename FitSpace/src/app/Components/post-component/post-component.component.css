@@ -68,3 +68,10 @@ h3 {
 .mb20 {
   margin-bottom: 1vh !important;
 }
+
+@media (max-width: 600px){
+  .post{
+      width: 100%;
+      justify-content:space-between;
+  }
+}

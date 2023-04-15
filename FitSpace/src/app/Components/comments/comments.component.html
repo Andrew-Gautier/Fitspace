@@ -15,9 +15,10 @@
             <div class="d-flex justify-content-between py-1 pt-2">
               <div class="d-flex"><a href="user/{{comment.userID}}" style="text-decoration: none;"><span
                     class="text2">{{comment.username}}</span></a></div>
-                    <button *ngIf="comment.userID == currentUserID || authorized" (click)="deleteComment(comment)" class="btn btn-danger" style="font-size: 12px; margin-top: 1vh; margin-left: 0%;">Delete</button>
+              <button *ngIf="comment.userID == currentUserID || authorized" (click)="deleteComment(comment)"
+                class="btn btn-danger" style="font-size: 12px; margin-top: 1vh; margin-left: 0%;">Delete</button>
             </div>
-           
+
           </div>
         </div>
       </div>
@@ -25,16 +26,16 @@
 
 
     <!-- Comment submission form -->
-    
-      <form>
-        <label>
-          Add a comment:
-          <textarea id="commentInput" class="new post-content" style="width:75%;"></textarea>
-        </label>
-        <div>
-          <button type="submit" (click)="addComment()">Submit</button>
-        </div>
-      </form>
-    </div>
-  
+
+    <form>
+      <label>
+        Add a comment:
+        <textarea id="commentInput" class="new post-content"></textarea>
+      </label>
+      <div>
+        <button type="submit" (click)="addComment()">Submit</button>
+      </div>
+    </form>
+  </div>
+
 </body>

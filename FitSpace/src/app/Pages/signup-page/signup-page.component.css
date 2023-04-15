@@ -13,3 +13,12 @@ h2{
     line-height: 1.2;
     margin-bottom: 0;
 }
+
+.input-group{
+    width: 26vw;
+}
+@media (max-width: 600px){
+    .input-group{
+        width: 100%
+    }
+}
