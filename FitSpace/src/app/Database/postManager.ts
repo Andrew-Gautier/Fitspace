@@ -53,8 +53,6 @@ export class PostManager {
       this.updateUsernameData(dataID, userdata.displayName!);
     }
 
-    //update comments
-    //await this.updateCommentUsernames(dataID);
 
     //Load all normal data
     var postdata = new PostData(
@@ -116,11 +114,9 @@ export class PostManager {
   }
 
   updateUsernameData(postID : string, newname : string){
-
     update(ref(DATABASE, "/Posts/" + postID), {
       username : newname
     });
-
   }
 
   //Remove the post that has dataID from the firebase

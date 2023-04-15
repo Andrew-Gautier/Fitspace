@@ -27,7 +27,9 @@ export class SignupPageComponent {
         var newUser = new UserData(uid, this.email, false);
         console.log(newUser);
         //setTimeout(() => {USER_MANAGER.createData(newUser)}, 100);
-        USER_MANAGER.createData(newUser);
+        await USER_MANAGER.createData(newUser);
+        alert("Successfully created an account. Please go back to login and sign in.");
+        //document.location.href = "";
         // alert("You have been registered, please continue to log in.");
         // setTimeout( () => {
         //   document.location.href = "";
