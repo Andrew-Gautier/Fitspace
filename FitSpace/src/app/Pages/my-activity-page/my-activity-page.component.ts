@@ -13,6 +13,7 @@ export class MyActivityPageComponent implements OnInit{
 
   constructor(){
     this.likedposts = [];
+    //this.loadposts();
   }
 
   ngOnInit(): void {
@@ -26,8 +27,17 @@ export class MyActivityPageComponent implements OnInit{
       let likedpostIDs = Object.values(currentuser.likedPosts);
 
       for(let postID of likedpostIDs){
-        let post = await POST_MANAGER.loadData(postID);
-        this.likedposts.push(post);
+
+        try{
+          let post = await POST_MANAGER.loadData(postID);
+
+          this.likedposts.push(post);
+        } catch (error){
+          USER_MANAGER.removeLikedPost(sessionStorage.getItem("currentUserID")!, postID);
+        }
+        
+
+          
       }
     }
 

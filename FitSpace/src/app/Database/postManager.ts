@@ -50,7 +50,7 @@ export class PostManager {
       post.postID, 
       post.userID, 
       post.username, 
-      post.displayName,
+      post.postTitle,
       post.postSlides,
     );
 
