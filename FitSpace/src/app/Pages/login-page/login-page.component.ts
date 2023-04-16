@@ -5,8 +5,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { USER_MANAGER } from 'src/main';
 
 
-
-
 @Component({
   selector: 'app-login-page',
   templateUrl: './login-page.component.html',
@@ -17,7 +15,7 @@ export class LoginPageComponent {
    signOut(getAuth())
 
     // Get the current user
-   let test = await signInWithEmailAndPassword (getAuth() , this.email, this.password).then(response => {
+    await signInWithEmailAndPassword (getAuth() , this.email, this.password).then(response => {
       console.log('Success!') 
       this.router.navigate(["/Home"], {relativeTo : this.route})
     }).catch( () => {
@@ -26,7 +24,6 @@ export class LoginPageComponent {
 
     const user = getAuth().currentUser;
 
-    console.log(user?.uid);
     if(user?.uid != undefined){
       sessionStorage.setItem("currentUserID", user?.uid)
       
@@ -49,7 +46,6 @@ export class LoginPageComponent {
 
    email = "";
    password = "";
-
 
    constructor(private router : Router, private route: ActivatedRoute ){
 

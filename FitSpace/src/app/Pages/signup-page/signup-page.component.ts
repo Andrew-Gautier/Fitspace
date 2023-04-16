@@ -20,20 +20,12 @@ export class SignupPageComponent {
         console.log('Signup Success!');
         return credentials.user.uid;
       });
-      
-     // const user = credentials.user;//getAuth().currentUser;
  
       if(uid != undefined){
         var newUser = new UserData(uid, this.email, false);
-        console.log(newUser);
-        //setTimeout(() => {USER_MANAGER.createData(newUser)}, 100);
+        //console.log(newUser);
         await USER_MANAGER.createData(newUser);
         alert("Successfully created an account. Please go back to login and sign in.");
-        //document.location.href = "";
-        // alert("You have been registered, please continue to log in.");
-        // setTimeout( () => {
-        //   document.location.href = "";
-        // }, 100);
 
       } else {
        console.log("Failed to create user");
