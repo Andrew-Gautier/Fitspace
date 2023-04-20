@@ -4,6 +4,7 @@ import { getDatabase, get, ref, remove, set, update, child, onValue, query, limi
 import { DATABASE, USER_MANAGER, app } from "src/main";
 import { PostData } from "./postData";
 import { CommentData } from "./commentData";
+import { SlideData } from "./slideData";
 
 
 @Injectable()
@@ -134,6 +135,29 @@ export class PostManager {
     const data = await get(ref(DATABASE, `Posts/${dataID}/postTitle`));
     return data.val();
   }
+
+
+// Get the slides associated with a post
+async getPostSlides(postId: string) {
+  const slideDataArray: SlideData[] = [];
+  for (let i = 0; i < 9; i++) {
+    const imgURL = await get(ref(DATABASE, `Posts/${postId}/postSlides/${i}/imgURL`));
+    const textData = await get(ref(DATABASE, `Posts/${postId}/postSlides/${i}/textData`));
+    if (imgURL.exists() || textData.exists()) {
+      const slideData: SlideData = {
+        imgURL: imgURL.val(),
+        textData: textData.val()
+      };
+      slideDataArray.push(slideData);
+    }
+  }
+  return slideDataArray;
+}
+
+
+
+
+    
   
   
   //Add a comment to a post

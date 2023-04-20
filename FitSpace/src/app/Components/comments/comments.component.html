@@ -4,6 +4,32 @@
 
 <body>
   <h2 id="PostTitle">Comments for Post: {{postTitle}}</h2>
+  <div class="post">
+    <div class ="content justify-content-center">
+      <div [id]="'a'+postID" class="carousel slide">
+        <div class="carousel-inner">
+
+          <div *ngFor="let slide of Slides let i = index" class="carousel-item" [ngClass]="{'active': i == 0 }">
+            <!-- <div class="carousel-item active"> -->
+            <app-slide-component imgURL={{slide.imgURL}} textData={{slide.textData}}></app-slide-component>
+          </div>
+
+        </div>
+
+        <!-- SLIDE BUTTONS -->
+        <button class="carousel-control-prev" type="button" [attr.data-bs-target]="'#a'+this.postID"
+          data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" [attr.data-bs-target]="'#a'+this.postID"
+          data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+  </div>
   <button class="newestFirst" (click)="reverseComments()">Display Newest Comments First</button>
   <div *ngIf="postComments.length == 0">No comments just yet</div>
   <div class="d-flex {{flexdirection}} ">
@@ -37,5 +63,4 @@
       </div>
     </form>
   </div>
-
 </body>

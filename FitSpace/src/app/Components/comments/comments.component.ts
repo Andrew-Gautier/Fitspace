@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { SlideData } from 'src/app/Database/slideData';
 import { reload } from 'firebase/auth';
 import { CommentData } from 'src/app/Database/commentData';
 import { POST_MANAGER, USER_MANAGER } from 'src/main';
@@ -15,10 +16,13 @@ export class CommentsComponent {
   postComments: Array<CommentData>;
   postID: string | null;
   postTitle: string | null;
+  Slides: Array<SlideData>
   postSlides: any;
   postUsername: any;
   postUserID: any;
   
+  
+
   currentUserID : string;
   authorized: boolean;
 
@@ -26,8 +30,9 @@ export class CommentsComponent {
 
   //Default values in case no parameter was given, should not be called
   constructor(private route: ActivatedRoute) { 
-    this.postComments = []
+    this.postComments = [];
     this.postID = this.route.snapshot.paramMap.get('id');
+    this.Slides = [];
     this.postTitle = "";
     this.currentUserID = "";
     this.authorized = false;
@@ -48,10 +53,14 @@ export class CommentsComponent {
     }
   }
 
+  
+
   //Load data related to the post 
   async loadData(){
     if (this.postID) {
       await POST_MANAGER.updateCommentUsernames(this.postID);
+      this.Slides = await POST_MANAGER.getPostSlides(this.postID);
+
       POST_MANAGER.loadData(this.postID).then( (data) => {
         this.postComments = data.comments;
         this.postSlides = data.slides;

@@ -1,17 +1,37 @@
 body {
 
-	background-color:#1e453e;
+	background-color: #1e453e;
 	min-height: 95vh;
 
 }
 
+.post {
+	width: 27vw;
+}
+
+.content {
+	/* margin-left: 350px; */
+	margin: 1vw;
+	/* background: #fff; */
+	background: #ffffff;
+	
+	border: 1px solid #e6e6e6;
+	padding: 3vh 2vw;
+	border-radius: 3px;
+	text-align: left;
+	
+	-webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.2),0 6px 10px 0 rgba(0,0,0,0.3);
+	box-shadow: 0 2px 2px 0 rgba(0,0,0,0.2),0 6px 10px 0 rgba(0,0,0,0.3);
+  
+	
+  }
 
 
-h2{
+h2 {
 	color: white;
 }
 
-label{
+label {
 	color: white;
 }
 
@@ -35,21 +55,21 @@ label{
 	text-decoration: none;
 }
 
-form{
+form {
 	margin-left: 20vw;
-	
+
 }
 
-textarea{
-	width:75%;
+textarea {
+	width: 75%;
 }
 
-@media (max-width: 600px){
-    form{
-        margin-left: 5vw;
-    }
+@media (max-width: 600px) {
+	form {
+		margin-left: 5vw;
+	}
 
-	textarea{
+	textarea {
 		width: 100%;
 	}
 }
