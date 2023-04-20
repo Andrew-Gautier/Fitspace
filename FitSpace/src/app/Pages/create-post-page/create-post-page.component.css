@@ -20,7 +20,7 @@
     display: flex;
 } */
 .wrap {
-
+  background-image: linear-gradient(to bottom right, black, #1e453e, black);
   background-color: #1e453e;
   /*rgba(4, 9, 40, .7);*/
   min-height: 95vh;

@@ -1,5 +1,6 @@
 .wrap{
-   background-color:#1e453e;/* #666666;/*rgba(4, 9, 40, .7) ;*/
+    background-image: linear-gradient(to bottom right, black, #1e453e, black);
+    background-color:#1e453e;/* #666666;/*rgba(4, 9, 40, .7) ;*/
 }
 
 h1{
