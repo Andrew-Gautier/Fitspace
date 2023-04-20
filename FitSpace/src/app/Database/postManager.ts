@@ -140,7 +140,7 @@ export class PostManager {
 // Get the slides associated with a post
 async getPostSlides(postId: string) {
   const slideDataArray: SlideData[] = [];
-  for (let i = 0; i < 9; i++) {
+  for (let i = 0; i < 10; i++) {
     const imgURL = await get(ref(DATABASE, `Posts/${postId}/postSlides/${i}/imgURL`));
     const textData = await get(ref(DATABASE, `Posts/${postId}/postSlides/${i}/textData`));
     if (imgURL.exists() || textData.exists()) {
