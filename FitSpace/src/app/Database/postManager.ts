@@ -149,6 +149,8 @@ async getPostSlides(postId: string) {
         textData: textData.val()
       };
       slideDataArray.push(slideData);
+    } else {
+      break;
     }
   }
   return slideDataArray;
