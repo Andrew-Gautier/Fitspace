@@ -6,10 +6,11 @@
             Enter your email address and we'll send you an email with instructions to reset your password.
         </p>
         <div class="form-outline">
-            <input type="email" id="typeEmail" class="form-control my-3" />
+            <input type="email" id="typeEmail" class="form-control my-3" name ="email" [(ngModel)="email"/>
             <label class="form-label" for="typeEmail">Email input</label>
         </div>
-        <a href="#" class="btn btn-primary w-100">Reset password</a>
+        <a href="#" class="btn btn-primary w-100" (click)="forgotPassword()">Reset password</a>
+        <button type ="button" class ="btn btn-info" (click) ="forgotPassword()"></button>
         <div class="d-flex justify-content-between mt-4">
             <a class="" href="#">Login</a>
             <a class="" href="/Signup">Register</a>

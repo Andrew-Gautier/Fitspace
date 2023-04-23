@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { ActivatedRoute, Router } from '@angular/router';
-import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword, signOut } from 'firebase/auth';
+import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword, signOut, sendPasswordResetEmail } from 'firebase/auth';
 
 @Component({
   selector: 'app-forgotpass-page',
@@ -22,10 +23,19 @@ export class ForgotpassPageComponent {
         console.log('Signup Success!')
       })
     }
+    // Write a forgot password function
+
+    forgotPassword(): void{
+      this.fireAuth.sendPasswordResetEmail(this.email).then(() => {
+        
+      
+    })
+  }
     email = "";
     password = "";
-    constructor(private router : Router, private route: ActivatedRoute ){
+    constructor(private router : Router, private route: ActivatedRoute, private fireAuth: AngularFireAuth ){
  
+   
     }
 
 }
