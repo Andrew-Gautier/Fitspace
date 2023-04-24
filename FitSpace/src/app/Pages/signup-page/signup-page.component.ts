@@ -16,6 +16,11 @@ export class SignupPageComponent {
    
    async signup(){
      signOut(getAuth())
+     var emailCheck = this.isValidEmail(this.email);
+      if(emailCheck == false){
+        alert("Please enter a valid email address");
+        return;
+      } else {
       let uid = await createUserWithEmailAndPassword(getAuth() , this.email, this.password).then( (credentials) => {
         console.log('Signup Success!');
         return credentials.user.uid;
@@ -32,7 +37,7 @@ export class SignupPageComponent {
        alert("Something went wrong with user creation")
       }
     }
-
+  }
 
 
     email = "";
@@ -45,5 +50,10 @@ export class SignupPageComponent {
       return this.match = this.password == this.confirmPassword
       
     }
+    isValidEmail(email: string): boolean {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+      return emailRegex.test(email);
+    }
+    
     
 }
