@@ -1,34 +1,134 @@
 <app-nav-bar></app-nav-bar>
+<!-- Header -->
 <div class="wrap">
-<div class="d-flex justify-content-center"
-  style="padding-top: 2.5%; padding-bottom: 0%; min-height: 100vh; width: 100%; background-image: linear-gradient(rgba(4, 9, 40, 0.3), rgba(4, 9, 40, 0.3)), url(assets/Under-Construction.jpg); background-size: cover; background-position: center;">
-  <div>
-    <h1 style="color:white; text-align: center;">My Activity<br><br><br>UNDER MAINTENANCE</h1>
-  </div>
-</div>
-<!-- 
-</div>
-
-<div class="wrap">
-
-  <div class="d-flex justify-content-center" style="padding-top: 2.5%; padding-bottom: 2.5%; color: white;">
-    <h1>Liked Posts</h1>
+  <div class="d-flex justify-content-center" style="padding-top: 2.5%; padding-bottom: 2.5%;">
+    <h1>My Activity</h1>
   </div>
 
-  <div id="refresh">
-  <div class="d-flex justify-content-center" style="padding-bottom: 5%;">
-    <!-- Post rows -->
-      <!-- <div>
-        <!-- <div class="d-flex flex-row" *ngFor="let postTrio of likedposts | chunk: 3"> -->
-          <!-- <div class="d-flex flex-column" *ngFor="let post of postTrio"> -->
-            <!-- Post data -->
-            <!-- <div class="d-flex flex-row" *ngFor="let post of likedposts">
-            <app-post-component id={{post.postID}} PostTitle={{post.postTitle}} Username={{post.username}}
-              PostID={{post.postID}} [Slides]="post.postSlides" [userID]="post.userID"></app-post-component>
-          <!-- </div> -->
-        <!-- </div>
+  <!-- Workout metrics card -->
+  <div class="d-flex justify-content-center" style="padding-top: 2.5%; padding-bottom: 5%;">
+    <div class="d-flex flex-wrap justify-content-center">
+      <div style="padding-left: 2.5%; padding-right: 2.5%; padding-bottom: 1.25%; padding-top: 1.25%; color: white;">
+        <!--New-->
+        <h3>Workout metrics</h3>
+
+        <p>Workouts may be specified using single-word names such as "core", "running", "jogging", "Monday", "Tuesday",
+          etc.<br />
+          Workout durations may be selected by using the slider.<br />
+        </p>
+        <div class="input-group">
+          <span class="input-group-text">Enter a workout name (core, running, etc.):</span>
+
+          <!-- JavaScript finds "activity" value using "id=" value -->
+          <input type="text" class="form-control" ngModel name="activity" id="activity">
+        </div>
+        <div class="d-flex justify-content-center" style="padding:2.5%; color: white;">
+          <!-- JavaScript finds "duration" value using "document.slider.duration.value" -->
+          <form name="slider" oninput="duration.value = slider.value">
+            <label>Select workout duration:</label><br />
+            <input type="range" id="slider" min="0" max="600" step="1" value="0"> <br />
+
+            <output name="duration" for="slider">0</output> minutes
+          </form>
+        </div>
+
+        <button type="button" id="submit" onclick="logActivity()">Submit</button>
+        <br />
+        <span id="logMessage"></span>
       </div>
     </div>
-  </div> -->
+  </div>
+</div>
 
-<!-- </div>  -->
+<!-- BMI card -->
+<div class="d-flex justify-content-center" style="padding-top: 2.5%; padding-bottom: 5%;">
+  <div class="d-flex flex-wrap justify-content-center">
+    <div style="padding-left: 2.5%; padding-right: 2.5%; padding-bottom: 1.25%; padding-top: 1.25%;">
+
+      <div class="card"
+        style=" border-color: #123488; border-radius: 5px; border-width: 2px; background-color: #EEEEEE ;  width:25vw; height: 60vh; ">
+
+        <div class="d-flex justify-content-center" style="padding-top: 2.5%; padding-bottom: 2.5%;">
+          <h1 style="font-size: larger; color: black;"><b>Body Mass Index (BMI)</b></h1>
+        </div>
+
+        <div class="d-flex justify-content-center" style=" padding-bottom: 2.5%;">
+          <img src="../../assets/BMIchart.png" class="card-img-top" alt="BMI graphic"
+            style="width: 20vw; height:auto;border-color: #123488;">
+        </div>
+
+        <div class="d-flex justify-content-center"
+          style="padding-left: 2.5%; padding-right: 2.5%; padding-bottom: 2.5%;">
+        </div>
+
+        <div class="d-flex justify-content-left" style="padding:2.5%">
+          <!-- JavaScript finds "duration" value using "document.heightbar.height.value" -->
+          <form name="heightbar" oninput="height.value = slider.value">
+            <label>Select height:</label><br />
+            <input type="range" id="slider" min="0" max="108" step="1" value="0"> <br />
+
+            <output name="height" for="slider">0</output> inches
+          </form>
+        </div>
+        <div class="d-flex justify-content-left" style="padding:2.5%">
+          <!-- JavaScript finds "duration" value using "document.weightbar.weight.value" -->
+          <form name="weightbar" oninput="weight.value = slider.value">
+            <label>Select weight:</label><br />
+            <input type="range" id="slider" min="0" max="600" step="1" value="0"> <br />
+
+            <output name="weight" for="slider">0</output> pounds
+          </form>
+          <br />
+        </div>
+
+        <button type="button" id="submit" onclick="calculateBMI()">Submit</button>
+        <br />
+        <p style="margin-top: 1em;font-size: 1.2em;">
+          <span id="bmiValue"></span>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Workout Data Visualization card -->
+<div class="d-flex justify-content-center" style="padding-top: 2.5%; padding-bottom: 5%;">
+  <div class="d-flex flex-wrap justify-content-center">
+    <div style="padding-left: 2.5%; padding-right: 2.5%; padding-bottom: 1.25%; padding-top: 1.25%;">
+
+      <div class="card"
+        style=" border-color: #123488; border-radius: 5px; border-width: 2px; background-color: #EEEEEE ;  width:25vw; height: 60vh; ">
+
+
+        <div class="d-flex justify-content-center" style="padding-top: 2.5%; padding-bottom: 2.5%;">
+          <h1 style="font-size: larger;"><b>Workout Data Visualization</b></h1>
+        </div>
+
+        <div class="d-flex justify-content-center" style=" padding-bottom: 2.5%;">
+    
+          <img src="../../assets/Activity.png" class="card-img-top" alt="Activity graphic"
+            style="width: 20vw; height:auto;border-color: #123488;">
+        </div>
+        <button type="button" id="submit" onclick="setChartOptions()">Submit</button>
+        <div class="d-flex justify-content-center "
+          style="padding-left: 2.5%; padding-right: 2.5%; padding-bottom: 2.5%;">
+          <p>Past Workouts</p>
+        </div>
+
+        <!--
+      <activity-post-card img="../../assets/Activity.png" title="Workout Data Visualization"
+        description="Past Workouts"></activity-post-card>
+  -->
+        <div class="d-flex justify-content-center" style=" padding-bottom: 2.5%;">
+          <div>
+            <!-- Bar Chart using CanvasJS -->
+            <div>
+              <canvasjs-chart [options]="chartOptions" [styles]="{width: '100%', height:'360px'}"></canvasjs-chart>
+              <div id="chartContainer" style="height: 300px; width: 100%;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
