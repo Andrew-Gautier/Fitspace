@@ -37,8 +37,8 @@ export class SignupPageComponent {
        alert("Something went wrong with user creation")
       }
     }
+  
   }
-
 
     email = "";
     password = "";
