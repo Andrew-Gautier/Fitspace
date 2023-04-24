@@ -30,6 +30,8 @@ import { SlideComponentComponent } from './Components/slide-component/slide-comp
 import { ProfileInfoComponent } from './Components/profile-info/profile-info.component';
 import { ChunkPipe } from './Pages/community-page/pipe';
 // May need to change the above environments import, leaving for now. (If debugging, check for an error here.) ~ AG
+import * as CanvasJSAngularChart from "../assets/canvasjs.angular.component";
+var CanvasJSChart = CanvasJSAngularChart.CanvasJSChart;
 
 @NgModule({
   declarations: [
@@ -50,6 +52,7 @@ import { ChunkPipe } from './Pages/community-page/pipe';
       SlideComponentComponent,
       ProfileInfoComponent,
       ChunkPipe,
+      CanvasJSChart,
 
   ],
   imports: [
