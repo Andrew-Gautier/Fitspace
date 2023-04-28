@@ -20,8 +20,8 @@ Built with
 - Angular
 
 Features
-Profile Creation for trainer/trainee 
-Creat a post
-Community Board
-BMI Calculator
+-Profile Creation for trainer/trainee 
+-Creat a post
+-Community Board
+-BMI Calculator
 
