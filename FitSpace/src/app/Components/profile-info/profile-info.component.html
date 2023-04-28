@@ -17,17 +17,18 @@
       <div class="col-lg-8">
         <div class="card shadow-sm">
           <div class="card-header bg-transparent border-0">
-            <h3 class="mb-0"><i class="far fa-clone pr-1"></i>About</h3>
+            <h3 class="mb-0"><em class="far fa-clone pr-1"></em>About</h3>
           </div>
           <div class="card-body pt-0">
-            <table class="table table-bordered">
+            <table class="table table-bordered"> 
+              <caption>Profile Info Table</caption>
               <tr>
-                <th width="30%">Display Name</th>
-                <td width="2%">:</td>
+                <th id="1" style="width:30%">Display Name</th>
+                <td style="width:2%">:</td>
                 <td>{{displayname}}</td>
-                <td width="5%">
+                <td style="width:5%">
                   <button *ngIf="permission" (click)="editDisplayName()" class="btn">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="black"
+                    <svg xmlns="http://www.w3.org/2000/svg" style="width:16" height="16" fill="black"
                       class="bi bi-pencil-square" viewBox="0 0 16 16">
                       <path
                         d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
@@ -38,12 +39,12 @@
                 </td>
               </tr>
               <tr>
-                <th width="30%">Email</th>
-                <td width="2%">:</td>
+                <th id="2" style="width:30%">Email</th>
+                <td style="width:2%">:</td>
                 <td>{{email}}</td>
-                <td width="5%">
+                <td style="width:5%">
                   <button *ngIf="permission" (click)="editEmail()" class="btn">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="black"
+                    <svg xmlns="http://www.w3.org/2000/svg" style="width:16" height="16" fill="black"
                       class="bi bi-pencil-square" viewBox="0 0 16 16">
                       <path
                         d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
@@ -54,12 +55,12 @@
                 </td>
               </tr>
               <tr>
-                <th width="30%">Location</th>
-                <td width="2%">:</td>
+                <th id="3" style="width:30%">Location</th>
+                <td style="width:2%">:</td>
                 <td>{{location}}</td>
-                <td width="5%">
+                <td style="width:5%">
                   <button *ngIf="permission" (click)="editLocation()" class="btn">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="black"
+                    <svg xmlns="http://www.w3.org/2000/svg" style="width:16" height="16" fill="black"
                       class="bi bi-pencil-square" viewBox="0 0 16 16">
                       <path
                         d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
@@ -70,12 +71,12 @@
                 </td>
               </tr>
               <tr>
-                <th width="30%">Affiliation</th>
-                <td width="2%">:</td>
+                <th id="4" style="width:30%">Affiliation</th>
+                <td style="width:2%">:</td>
                 <td>{{affliate}}</td>
-                <td width="5%">
+                <td style="width:5%">
                   <button *ngIf="permission" (click)="editAffliate()" class="btn">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="black"
+                    <svg xmlns="http://www.w3.org/2000/svg" style="width:16" height="16" fill="black"
                       class="bi bi-pencil-square" viewBox="0 0 16 16">
                       <path
                         d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
@@ -86,12 +87,12 @@
                 </td>
               </tr>
               <tr>
-                <th width="30%">Primary Service</th>
-                <td width="2%">:</td>
+                <th id="5" style="width:30%">Primary Service</th>
+                <td style="width:2%">:</td>
                 <td>{{primaryService}}</td>
-                <td width="5%">
+                <td style="width:5%">
                   <button *ngIf="permission" (click)="editService()" class="btn">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="black"
+                    <svg xmlns="http://www.w3.org/2000/svg" style="width:16" height="16" fill="black"
                       class="bi bi-pencil-square" viewBox="0 0 16 16">
                       <path
                         d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
@@ -107,12 +108,12 @@
         <div style="height: 26px"></div>
         <div class="card shadow-sm">
           <div class="card-header bg-transparent border-0">
-            <h3 class="mb-0"><i class="far fa-clone pr-1"></i>Bio</h3>
+            <h3 class="mb-0"><em class="far fa-clone pr-1"></em>Bio</h3>
           </div>
           <div class="card-body pt-0">
             <p>{{bio}}</p>
             <button *ngIf="permission" (click)="editBio()" class="btn">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill=""
+              <svg xmlns="http://www.w3.org/2000/svg" style="width:16" height="16" fill=""
                 class="bi bi-pencil-square" viewBox="0 0 16 16">
                 <path
                   d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />

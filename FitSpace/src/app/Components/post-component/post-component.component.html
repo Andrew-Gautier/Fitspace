@@ -6,7 +6,7 @@
 
     <ul class="post-meta list-inline" style="margin-bottom: 2.5vh;">
       <li class="list-inline-item">
-        <i class=""></i> <a href="user/{{userID}}">{{Username}}</a>
+        <em class=""></em> <a href="user/{{userID}}">{{Username}}</a>
       </li>
     </ul>
 
@@ -15,7 +15,6 @@
       <div class="carousel-inner">
         
         <div *ngFor="let slide of Slides let i = index" class="carousel-item" [ngClass]="{'active': i == 0 }"> 
-        <!-- <div class="carousel-item active"> -->
           <app-slide-component imgURL={{slide.imgURL}} textData={{slide.textData}}></app-slide-component>
         </div>
 
@@ -42,12 +41,6 @@
           <button (click)="viewComments(PostID, PostTitle)" class="btn btn-secondary" style="font-size: 12px">Comments</button>
           <p style="padding-left: 1vw;">{{commentCount}}</p>
         </div>
-
-        
-        <!-- <div class="d-flex flex-row">
-          <button (click)="likePost(PostID)" class="btn btn-secondary" style="font-size: 12px; margin-top: 1vh;">{{likedText}}</button>
-          <p style="padding-left: 1vw;">{{likeCount}}</p>
-        </div> -->
 
         <!-- Post control functionality -->
         <button *ngIf="authorized" (click)="deletePost(PostID)" class="btn btn-danger" style="font-size: 12px; margin-top: 1vh; margin-left: 0%;">Delete</button>

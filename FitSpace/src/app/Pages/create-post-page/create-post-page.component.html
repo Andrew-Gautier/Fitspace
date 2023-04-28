@@ -1,33 +1,32 @@
 <app-nav-bar></app-nav-bar>
 <!--just has username at top to identify you're signed in<!-->
 <div class="wrap" style="color:white">
-  <p class="d-flex justify-content-center" style="font-size: 30px; padding-top: 2vh; "><b>NEW POST</b></p>
+  <p class="d-flex justify-content-center" style="font-size: 30px; padding-top: 2vh; "><strong>NEW POST</strong></p>
 
   <div class="d-flex {{flexDirection}} justify-content-center">
     <div class="d-flex flex-row justify-content-center">
       <div class="new">
         <div class="">
           <div class="row d-flex justify-content-center">
-            <p class="d-flex justify-content-center"><b>Post Title</b></p>
+            <p class="d-flex justify-content-center"><strong>Post Title</strong></p>
             <textarea id="titleInput" class="new post-content" style="width:65%;" (change)="updatePreview()"
               maxlength="100"></textarea>
           </div>
 
           <!-- Needs to be additional slides based on this upload -->
           <div class="row d-flex justify-content-center" style="margin-top: 5vh;">
-            <p class="d-flex justify-content-center"><b>Image Input</b></p>
+            <p class="d-flex justify-content-center"><strong>Image Input</strong></p>
             <div class="d-flex justify-content-center">
               <input type='file' id="imageInput" accept="image/*" (change)="changedImage()" />
             </div>
 
             <!-- This needs to be resized depending on image -->
             <div id="testImageDiv" class="d-flex justify-content-center">
-              <!-- <img id="testImage" src="#"> -->
             </div>
           </div>
 
           <div class="row d-flex justify-content-center" style="margin-top: 5vh;">
-            <p class="d-flex justify-content-center"><br><b>Slide Description</b></p>
+            <p class="d-flex justify-content-center"><br><strong>Slide Description</strong></p>
             <textarea id="textInput" class="new post-content" style="width:65%;" maxlength="1200"></textarea>
           </div>
 
@@ -55,14 +54,12 @@
       <!-- Deconstructed post component -->
       <div class="post">
         <div class="content justify-content-center" style="padding-bottom: 0;">
-          <!-- <a href="#" class="justify-content-center" > -->
           <h3 class="justify-content-center">{{previewTitle}}</h3>
-          <!-- </a> -->
 
 
           <ul class="post-meta list-inline" style="margin-bottom: 2.5vh;">
             <li class="list-inline-item">
-              <i class=""></i> <a href="user/{{previewUserID}}">{{previewUsername}}</a>
+              <em class=""></em> <a href="user/{{previewUserID}}">{{previewUsername}}</a>
             </li>
           </ul>
 
@@ -97,7 +94,6 @@
 
               <!-- No functionality -->
               <button class="btn btn-secondary" style="font-size: 12px">Comments</button>
-              <!-- <button class="btn btn-secondary" style="font-size: 12px">Like</button> -->
             </li>
           </ul><br>
         </div>

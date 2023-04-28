@@ -10,7 +10,6 @@
         <div class="carousel-inner">
 
           <div *ngFor="let slide of Slides let i = index" class="carousel-item" [ngClass]="{'active': i == 0 }">
-            <!-- <div class="carousel-item active"> -->
             <app-slide-component imgURL={{slide.imgURL}} textData={{slide.textData}}></app-slide-component>
           </div>
 
