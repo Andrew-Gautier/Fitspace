@@ -143,6 +143,11 @@ export class CreatePostPageComponent {
         //get file input
         var file = imageInput.files[0];
 
+        if (!file.type.startsWith('image/')) {
+          alert('Please select an image file.');
+          return;
+      }
+
         if(file.size > this.maxImageSize * this.megabyteSize){
           alert("Image is too big!");
           return;
