@@ -8,7 +8,7 @@
                  /_/                      
 
 Welcome to FitSpace! A fitness social media application student project. 
-This application is meant bridge the fitness community together, and help everyone reach their own goals.
+This application is meant to bridge the fitness community together, and help everyone reach their own fitness goals.
 
 
 Framework
@@ -21,7 +21,16 @@ Built with
 
 Features
 -Profile Creation for trainer/trainee 
--Creat a post
+-Create a post
 -Community Board
 -BMI Calculator
+-Interact with other trainers / trainees
+-Edit profile information
+-Get workouts that fit your needs
+-Community Guidlines\
+-Information to contact creators
+-Navigate the website swiftly and easily
+-Works on mobile smart phone
+-
+
 
