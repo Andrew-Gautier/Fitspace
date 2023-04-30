@@ -20,17 +20,16 @@ Built with
 - Angular
 
 Features
--Profile Creation for trainer/trainee 
--Create a post
--Community Board
--BMI Calculator
--Interact with other trainers / trainees
--Edit profile information
--Get workouts that fit your needs
--Community Guidlines\
--Information to contact creators
--Navigate the website swiftly and easily
--Works on mobile smart phone
--
+- Profile Creation for trainer/trainee 
+- Create a post
+- Community Board
+- BMI Calculator
+- Interact with other trainers / trainees
+- Edit profile information
+- Get workouts that fit your needs
+- Community Guidlines\
+- Information to contact creators
+- Navigate the website swiftly and easily
+- Works on mobile smart phone
 
 
