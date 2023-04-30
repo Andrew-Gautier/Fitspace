@@ -14,14 +14,15 @@
     <div [id]="'a'+PostID" class="carousel slide">
       <div class="carousel-inner">
         
-        <div *ngFor="let slide of Slides let i = index" class="carousel-item" [ngClass]="{'active': i == 0 }"> 
+        <app-slide-component imgURL={{Slides[0].imgURL}} textData={{Slides[0].textData}}></app-slide-component>
+        <!-- <div *ngFor="let slide of Slides let i = index" class="carousel-item" [ngClass]="{'active': i == 0 }"> 
           <app-slide-component imgURL={{slide.imgURL}} textData={{slide.textData}}></app-slide-component>
-        </div>
+        </div> -->
 
       </div>
 
       <!-- SLIDE BUTTONS -->
-      <button class="carousel-control-prev" type="button" [attr.data-bs-target]="'#a'+this.PostID"
+      <!-- <button class="carousel-control-prev" type="button" [attr.data-bs-target]="'#a'+this.PostID"
         data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Previous</span>
@@ -30,7 +31,7 @@
         data-bs-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Next</span>
-      </button>
+      </button> -->
     </div>
 
     <!-- End of Carosel -->
@@ -38,8 +39,8 @@
     <ul class="post-meta list-inline" >
       <li class="list-inline-item justify-content-end" >
         <div class="d-flex flex-row">
-          <button (click)="viewComments(PostID, PostTitle)" class="btn btn-secondary" style="font-size: 12px">Comments</button>
-          <p style="padding-left: 1vw;">{{commentCount}}</p>
+          <button (click)="viewComments(PostID, PostTitle)" class="btn btn-secondary" style="font-size: 12px">View Post</button>
+          <p style="padding-left: 1vw;">Comments: {{commentCount}}</p>
         </div>
 
         <!-- Post control functionality -->
