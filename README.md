@@ -19,7 +19,12 @@ Built with
 - BootStrap
 - Angular
 
-Features
+        _______               __
+       /  ___ /___    ____  _| |_  _   _  ___  ___      ____
+      /  /_   / _ \ / __  \  |  _|| | | |/  _|/ _ \   / -__/ 
+     /  __/  /  __ / /__/  \ | |_ | |_| || | /  __|_ /  /
+    /_/      \___/ \__,__/\_\\___| \___/ |_| \___//___ /
+
 - Profile Creation for trainer/trainee 
 - Create a post
 - Community Board
