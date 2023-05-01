@@ -14,11 +14,11 @@ This application is meant to bridge the fitness community together, and help eve
 <h1 style = "font-size: 24px;"><strong>Framework</strong></h1>
 
 Built with
-- HTML
-- CSS
-- TypeScript
-- BootStrap
-- Angular
+- <a href= "https://html.spec.whatwg.org/">HTML</a>
+- <a href= "https://www.w3schools.com/css/default.asp">CSS</a>
+- <a href="https://www.typescriptlang.org/">TypeScript</a>
+- <a href="https://getbootstrap.com/">BootStrap</a>
+- <a href="https://angular.io/">Angular</a>
 
         _______               __
        /  ___ /___    ____  _| |_  _   _  ___  ___      ____
@@ -43,7 +43,7 @@ Built with
 
 <h1 style = "font-size: 24px;"><strong>Tutorial</strong></h1>
 
-- Go to Fitspace (add link for website)
+- <a href="http://localhost:4200/">Go to Fitspace </a>
 
 - Registration
     - To begin, the user wil need to sign in via email and a chosen password.
@@ -67,8 +67,8 @@ Built with
 </strong></h1>
 
 
-- Issue tracker (link to git)
-- Source code (link to git)
+- Issue tracker: <a href="https://github.com/WVU-CS230-2023-01-Group11/FitSpace/issues"> https://github.com/WVU-CS230-2023-01-Group11/FitSpace/issues </a>
+- Source code <a href="https://github.com/WVU-CS230-2023-01-Group11/FitSpace" >https://github.com/WVU-CS230-2023-01-Group11/FitSpace</a>
 
 <h1 style = "font-size: 24px;"><strong>Support</strong></h1>
 
