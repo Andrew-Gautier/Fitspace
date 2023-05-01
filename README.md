@@ -11,7 +11,7 @@ Welcome to FitSpace! A fitness social media application student project.
 This application is meant to bridge the fitness community together, and help everyone reach their own fitness goals.
 
 
-Framework
+<strong style = "font-size: 18px;">Framework</strong>
 <hr>
 Built with
 - HTML
@@ -39,7 +39,7 @@ Built with
 - Works on mobile smart phone
 
 
-Tutorial
+<strong style = "font-size: 18px;">Tutorial</strong>
 <hr>
 - Go to Fitspace (add link for website)
 
@@ -55,22 +55,22 @@ Tutorial
 - Profile Page
     - Users are able to edit their profile page with their information so other users may reach out to them.
 
-API's & Refreneces
+<strong style = "font-size: 18px;">API's & Refreneces </strong>
 <hr>
 - Firebase Documentation (link)
 - Angular Documentation (liink)
 
-Contribute
-
+<strong style = "font-size: 18px;">Contribute
+</strong>
 - Issue tracker (link to git)
 - Source code (link to git)
 
-Support
+<strong style = "font-size: 18px;">Support</strong>
 
 If you issues, navigate to the homepage of the website. There you will find a link to our contact information. 
 
 
-Credits
+<strong style = "font-size: 18px;">Credits</strong>
 <hr>
 - Brendan Bolduc
 - Jonathan Dofka
@@ -81,6 +81,6 @@ Credits
 - Ian Rudy
 - Zachary Spiggle
 
-Liscense
+<strong style = "font-size: 18px;">Liscense</strong>
 <hr>
 Group 11 WVU
