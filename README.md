@@ -1,12 +1,12 @@
 # Fitspace
-
+<pre>
     _______ __  _____                     
    / ____(_) /_/ ___/____  ____ _________ 
   / /_  / / __/\__ \/ __ \/ __ `/ ___/ _ \
  / __/ / / /_ ___/ / /_/ / /_/ / /__/  __/
 /_/   /_/\__//____/ .___/\__,_/\___/\___/ 
                  /_/                      
-
+</pre>
 Welcome to FitSpace! A fitness social media application student project. 
 This application is meant to bridge the fitness community together, and help everyone reach their own fitness goals.
 
