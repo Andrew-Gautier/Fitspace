@@ -29,14 +29,14 @@ Built with
 </pre>
 <h1 style = "font-size: 24px;"><strong>Features</strong></h1>
 
-- Profile Creation for trainer/trainee 
+- Profile creation for trainer/trainee 
 - Create a post
 - Community Board
 - BMI Calculator
 - Interact with other trainers / trainees
 - Edit profile information
 - Get workouts that fit your needs
-- Community Guidlines\
+- Community Guidlines
 - Information to contact creators
 - Navigate the website swiftly and easily
 - Works on mobile smart phone
@@ -74,7 +74,7 @@ Built with
 <h1 style = "font-size: 24px;"><strong>Support</strong></h1>
 
 
-If you issues, navigate to the homepage of the website. There you will find a link to our contact information. 
+If you have issues, navigate to the homepage of the website. There you will find a link to our contact information. 
 
 <h1 style = "font-size: 24px;"><strong>Known Issues</strong></h1>
 
