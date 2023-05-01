@@ -1,12 +1,12 @@
 # Fitspace
-
+<pre>
     _______ __  _____                     
    / ____(_) /_/ ___/____  ____ _________ 
   / /_  / / __/\__ \/ __ \/ __ `/ ___/ _ \
  / __/ / / /_ ___/ / /_/ / /_/ / /__/  __/
 /_/   /_/\__//____/ .___/\__,_/\___/\___/ 
                  /_/                      
-
+</pre>
 Welcome to FitSpace! A fitness social media application student project. 
 This application is meant to bridge the fitness community together, and help everyone reach their own fitness goals.
 
@@ -14,18 +14,19 @@ This application is meant to bridge the fitness community together, and help eve
 <h1 style = "font-size: 24px;"><strong>Framework</strong></h1>
 
 Built with
-- <a href= "https://html.spec.whatwg.org/">HTML</a>
-- <a href= "https://www.w3schools.com/css/default.asp">CSS</a>
-- <a href="https://www.typescriptlang.org/">TypeScript</a>
-- <a href="https://getbootstrap.com/">BootStrap</a>
-- <a href="https://angular.io/">Angular</a>
+- HTML
+- CSS
+- TypeScript
+- BootStrap
+- Angular
 
+<pre>
         _______               __
        /  ___ /___    ____  _| |_  _   _  ___  ___      ____
       /  /_   / _ \ / __  \  |  _|| | | |/  _|/ _ \   / -__/ 
      /  __/  /  __ / /__/  \ | |_ | |_| || | /  __|_ /  /
     /_/      \___/ \__,__/\_\\___| \___/ |_| \___//___ /
-
+</pre>
 <h1 style = "font-size: 24px;"><strong>Features</strong></h1>
 
 - Profile Creation for trainer/trainee 
