@@ -39,13 +39,45 @@ Built with
 
 
 Tutorial
+- Go to Fitspace (add link for website)
+
+- Registration
+    - To begin, the user wil need to sign in via email and a chosen password.
+
+- Community Board
+    - Once the account has been created, a user can create posts varying from a simple text to an image or video with a caption. They also have access to comment on other people's posts and get in touch with trainers. 
+
+- Workouts
+    - Users are also able to recieve auto-generated workouts when inputing their time contraint and specific type of workout they want. 
+
+- Profile Page
+    - Users are able to edit their profile page with their information so other users may reach out to them.
 
 API's & Refreneces
 
+- Firebase Documentation (link)
+- Angular Documentation (liink)
+
 Contribute
+
+- Issue tracker (link to git)
+- Source code (link to git)
 
 Support
 
+If you issues, navigate to the homepage of the website. There you will find a link to our contact information. 
+
+
 Credits
+- Brendan Bolduc
+- Jonathan Dofka
+- Olivia Ecock
+- Andrew Koyada
+- Saipavan Koyada
+- Ryan Rudolph
+- Ian Rudy
+- Zachary Spiggle
 
 Liscense
+
+Group 11 WVU
