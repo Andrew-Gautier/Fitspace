@@ -115,23 +115,4 @@ export class PostComponentComponent implements OnInit{
     this.router.navigate(['comments', id]);
   }
 
-  async likePost(id:string){
-    let currentuser = sessionStorage.getItem("currentUserID");
-
-    if(currentuser){
-      if(this.likes.includes(currentuser)){ //remove like
-        console.log("Removing like...");
-        await POST_MANAGER.unlikePost(this.PostID, currentuser);
-
-      } else { //add like
-        console.log("Adding like...");
-        await POST_MANAGER.likePost(this.PostID, currentuser);
-      }
-    }
-    var container = document.getElementById("self");
-    var content = container!.innerHTML;
-    container!.innerHTML= content; 
-
-
-  }
 }

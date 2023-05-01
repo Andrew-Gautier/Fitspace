@@ -1,6 +1,12 @@
+/**
+ * @author Zachary Spiggle
+ * @date 3/27/23
+ * 
+ * This object operates as an interface between client and the server for Post related content
+ */
+
 import { Component, Injectable, OnInit } from "@angular/core";
 import { getDatabase, get, ref, remove, set, update, child, onValue, query, limitToLast } from "firebase/database";
-
 import { DATABASE, USER_MANAGER, app } from "src/main";
 import { PostData } from "./postData";
 import { CommentData } from "./commentData";
@@ -10,7 +16,7 @@ import { SlideData } from "./slideData";
 @Injectable()
 export class PostManager {
 
-   //Path to Users part of realtime database
+  //Path to Users part of realtime database
   PostsPath = "https://fitspace-ba5a9-default-rtdb.firebaseio.com/Posts/";
 
   //A max count that prevents all posts from being loaded from firebase at once
@@ -22,7 +28,14 @@ export class PostManager {
 
   dataLoaded : any;
 
-  //Returns all posts that exist. This is not a good thing, but we have no other implementation currently
+
+
+  /**
+   * Asynchronous method to get all posts from database.
+   * Note: This is inefficent and should not be a solution for the a future final product.
+   * 
+   * @returns A promise for an array of PostData that contains all data for every post in the database
+   */
   async loadAllPosts(): Promise<Array<PostData>>{
 
     var posts = new Array();
@@ -37,7 +50,12 @@ export class PostManager {
   }
   
 
-  //Load a singular piece from firebase (like a user)
+  /**
+   * Asynchronous method to load a specified Post Data object that contains informatio nabout a single post
+   * 
+   * @param dataID The ID of the post object we want
+   * @returns A promise for the PostData object of the post that has the same ID as our parameter
+   */
   async loadData(dataID : string) : Promise<PostData> {
 
     var data = await get(ref(DATABASE, 'Posts/' + dataID));
@@ -81,10 +99,12 @@ export class PostManager {
     return postdata;
   }
 
-  //Creates a new post and uploads it to firebase, newDataInfo MUST BE A PostData OBJECT!!!
+  /**
+   * A method to create data in the firebase realtime database
+   * 
+   * @param newDataInfo A PostData object that contains the information about the postto store in the database
+   */
   createData(newDataInfo : PostData){
-
-    //console.log(newDataInfo);
 
     //Set data in database
     set(ref(DATABASE, "/Posts/" + newDataInfo.postID), {
@@ -101,68 +121,78 @@ export class PostManager {
   }
  
 
-  //Updates the ID associated with the given object to the new PostData object given (Essentially just manupulate on your end)
-  //Thinking of removing this feature for now
-  updateData(newDataInfo : PostData){
 
-    var data: PostData = newDataInfo;
-
-    update(ref(DATABASE, "/Posts/" + data.postID), {
-      postTitle : data.postTitle,
-      //Need more things to change
-    });
-
-  }
-
+  /**
+   * Update the username stored in the database
+   * 
+   * @param postID Post ID to update the name up
+   * @param newname The new username to replace the current one with
+   */
   updateUsernameData(postID : string, newname : string){
     update(ref(DATABASE, "/Posts/" + postID), {
       username : newname
     });
   }
 
-  //Remove the post that has dataID from the firebase
+  /**
+   * Remove a post from the realtime database 
+   * 
+   * @param dataID ID of the post you want to remove
+   */
   removeData(dataID: string){ 
     remove(ref(DATABASE, "/Posts/" + dataID));
   }
 
-
+  /**
+   * Constructor, initializes data
+   */
   constructor(){
     this.dataLoaded = new Map();
   }
 
-  //Returns the post title
+  /**
+   * Get just the title from a post ID
+   * 
+   * @param dataID ID of post to retrieve the title of
+   * @returns A promise for a string that is the title of the given post
+   */
   async getPostTitle(dataID : string) : Promise<string> {
     const data = await get(ref(DATABASE, `Posts/${dataID}/postTitle`));
     return data.val();
   }
 
 
-// Get the slides associated with a post
-async getPostSlides(postId: string) {
-  const slideDataArray: SlideData[] = [];
-  for (let i = 0; i < 10; i++) {
-    const imgURL = await get(ref(DATABASE, `Posts/${postId}/postSlides/${i}/imgURL`));
-    const textData = await get(ref(DATABASE, `Posts/${postId}/postSlides/${i}/textData`));
-    if (imgURL.exists() || textData.exists()) {
-      const slideData: SlideData = {
-        imgURL: imgURL.val(),
-        textData: textData.val()
-      };
-      slideDataArray.push(slideData);
-    } else {
-      break;
+  /**
+   * Gets the post slides from a post ID
+   * 
+   * @param postId 
+   * @returns 
+   */
+  async getPostSlides(postId: string) {
+    const slideDataArray: SlideData[] = [];
+    for (let i = 0; i < 10; i++) {
+      const imgURL = await get(ref(DATABASE, `Posts/${postId}/postSlides/${i}/imgURL`));
+      const textData = await get(ref(DATABASE, `Posts/${postId}/postSlides/${i}/textData`));
+      if (imgURL.exists() || textData.exists()) {
+        const slideData: SlideData = {
+          imgURL: imgURL.val(),
+          textData: textData.val()
+        };
+        slideDataArray.push(slideData);
+      } else {
+        break;
+      }
     }
+    return slideDataArray;
   }
-  return slideDataArray;
-}
 
-
-
-
-    
   
-  
-  //Add a comment to a post
+  /**
+   * Add a new comment to a post
+   * 
+   * @param postID ID of post to add the comment on
+   * @param newComment Comment data to be added to the post
+   */
   async addComment(postID : string, newComment : CommentData){
     //Get comment list
     var post = await this.loadData(postID);
@@ -186,6 +216,11 @@ async getPostSlides(postId: string) {
     });
   }
 
+  /**
+   * Update the usernames of all comments in this post
+   * 
+   * @param postID The ID of the post to update comments on
+   */
   async updateCommentUsernames(postID : string){
     //Get comment list
     var post = await this.loadData(postID);
@@ -208,6 +243,12 @@ async getPostSlides(postId: string) {
   }
 
 
+  /**
+   * Remove a specified comment from the comments array stored by this post (And updates the database)
+   * 
+   * @param postID The post ID to remove the comment from
+   * @param comment The comment to be removed
+   */
   async deleteComment(postID : string, comment : CommentData){
     //Get comment list
     var post = await this.loadData(postID);
@@ -228,55 +269,16 @@ async getPostSlides(postId: string) {
     
   }
 
-  async likePost(postID :string, userID : string){
-    //Get likes list
-    var post = await this.loadData(postID);
-
-    //Append to comment list
-    if (!post.likes){
-      post.likes = new Array<string>;
-    } 
-
-    post.likes.push(userID);
-
-    //Update database
-    update(ref(DATABASE, "/Posts/" + postID), {
-      likes : post.likes
-    });
-
-    USER_MANAGER.addLikedPost(userID, postID);
-
-  }
-
-  async unlikePost(postID :string, userID : string){
-    //Get comment list
-    var post = await this.loadData(postID);
-
-    var updatedLikes = Object.values(post.likes);
-
-    let removeIndex = this.IndexOf(updatedLikes, userID);
-
-    if(removeIndex != -1){
-
-      updatedLikes.splice(removeIndex, 1);
-      //Update database
-      update(ref(DATABASE, "/Posts/" + postID), {
-        likes : updatedLikes
-      });
-
-    } else {
-      console.log("Like userID not found.");
-    }
-
-    //Get the index and splice over it, then update the database
-    USER_MANAGER.removeLikedPost(userID, postID);
-
-
-
-  }
-
 
   //normal index of uses strict equality, which doesnt work for what i need
+  /**
+   * Gets the index of the array that a comment is in.
+   * (Same thing as indexOf, index of does not work here because indexOf uses strict equality ===)
+   * 
+   * @param list The list of comments to search through
+   * @param comment The comment data
+   * @returns The index where the comment is in the array
+   */
   IndexOfComment(list : Array<CommentData>, comment: CommentData) {    
     for (var i = 0; i < list.length; i++) {
       //If the textdata and userdata is the same, return that index
@@ -288,15 +290,24 @@ async getPostSlides(postId: string) {
     return -1;
   }
 
-    //normal index of uses strict equality, which doesnt work for what i need
-    IndexOf(list : Array<String>, id: string) {    
-      for (var i = 0; i < list.length; i++) {
-        //If the textdata and userdata is the same, return that index
-          if (list[i] == id){
-            return i;
-          }
-             
-      }
-      return -1;
+
+  /**
+   * Gets the index of the array that a string is in. 
+   * (Same thing as indexOf, index of does not work here because indexOf uses strict equality ===)
+   * 
+   * @param list A list of IDs as strings
+   * @param id The ID we are searching for
+   * @returns The index where the string is within the array
+   */
+  IndexOf(list : Array<String>, id: string) {    
+    for (var i = 0; i < list.length; i++) {
+      //If the textdata and userdata is the same, return that index
+        if (list[i] == id){
+          return i;
+        }
+            
     }
+    return -1;
+  }
+
 }
