@@ -95,6 +95,4 @@ If you have issues, navigate to the homepage of the website. There you will find
 - Ian Rudy
 - Zachary Spiggle
 
-<h1 style = "font-size: 24px;"><strong>Liscense</strong></h1>
-
 Group 11 WVU
