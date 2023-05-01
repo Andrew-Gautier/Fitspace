@@ -12,7 +12,6 @@ This application is meant to bridge the fitness community together, and help eve
 
 
 <h1 style = "font-size: 24px;"><strong>Framework</strong></h1>
-<hr>
 
 Built with
 - HTML
@@ -29,8 +28,6 @@ Built with
 
 <h1 style = "font-size: 24px;"><strong>Features</strong></h1>
 
-<hr>
-
 - Profile Creation for trainer/trainee 
 - Create a post
 - Community Board
@@ -45,7 +42,7 @@ Built with
 
 
 <h1 style = "font-size: 24px;"><strong>Tutorial</strong></h1>
-<hr>
+
 - Go to Fitspace (add link for website)
 
 - Registration
@@ -61,7 +58,7 @@ Built with
     - Users are able to edit their profile page with their information so other users may reach out to them.
 
 <h1 style = "font-size: 24px;"><strong>API's & Refreneces </strong></h1>
-<hr>
+
 
 - Firebase Documentation (link)
 - Angular Documentation (liink)
@@ -69,21 +66,18 @@ Built with
 <h1 style = "font-size: 24px;"><strong>Contribute
 </strong></h1>
 
-<hr>
 
 - Issue tracker (link to git)
 - Source code (link to git)
 
 <h1 style = "font-size: 24px;"><strong>Support</strong></h1>
 
-<hr>
 
 If you issues, navigate to the homepage of the website. There you will find a link to our contact information. 
 
 
 <h1 style = "font-size: 24px;"><strong>Credits</strong></h1>
 
-<hr>
 
 - Brendan Bolduc
 - Jonathan Dofka
@@ -95,5 +89,5 @@ If you issues, navigate to the homepage of the website. There you will find a li
 - Zachary Spiggle
 
 <h1 style = "font-size: 24px;"><strong>Liscense</strong></h1>
-<hr>
+
 Group 11 WVU
