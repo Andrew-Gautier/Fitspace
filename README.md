@@ -61,8 +61,8 @@ Built with
 <h1 style = "font-size: 24px;"><strong>API's & Refreneces </strong></h1>
 
 
-- Firebase Documentation (link)
-- Angular Documentation (liink)
+- <a href="https://firebase.google.com/docs/"> Firebase Documentation</a>
+- <a href="https://angular.io/docs"> Angular Documentation</a>
 
 <h1 style = "font-size: 24px;"><strong>Contribute
 </strong></h1>
@@ -75,6 +75,12 @@ Built with
 
 
 If you issues, navigate to the homepage of the website. There you will find a link to our contact information. 
+
+<h1 style = "font-size: 24px;"><strong>Known Issues</strong></h1>
+
+- examples...
+- ...
+- ...
 
 
 <h1 style = "font-size: 24px;"><strong>Credits</strong></h1>
