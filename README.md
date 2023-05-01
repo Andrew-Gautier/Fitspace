@@ -38,3 +38,14 @@ Built with
 - Works on mobile smart phone
 
 
+Tutorial
+
+API's & Refreneces
+
+Contribute
+
+Support
+
+Credits
+
+Liscense
