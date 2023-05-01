@@ -1,7 +1,12 @@
-import { Component, Injectable, OnInit } from "@angular/core";
-import * as firebase from "firebase/compat";
-import { getDatabase, get, ref, remove, set, update, child, onValue } from "firebase/database";
+/**
+ * @author Zachary Spiggle
+ * @date 3/27/23
+ * 
+ * This object operates as an interface between client and the server for User content
+ */
 
+import { Component, Injectable, OnInit } from "@angular/core";
+import { getDatabase, get, ref, remove, set, update, child, onValue } from "firebase/database";
 import { DATABASE, app } from "src/main";
 import { UserData } from "./userData";
 
@@ -13,9 +18,14 @@ export class UserManager{
   userPath = "https://fitspace-ba5a9-default-rtdb.firebaseio.com/Users/";
   
   //Reference to the a map of different users and their data
-  dataLoaded : any;//Map<any, any>; 
+  dataLoaded : any;
 
-  //Load a singular User from firebase
+  /**
+   * Asynchronous method to load a specified user Data object that contains information about a single user
+   * 
+   * @param dataID The ID of the user object we want
+   * @returns A promise for the UserData object of the user that has the same ID as our parameter
+   */
   async loadData(dataID : string) : Promise<UserData> {
 
     var data = await get(ref(DATABASE, 'Users/' + dataID));
@@ -56,50 +66,15 @@ export class UserManager{
     return userdata;
   }
 
-  //Creates a new post and uploads it to firebase, newDataInfo MUST BE A UserData OBJECT!!!
-  // async createData(newDataInfo : UserData){ 
-  //   console.log("MADE ACCOUNT")
-  //   console.log(newDataInfo);
-  //   //Update database
-  //   await set(ref(DATABASE, "/Users/" + newDataInfo.userID), {
-  //     userID : newDataInfo.userID,
-  //     displayName : newDataInfo.displayName,
-  //     trainerAccount : newDataInfo.trainerAccount,
-  //     location : newDataInfo.location,
-  //     affilate : newDataInfo.affilate,
-  //     primaryService : newDataInfo.primaryService
-  //   }).then(() => { 
-  //     console.log("Success?");
-  //   }).catch(error => {
-  //     console.log("There was an error setting data");
-  //     console.log(error);
-  //   });
+  /**
+   * A method to create data in the firebase realtime database for a new user
+   * 
+   * @param newDataInfo A UserData object that contains the information about the post to store in the database
+   */
+  async createData(newDataInfo : UserData){
 
-  // }
-
-
-    //Creates a new post and uploads it to firebase, newDataInfo MUST BE A PostData OBJECT!!!
-    async createData(newDataInfo : UserData){
-
-      //console.log(newDataInfo);
-  
-      //Set data in database
-      set(ref(DATABASE, "/Users/" + newDataInfo.userID), {
-        userID : newDataInfo.userID,
-        displayName : newDataInfo.displayName,
-        trainerAccount : newDataInfo.trainerAccount,
-        location : newDataInfo.location,
-        affilate : newDataInfo.affilate,
-        primaryService : newDataInfo.primaryService
-      });
-  
-    }
-
- 
-  //Updates userdata of dataID with the parameters given
-  updateData(newDataInfo : UserData){
-
-    update(ref(DATABASE, "/Users/" + newDataInfo.userID), {
+    //Set data in database
+    set(ref(DATABASE, "/Users/" + newDataInfo.userID), {
       userID : newDataInfo.userID,
       displayName : newDataInfo.displayName,
       trainerAccount : newDataInfo.trainerAccount,
@@ -110,66 +85,28 @@ export class UserManager{
 
   }
 
+  /**
+   * Update the Trainer status for a user stored in the database
+   * 
+   * @param userID The user ID to update the trainer status of
+   * @param trainer A boolean that describes the trainer status of the user
+   */
   updateTrainer(userID : string, trainer : boolean){
     update(ref(DATABASE, "/Users/" + userID), {
       trainerAccount : trainer,
     });
   }
 
+    /**
+   * Update the Trainer status for a user stored in the database
+   * 
+   * @param userID The user ID to update the trainer status of
+   * @param admin A boolean that describes the admin status of the user
+   */
   updateAdmin(userID : string, admin : boolean){
     update(ref(DATABASE, "/Users/" + userID), {
       admin : admin,
     });
-  }
-
-
-  //remove the data that has dataID from the firebase
-  removeData(dataID: string){
-
-    const db = getDatabase(app);
-
-    remove(ref(db, "/Users/" + dataID));
-
-    return true;
-  }
-  
-  async addLikedPost(userID: string, postID : string){
-    //Get likes list
-    var user = await this.loadData(userID);
-
-    user.likedPosts = Object.values(user.likedPosts);
-    //Append to comment list
-    if (!user.likedPosts){
-      user.likedPosts = new Array<string>;
-    } 
-
-    user.likedPosts.push(postID);
-
-    //Update database
-    update(ref(DATABASE, "/Users/" + userID), {
-      likedPosts : user.likedPosts
-    });
-  }
-
-  async removeLikedPost(userID : string, postID : string){
-
-    var user = await this.loadData(userID);
-    let updatedUserLikes = Object.values(user.likedPosts);
-
-    let removeIndexUser = this.IndexOf(updatedUserLikes, postID);
-
-
-    if(removeIndexUser != -1){
-
-      updatedUserLikes.splice(removeIndexUser, 1);
-      //Update database
-      update(ref(DATABASE, "/Users/" + userID), {
-        likedPosts : updatedUserLikes
-      });
-
-    } else {
-      console.log("User Like PostID not found.");
-    }
   }
 
   constructor(){
@@ -177,50 +114,75 @@ export class UserManager{
   }
 
 
-    //normal index of uses strict equality, which doesnt work for what i need
-    IndexOf(list : Array<String>, id: string) {    
-        for (let i = 0; i < list.length; i++) {
-            if (list[i] == id){
-              return i;
-            }
-        }
-        return -1;
-    }
+  /**
+   * Update the display name for a user
+   * 
+   * @param userID The user ID of the user to update
+   * @param newName A string of the new name to update the current display name to
+   */
+  updateDisplayname(userID : string, newName : string){
+    update(ref(DATABASE, "/Users/" + userID), {
+      displayName : newName
+    });
+  }
 
+  /**
+   * Update the email for a user
+   * 
+   * @param userID The user ID of the user to update
+   * @param newName A string of the new email to update the current email to
+   */
+  updateEmail(userID : string, newName : string){
+    update(ref(DATABASE, "/Users/" + userID), {
+      email : newName
+    });
+  }
 
-    updateDisplayname(userID : string, newName : string){
-      update(ref(DATABASE, "/Users/" + userID), {
-        displayName : newName
-      });
-    }
+  /**
+   * Update the affliate for a user
+   * 
+   * @param userID The user ID of the user to update
+   * @param newName A string of the new affliate to update the current affliate to
+   */
+  updateAffliate(userID : string, newName : string){
+    update(ref(DATABASE, "/Users/" + userID), {
+      affilate : newName
+    });
+  }
 
-    updateEmail(userID : string, newName : string){
-      update(ref(DATABASE, "/Users/" + userID), {
-        email : newName
-      });
-    }
+  /**
+   * Update the service for a user
+   * 
+   * @param userID The user ID of the user to update
+   * @param newName A string of the new service to update the current service to
+   */
+  updateService(userID : string, newName : string){
+    update(ref(DATABASE, "/Users/" + userID), {
+      primaryService : newName
+    });
+  }
 
-    updateAffliate(userID : string, newName : string){
-      update(ref(DATABASE, "/Users/" + userID), {
-        affilate : newName
-      });
-    }
+  /**
+   * Update the location for a user
+   * 
+   * @param userID The user ID of the user to update
+   * @param newName A string of the new location to update the current location to
+   */
+  updateLocation(userID : string, newName : string){
+    update(ref(DATABASE, "/Users/" + userID), {
+      location : newName
+    });
+  }
 
-    updateService(userID : string, newName : string){
-      update(ref(DATABASE, "/Users/" + userID), {
-        primaryService : newName
-      });
-    }
-
-    updateLocation(userID : string, newName : string){
-      update(ref(DATABASE, "/Users/" + userID), {
-        location : newName
-      });
-    }
-
-    updateBio(userID : string, newBio : string){
-      update(ref(DATABASE, "/Users/" + userID), {
-        bio : newBio
-      });
-    }
+    /**
+   * Update the bio for a user
+   * 
+   * @param userID The user ID of the user to update
+   * @param newName A string of the new bio to update the current bio to
+   */
+  updateBio(userID : string, newBio : string){
+    update(ref(DATABASE, "/Users/" + userID), {
+      bio : newBio
+    });
+  }
 }
