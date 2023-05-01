@@ -58,6 +58,7 @@ Built with
 
 <strong style = "font-size: 24px;">API's & Refreneces </strong>
 <hr>
+
 - Firebase Documentation (link)
 - Angular Documentation (liink)
 
