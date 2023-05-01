@@ -14,11 +14,11 @@ This application is meant to bridge the fitness community together, and help eve
 <h1 style = "font-size: 24px;"><strong>Framework</strong></h1>
 
 Built with
-- HTML
-- CSS
-- TypeScript
-- BootStrap
-- Angular
+- <a href="https://www.w3schools.com/html/"> HTML</a>
+- <a href="https://www.w3schools.com/css/default.asp">CSS</a>
+- <a href="https://www.typescriptlang.org/">TypeScript</a>
+- <a href="https://getbootstrap.com/">BootStrap</a>
+- <a href="https://angular.io/">Angular</a>
 
 <pre>
         _______               __
