@@ -19,13 +19,13 @@ Built with
 - TypeScript
 - BootStrap
 - Angular
-
+<pre>
         _______               __
        /  ___ /___    ____  _| |_  _   _  ___  ___      ____
       /  /_   / _ \ / __  \  |  _|| | | |/  _|/ _ \   / -__/ 
      /  __/  /  __ / /__/  \ | |_ | |_| || | /  __|_ /  /
     /_/      \___/ \__,__/\_\\___| \___/ |_| \___//___ /
-
+</pre>
 <h1 style = "font-size: 24px;"><strong>Features</strong></h1>
 
 - Profile Creation for trainer/trainee 
