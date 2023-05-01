@@ -11,7 +11,7 @@ Welcome to FitSpace! A fitness social media application student project.
 This application is meant to bridge the fitness community together, and help everyone reach their own fitness goals.
 
 
-<strong style = "font-size: 18px;">Framework</strong>
+<h1 style = "font-size: 24px;"><strong>Framework</strong></h1>
 <hr>
 
 Built with
@@ -27,6 +27,10 @@ Built with
      /  __/  /  __ / /__/  \ | |_ | |_| || | /  __|_ /  /
     /_/      \___/ \__,__/\_\\___| \___/ |_| \___//___ /
 
+<h1 style = "font-size: 24px;"><strong>Features</strong></h1>
+
+<hr>
+
 - Profile Creation for trainer/trainee 
 - Create a post
 - Community Board
@@ -40,7 +44,7 @@ Built with
 - Works on mobile smart phone
 
 
-<strong style = "font-size: 24px;">Tutorial</strong>
+<h1 style = "font-size: 24px;"><strong>Tutorial</strong></h1>
 <hr>
 - Go to Fitspace (add link for website)
 
@@ -56,28 +60,28 @@ Built with
 - Profile Page
     - Users are able to edit their profile page with their information so other users may reach out to them.
 
-<strong style = "font-size: 24px;">API's & Refreneces </strong>
+<h1 style = "font-size: 24px;"><strong>API's & Refreneces </strong></h1>
 <hr>
 
 - Firebase Documentation (link)
 - Angular Documentation (liink)
 
-<strong style = "font-size: 24px;">Contribute
-</strong>
+<h1 style = "font-size: 24px;"><strong>Contribute
+</strong></h1>
 
 <hr>
 
 - Issue tracker (link to git)
 - Source code (link to git)
 
-<strong style = "font-size: 24px;">Support</strong>
+<h1 style = "font-size: 24px;"><strong>Support</strong></h1>
 
 <hr>
 
 If you issues, navigate to the homepage of the website. There you will find a link to our contact information. 
 
 
-<strong style = "font-size: 24px;">Credits</strong>
+<h1 style = "font-size: 24px;"><strong>Credits</strong></h1>
 
 <hr>
 
@@ -90,6 +94,6 @@ If you issues, navigate to the homepage of the website. There you will find a li
 - Ian Rudy
 - Zachary Spiggle
 
-<strong style = "font-size: 24px;">Liscense</strong>
+<h1 style = "font-size: 24px;"><strong>Liscense</strong></h1>
 <hr>
 Group 11 WVU
