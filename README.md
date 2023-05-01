@@ -12,6 +12,7 @@ This application is meant to bridge the fitness community together, and help eve
 
 
 Framework
+<hr>
 Built with
 - HTML
 - CSS
@@ -39,6 +40,7 @@ Built with
 
 
 Tutorial
+<hr>
 - Go to Fitspace (add link for website)
 
 - Registration
@@ -54,7 +56,7 @@ Tutorial
     - Users are able to edit their profile page with their information so other users may reach out to them.
 
 API's & Refreneces
-
+<hr>
 - Firebase Documentation (link)
 - Angular Documentation (liink)
 
@@ -69,6 +71,7 @@ If you issues, navigate to the homepage of the website. There you will find a li
 
 
 Credits
+<hr>
 - Brendan Bolduc
 - Jonathan Dofka
 - Olivia Ecock
@@ -79,5 +82,5 @@ Credits
 - Zachary Spiggle
 
 Liscense
-
+<hr>
 Group 11 WVU
