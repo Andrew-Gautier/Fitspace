@@ -13,6 +13,7 @@ This application is meant to bridge the fitness community together, and help eve
 
 <strong style = "font-size: 18px;">Framework</strong>
 <hr>
+
 Built with
 - HTML
 - CSS
@@ -39,7 +40,7 @@ Built with
 - Works on mobile smart phone
 
 
-<strong style = "font-size: 18px;">Tutorial</strong>
+<strong style = "font-size: 24px;">Tutorial</strong>
 <hr>
 - Go to Fitspace (add link for website)
 
@@ -55,23 +56,30 @@ Built with
 - Profile Page
     - Users are able to edit their profile page with their information so other users may reach out to them.
 
-<strong style = "font-size: 18px;">API's & Refreneces </strong>
+<strong style = "font-size: 24px;">API's & Refreneces </strong>
 <hr>
 - Firebase Documentation (link)
 - Angular Documentation (liink)
 
-<strong style = "font-size: 18px;">Contribute
+<strong style = "font-size: 24px;">Contribute
 </strong>
+
+<hr>
+
 - Issue tracker (link to git)
 - Source code (link to git)
 
-<strong style = "font-size: 18px;">Support</strong>
+<strong style = "font-size: 24px;">Support</strong>
+
+<hr>
 
 If you issues, navigate to the homepage of the website. There you will find a link to our contact information. 
 
 
-<strong style = "font-size: 18px;">Credits</strong>
+<strong style = "font-size: 24px;">Credits</strong>
+
 <hr>
+
 - Brendan Bolduc
 - Jonathan Dofka
 - Olivia Ecock
@@ -81,6 +89,6 @@ If you issues, navigate to the homepage of the website. There you will find a li
 - Ian Rudy
 - Zachary Spiggle
 
-<strong style = "font-size: 18px;">Liscense</strong>
+<strong style = "font-size: 24px;">Liscense</strong>
 <hr>
 Group 11 WVU
