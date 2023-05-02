@@ -1,6 +1,6 @@
 # Fitspace
 https://github.com/
-![alt text](https://github.com/WVU-CS230-2023-01-Group11/FitSpace/tree/main/Readme%20Screenshots/Home.png?raw=true)
+![alt text](https://github.com/WVU-CS230-2023-01-Group11/FitSpace/blob/main/Readme%20Screenshots/Home.png?raw=true)
 
 <pre>
     _______ __  _____                     
