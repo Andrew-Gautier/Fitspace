@@ -56,9 +56,9 @@ Calculator your BMI and other fitness related equations with our built in tools.
 
 
 <h1 style = "font-size: 20px;"><strong>Additional Features</strong></h1> 
-- Community Guidlines
-- Works on mobile smart phone
-- Bug support (Email
+- Community Guidlines<br>
+- Works on mobile smart phone<br>
+- Bug support<br>
 
 
 <h1 style = "font-size: 24px;"><strong>Tutorial</strong></h1>
