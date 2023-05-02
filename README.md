@@ -38,7 +38,7 @@ Create posts and share anything fitness and wellbeing with the community.
 
 <h2 style = "font-size: 20px;"><strong>Community</strong></h2>
 
-![Community ScreenShot](https://github.com/WVU-CS230-2023-01-Group11/FitSpace/blob/main/Readme%20Screenshots/Community.png?raw=true
+![Community ScreenShot](https://github.com/WVU-CS230-2023-01-Group11/FitSpace/blob/main/Readme%20Screenshots/Community.png?raw=true)
 
 Interact with others on our community page. View posts from verified trainers and find your next workout.
 
