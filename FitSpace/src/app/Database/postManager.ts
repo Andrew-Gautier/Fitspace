@@ -51,7 +51,7 @@ export class PostManager {
   
 
   /**
-   * Asynchronous method to load a specified Post Data object that contains informatio nabout a single post
+   * Asynchronous method to load a specified Post Data object that contains information about a single post
    * 
    * @param dataID The ID of the post object we want
    * @returns A promise for the PostData object of the post that has the same ID as our parameter
@@ -100,9 +100,9 @@ export class PostManager {
   }
 
   /**
-   * A method to create data in the firebase realtime database
+   * A method to create data in the firebase realtime database for a new post
    * 
-   * @param newDataInfo A PostData object that contains the information about the postto store in the database
+   * @param newDataInfo A PostData object that contains the information about the post to store in the database
    */
   createData(newDataInfo : PostData){
 
@@ -137,7 +137,7 @@ export class PostManager {
   /**
    * Remove a post from the realtime database 
    * 
-   * @param dataID ID of the post you want to remove
+   * @param dataID A string ID of the post you want to remove
    */
   removeData(dataID: string){ 
     remove(ref(DATABASE, "/Posts/" + dataID));
@@ -165,8 +165,8 @@ export class PostManager {
   /**
    * Gets the post slides from a post ID
    * 
-   * @param postId 
-   * @returns 
+   * @param postId String id of post to get slides from 
+   * @returns An array of SlideData that contains information for each slide of the post
    */
   async getPostSlides(postId: string) {
     const slideDataArray: SlideData[] = [];
@@ -190,8 +190,8 @@ export class PostManager {
   /**
    * Add a new comment to a post
    * 
-   * @param postID ID of post to add the comment on
-   * @param newComment Comment data to be added to the post
+   * @param postID String ID of post to add the comment on
+   * @param newComment CommentData to be added to the post
    */
   async addComment(postID : string, newComment : CommentData){
     //Get comment list

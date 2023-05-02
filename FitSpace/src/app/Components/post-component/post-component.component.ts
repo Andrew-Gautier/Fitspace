@@ -2,7 +2,7 @@
  * @author Zachary Spiggle
  * @date 4/03/23
  * 
- * This object operates as an interface between client and the server for User content
+ * This object is used to handle interactions and display a post
  */
 
 import { Component, Input, OnInit } from '@angular/core';
