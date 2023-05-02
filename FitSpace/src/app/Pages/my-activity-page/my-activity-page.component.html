@@ -5,128 +5,172 @@
     <h1>My Activity</h1>
   </div>
 
-  <!-- Workout metrics card -->
+  <!-- BMI card -->
   <div class="d-flex justify-content-center" style="padding-top: 2.5%; padding-bottom: 5%;">
     <div class="d-flex flex-wrap justify-content-center">
-      <div style="padding-left: 2.5%; padding-right: 2.5%; padding-bottom: 1.25%; padding-top: 1.25%; color: white;">
-        <!--New-->
-        <h3>Workout metrics</h3>
+      <div style="padding-left: 2.5%; padding-right: 2.5%; padding-bottom: 1.25%; padding-top: 1.25%;">
 
-        <p>Workouts may be specified using single-word names such as "core", "running", "jogging", "Monday", "Tuesday",
-          etc.<br />
-          Workout durations may be selected by using the slider.<br />
-        </p>
-        <div class="input-group">
-          <span class="input-group-text">Enter a workout name (core, running, etc.):</span>
+        <div class="card"
+          style=" border-color: #123488; border-radius: 5px; border-width: 2px; background-color: #EEEEEE ;  width:80vw; height: 170vh; ">
 
-          <!-- JavaScript finds "activity" value using "id=" value -->
-          <input type="text" class="form-control" ngModel name="activity" id="activity">
-        </div>
-        <div class="d-flex justify-content-center" style="padding:2.5%; color: white;">
-          <!-- JavaScript finds "duration" value using "document.slider.duration.value" -->
-          <form name="slider" oninput="duration.value = slider.value">
-            <label>Select workout duration:</label><br />
-            <input type="range" id="slider" min="0" max="600" step="1" value="0"> <br />
+          <div class="d-flex justify-content-center" style="padding-top: 2.5%; padding-bottom: 2.5%;">
+            <h1 style="font-size: larger; color: black;"><b>Body Mass Index (BMI) and Calorie Counter</b>
+            </h1>
+          </div>
 
-            <output name="duration" for="slider">0</output> minutes
-          </form>
-        </div>
+          <div class="d-flex justify-content-center" style=" padding-bottom: 2.5%;">
+            <img src="../../assets/BMIchart.png" class="card-img-top" alt="BMI graphic"
+              style="width: 60vw; height:auto;border-color: #123488;">
+          </div>
 
-        <button type="button" id="submit" onclick="logActivity()">Submit</button>
-        <br />
-        <span id="logMessage"></span>
-      </div>
-    </div>
-  </div>
-</div>
+          <div class="d-flex justify-content-center"
+            style="padding-left: 2.5%; padding-right: 2.5%; padding-bottom: 2.5%;">
+          </div>
 
-<!-- BMI card -->
-<div class="d-flex justify-content-center" style="padding-top: 2.5%; padding-bottom: 5%;">
-  <div class="d-flex flex-wrap justify-content-center">
-    <div style="padding-left: 2.5%; padding-right: 2.5%; padding-bottom: 1.25%; padding-top: 1.25%;">
+          <div class="d-flex justify-content-left" style="padding:2.5%">
 
-      <div class="card"
-        style=" border-color: #123488; border-radius: 5px; border-width: 2px; background-color: #EEEEEE ;  width:25vw; height: 60vh; ">
+            <div class="row-one">
+              <h2 class="text">To calculate your BMI, please enter your height and weight.</h2>
+              <br />
+              <h2 class="text">To calculate your daily caloric intake, please include all information below.</h2>
+              <br /><br />
+              <p class="text">Enter your Age:</p>
+              <input type="text" class="text-input" id="age" autocomplete="off" required />
 
-        <div class="d-flex justify-content-center" style="padding-top: 2.5%; padding-bottom: 2.5%;">
-          <h1 style="font-size: larger; color: black;"><strong>Body Mass Index (BMI)</strong></h1>
-        </div>
+              <label class="container">
+                <p class="text">Female</p>
+                <input type="radio" name="radio" id="f">
+                <span class="checkmark"></span>
+              </label>
+              <label class="container">
+                <p class="text">Male</p>
+                <input type="radio" name="radio" id="m">
+                <span class="checkmark"></span>
+              </label>
 
-        <div class="d-flex justify-content-center" style=" padding-bottom: 2.5%;">
-          <img src="../../assets/BMIchart.png" class="card-img-top" alt="BMI graphic"
-            style="width: 20vw; height:auto;border-color: #123488;">
-        </div>
-
-        <div class="d-flex justify-content-center"
-          style="padding-left: 2.5%; padding-right: 2.5%; padding-bottom: 2.5%;">
-        </div>
-
-        <div class="d-flex justify-content-left" style="padding:2.5%">
-          <!-- JavaScript finds "duration" value using "document.heightbar.height.value" -->
-          <form name="heightbar" oninput="height.value = slider.value">
-            <label>Select height:</label><br />
-            <input type="range" id="slider" min="0" max="108" step="1" value="0"> <br />
-
-            <output name="height" for="slider">0</output> inches
-          </form>
-        </div>
-        <div class="d-flex justify-content-left" style="padding:2.5%">
-          <!-- JavaScript finds "duration" value using "document.weightbar.weight.value" -->
-          <form name="weightbar" oninput="weight.value = slider.value">
-            <label>Select weight:</label><br />
-            <input type="range" id="slider" min="0" max="600" step="1" value="0"> <br />
-
-            <output name="weight" for="slider">0</output> pounds
-          </form>
-          <br />
-        </div>
-
-        <button type="button" id="submit" onclick="calculateBMI()">Submit</button>
-        <br />
-        <p style="margin-top: 1em;font-size: 1.2em;">
-          <span id="bmiValue"></span>
-        </p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Workout Data Visualization card -->
-<div class="d-flex justify-content-center" style="padding-top: 2.5%; padding-bottom: 5%;">
-  <div class="d-flex flex-wrap justify-content-center">
-    <div style="padding-left: 2.5%; padding-right: 2.5%; padding-bottom: 1.25%; padding-top: 1.25%;">
-
-      <div class="card"
-        style=" border-color: #123488; border-radius: 5px; border-width: 2px; background-color: #EEEEEE ;  width:25vw; height: 60vh; ">
-
-
-        <div class="d-flex justify-content-center" style="padding-top: 2.5%; padding-bottom: 2.5%;">
-          <h1 style="font-size: larger;"><strong>Workout Data Visualization</strong></h1>
-        </div>
-
-        <div class="d-flex justify-content-center" style=" padding-bottom: 2.5%;">
-    
-          <img src="../../assets/Activity.png" class="card-img-top" alt="Activity graphic"
-            style="width: 20vw; height:auto;border-color: #123488;">
-        </div>
-        <button type="button" id="submit" onclick="setChartOptions()">Submit</button>
-        <div class="d-flex justify-content-center "
-          style="padding-left: 2.5%; padding-right: 2.5%; padding-bottom: 2.5%;">
-          <p>Past Workouts</p>
-        </div>
-
-        <!--
-      <activity-post-card img="../../assets/Activity.png" title="Workout Data Visualization"
-        description="Past Workouts"></activity-post-card>
-  -->
-        <div class="d-flex justify-content-center" style=" padding-bottom: 2.5%;">
-          <div>
-            <!-- Bar Chart using CanvasJS -->
-            <div>
-              <canvasjs-chart [options]="chartOptions" [styles]="{width: '100%', height:'360px'}"></canvasjs-chart>
-              <div id="chartContainer" style="height: 300px; width: 100%;"></div>
+              <p class="text">Height</p>
+              <input type="text" class="text-input" id="heightft" autocomplete="off" required>
+              <p class="text">feet</p>
+              <input type="text" class="text-input" id="heightin" autocomplete="off" required>
+              <p class="text">inches</p>
+              <br />
+              <p class="text">Weight</p>
+              <input type="text" class="text-input" id="weight" autocomplete="off" required>
+              <p class="text">pounds</p>
+              <br />
+              <p class="text">Number of hours walked per week: </p>
+              <input type="text" class="text-input" id="walking" autocomplete="off" required>
+              <p class="text">hours</p>
+              <br />
+              <p class="text">Number of hours of cardiovascular activity per week: </p>
+              <input type="text" class="text-input" id="cardio" autocomplete="off" required>
+              <p class="text">hours</p>
             </div>
           </div>
+
+          <div class="d-flex justify-content-left" style="padding:2.5%">
+            <button type="button" id="submit" onclick="calculateBMI()">Submit</button>
+          </div>
+
+          <div>
+            <p style="padding-left: 2.5%; font-size: 1.2em;">
+              <span id="bmiValue"></span>
+            </p>
+            <p style="padding-left: 2.5%; font-size: 1.2em;">
+              <span id="gainValue"></span>
+            </p>
+            <p style="padding-left: 2.5%; margin-top: 1em;font-size: 1.2em;">
+              <span id="maintainValue"></span>
+            </p>
+            <p style="padding-left: 2.5%; margin-top: 1em;font-size: 1.2em;">
+              <span id="loseValue"></span>
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Workout Data Visualization card -->
+  <div class="d-flex justify-content-center" style="padding-top: 2.5%; padding-bottom: 5%;">
+    <div class="d-flex flex-wrap justify-content-center">
+      <div style="padding-left: 2.5%; padding-right: 2.5%; padding-bottom: 1.25%; padding-top: 1.25%;">
+
+        <div class="card"
+          style=" border-color: #123488; border-radius: 5px; border-width: 2px; background-color: #EEEEEE ;  width:80vw; height: 170vh; ">
+
+          <div
+            style="padding-left: 2.5%; padding-right: 2.5%; padding-bottom: 1.25%; padding-top: 1.25%; color: black;">
+            
+            <div class="d-flex justify-content-center" style="padding-top: 2.5%; padding-bottom: 2.5%;">
+              <h1 style="font-size: larger; color: black;"><b>Workout Data Visualization</b></h1>
+            </div>
+
+            <div class="d-flex justify-content-center" style=" padding-bottom: 2.5%;">
+
+              <img src="../../assets/Activity.png" class="card-img-top" alt="Activity graphic"
+                style="width: 10vw; height:auto;border-color: #123488;">
+            </div>
+
+            <p>Enter the number of minutes per day for each workout. Press Submit to record this data for visualization.
+            </p>
+ 
+            <div class="d-flex justify-content-center" style="padding:2.5%; color: black;">
+              <div>
+                <p class="text">Sunday</p>
+                <input type="text" class="text-input" id="sunday" autocomplete="off" required>
+                <p class="text">minutes</p>
+              </div>
+              <div>
+                <p class="text">Monday</p>
+                <input type="text" class="text-input" id="monday" autocomplete="off" required>
+                <p class="text">minutes</p>
+              </div>
+              <div>
+                <p class="text">Tuesday</p>
+                <input type="text" class="text-input" id="tuesday" autocomplete="off" required>
+                <p class="text">minutes</p>
+              </div>
+              <div>
+                <p class="text">Wednesday</p>
+                <input type="text" class="text-input" id="wednesday" autocomplete="off" required>
+                <p class="text">minutes</p>
+              </div>
+              <div>
+                <p class="text">Thursday</p>
+                <input type="text" class="text-input" id="thursday" autocomplete="off" required>
+                <p class="text">minutes</p>
+              </div>
+              <div>
+                <p class="text">Friday</p>
+                <input type="text" class="text-input" id="friday" autocomplete="off" required>
+                <p class="text">minutes</p>
+              </div>
+              <div>
+                <p class="text">Saturday</p>
+                <input type="text" class="text-input" id="saturday" autocomplete="off" required>
+                <p class="text">minutes</p>
+              </div>
+
+            </div>
+
+            <button type="button" id="submit" (click)="workoutData()">Submit</button>
+            <br />
+            <span id="totalMessage">Totals</span>
+          </div>
+
+          <br><br>
+          <div class="d-flex justify-content-left" style="padding-left: 20%; padding-bottom: 2.5%;">
+            <div>
+              <!-- Bar Chart using CanvasJS -->
+              <canvasjs-chart [options]="chartOptions" (chartInstance)="getChartInstance($event)"
+                [styles]="{width: '100%', height:'360px'}"></canvasjs-chart>
+              <div id="chartContainer" style="height: 360px; width: 100%;"></div>
+              
+            </div>
+          </div>
+
         </div>
       </div>
     </div>

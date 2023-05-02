@@ -7,12 +7,10 @@ h1{
   color: white;
 }
 
-h3{
-  color: white;
-}
-
-.input-group {
-  
+h2 {
+  font-size: 22px;
+  font-weight: 300;
+  text-align: center;
 }
 
 /* BMI */
@@ -34,20 +32,12 @@ h3{
   transform: scale(1.02);
 }
 
-.row-one {
-  padding: 20px;
-}
-
-.row-two {
-  padding: 20px;
-}
-
 .text-input {
   width: 60px;
   height: 20px;
   border-radius: 10px;
   background-color: #dbeffe;
-  border: none;
+  /*border: none; */
   outline: none;
   padding: 5px 10px;
   cursor: pointer;
@@ -83,13 +73,6 @@ h3{
   margin: 5px 20px 5px 8px;;
 }
 
-.row-one {
-  padding: 30px 20px 15px 20px;
-}
-.row-two {
-  padding: 15px 20px 30px 20px;
-}
-
 .container {
   display: inline-block;
   position: relative;
@@ -119,43 +102,4 @@ h3{
 
 .container input:checked ~ .checkmark {
   background-color: #289df6;
-}
-
-h2 {
-  font-size: 22px;
-  font-weight: 300;
-  text-align: center;
-}
-
-h3 {
-  font-size: 24px;
-  font-weight: 300;
-  text-align: center;
-  padding: 15px;
-}
-
-h3 b {
-  font-size: 32px;
-  font-weight: 300;
-  color: #289df6;
-}
-
-.checkmark:after {
-  content: "";
-  position: absolute;
-  display: none;
-}
-
-.container input:checked ~ .checkmark:after {
-  display: block;
-}
-
-.container .checkmark:after {
-  left: 9px;
-  top: 5px;
-  width: 5px;
-  height: 10px;
-  border: solid white;
-  border-width: 0 2px 2px 0;
-  transform: rotate(45deg);
 }

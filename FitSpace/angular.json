@@ -28,6 +28,7 @@
               "src/styles.css"
             ],
             "scripts": [
+              "src/assets/MyActivityVar.js",
               "src/assets/MyActivity.js"
             ]
           },
