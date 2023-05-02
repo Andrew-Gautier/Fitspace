@@ -116,7 +116,7 @@
             <p>Enter the number of minutes per day for each workout. Press Submit to record this data for visualization.
             </p>
  
-            <div class="d-flex justify-content-center" style="padding:2.5%; color: black;">
+            <div class="weekdays d-flex justify-content-center" style="padding:2.5%; color: black;">
               <div>
                 <p class="text">Sunday</p>
                 <input type="text" class="text-input" id="sunday" autocomplete="off" required>
@@ -161,8 +161,8 @@
           </div>
 
           <br><br>
-          <div class="d-flex justify-content-left" style="padding-left: 20%; padding-bottom: 2.5%;">
-            <div>
+          <div class="chart d-flex justify-content-left">
+            <div class = "canvasChart">
               <!-- Bar Chart using CanvasJS -->
               <canvasjs-chart [options]="chartOptions" (chartInstance)="getChartInstance($event)"
                 [styles]="{width: '100%', height:'360px'}"></canvasjs-chart>
