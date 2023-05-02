@@ -31,21 +31,25 @@ Built with
 Customize your profile to be YOU. Help others connect with you and your brand.
 
 <h1 style = "font-size: 20px;"><strong>Post Creation</strong></h1>
+
 ![Create ScreenShot](https://github.com/WVU-CS230-2023-01-Group11/FitSpace/blob/main/Readme%20Screenshots/Create.png?raw=true)
 
 Create posts and share anything fitness and wellbeing with the community.
 
 <h1 style = "font-size: 20px;"><strong>Community</strong></h1>
+
 ![Community ScreenShot](https://github.com/WVU-CS230-2023-01-Group11/FitSpace/blob/main/Readme%20Screenshots/Community.png?raw=true
 
 Interact with others on our community page. View posts from verified trainers and find your next workout.
 
 <h1 style = "font-size: 20px;"><strong>Comments</strong></h1>
+
 ![Comments ScreenShot](https://github.com/WVU-CS230-2023-01-Group11/FitSpace/blob/main/Readme%20Screenshots/Comments.png?raw=true)
 
 Leave comments on your favorite posts and interact with others. Its not a community without each other.
 
 <h1 style = "font-size: 20px;"><strong>BMI Calculator</strong></h1>
+
 ![BMI Calculator ScreenShot](https://github.com/WVU-CS230-2023-01-Group11/FitSpace/blob/main/Readme%20Screenshots/BMI_Calculator.png?raw=true)
 
 Calculator your BMI and other fitness related equations with our built in tools. Know exactly what to do for you to meet your next goal.
