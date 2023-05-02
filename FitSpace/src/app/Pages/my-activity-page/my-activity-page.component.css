@@ -103,3 +103,24 @@ h2 {
 .container input:checked ~ .checkmark {
   background-color: #289df6;
 }
+
+.chart{
+  padding-left: 20%; 
+  padding-bottom: 2.5%;
+}
+
+.canvasChart{
+  width: 50vw;
+}
+
+@media (max-width: 768px) {
+  .chart{
+    padding-left: 0%;
+  }
+  .canvasChart{
+    width: 100vw;
+  }
+  .weekdays{
+    flex-direction: column;
+  }
+}
