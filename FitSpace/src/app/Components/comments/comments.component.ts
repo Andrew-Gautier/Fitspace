@@ -1,9 +1,15 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { SlideData } from 'src/app/Database/slideData';
-import { reload } from 'firebase/auth';
 import { CommentData } from 'src/app/Database/commentData';
 import { POST_MANAGER, USER_MANAGER } from 'src/main';
+
+/**
+ * @author Jonathan Dofka, Zachary Spiggle
+ * @date 04/05/2023
+ * 
+ * This component handles the community page functionality
+ */
 
 @Component({
   selector: 'app-comments',
@@ -13,23 +19,26 @@ import { POST_MANAGER, USER_MANAGER } from 'src/main';
 export class CommentsComponent {
 
   //Post information
-  postComments: Array<CommentData>;
-  postID: string | null;
-  postTitle: string | null;
-  Slides: Array<SlideData>
-  postSlides: any;
-  postUsername: any;
-  postUserID: any;
-  
-  
+  postComments: Array<CommentData>; //an array of comments for the post
+  postID: string | null; // ID of the post
+  postTitle: string | null; // Title of the post
+  Slides: Array<SlideData> //An array of slides for the post
+  postSlides: any; //Slides of the post
+  postUsername: any; // Username of the post owner
+  postUserID: any; // UserID of the pots owner
 
-  currentUserID : string;
-  authorized: boolean;
 
-  flexdirection = "flex-row";
 
-  //Default values in case no parameter was given, should not be called
-  constructor(private route: ActivatedRoute) { 
+  currentUserID: string; //ID of the current user
+  authorized: boolean; //Whether the current user is authorized for certain actions (deleting etc..)
+
+  flexdirection = "flex-row"; // The directon of the flex container for comment section
+
+  /**
+   * Creates an instance of CommentsComponent.
+   * @param {ActivatedRoute} route - The current route
+   */
+  constructor(private route: ActivatedRoute) {
     this.postComments = [];
     this.postID = this.route.snapshot.paramMap.get('id');
     this.Slides = [];
@@ -38,14 +47,18 @@ export class CommentsComponent {
     this.authorized = false;
     this.loadData();
     this.setTitle();
-    
-    if(window.innerWidth < 600){
+
+    //set flex direction based on screen size
+    if (window.innerWidth < 600) {
       this.flexdirection = "flex-column"
     }
-    
+
   }
 
-  // Set the title of the post 
+  /**
+   * Sets the title of the post.
+   * @returns {Promise<void>} - A promise that resolves when the title is set
+   */
   async setTitle(): Promise<void> {
     if (this.postID) {
       const title = await POST_MANAGER.getPostTitle(this.postID);
@@ -53,15 +66,18 @@ export class CommentsComponent {
     }
   }
 
-  
 
-  //Load data related to the post 
-  async loadData(){
+
+  /**
+   * Loads data related to the post.
+   */
+  async loadData() {
     if (this.postID) {
       await POST_MANAGER.updateCommentUsernames(this.postID);
       this.Slides = await POST_MANAGER.getPostSlides(this.postID);
 
-      POST_MANAGER.loadData(this.postID).then( (data) => {
+      //Load data for the post
+      POST_MANAGER.loadData(this.postID).then((data) => {
         this.postComments = data.comments;
         this.postSlides = data.slides;
         this.postUserID = data.userID
@@ -69,27 +85,33 @@ export class CommentsComponent {
       })
     }
 
-    USER_MANAGER.loadData(sessionStorage.getItem("currentUserID")!).then( (data) => {
+    // Load data for the current user
+    USER_MANAGER.loadData(sessionStorage.getItem("currentUserID")!).then((data) => {
       this.currentUserID = data.userID;
-      if(data.admin == true){
+      if (data.admin == true) {
         this.authorized = true;
       }
     })
   }
 
 
-  // in your component class
+  /**
+   * Reverses the order of the comments.
+   */
   reverseComments() {
     this.postComments.reverse();
   }
 
 
-  //Add a new comment to the database
+  /**
+   * Adds a new comment to the database.
+   * @returns {Promise<void>} - A promise that resolves when the comment is added
+   */
   async addComment(): Promise<void> {
     //Get comment information
     var newComment;
-    let currentID = sessionStorage.getItem("currentUserID")
-    let currentUser = sessionStorage.getItem("currentUsername")
+    const currentID = sessionStorage.getItem("currentUserID")
+    const currentUser = sessionStorage.getItem("currentUsername")
 
     var text = ((document.getElementById("commentInput") as HTMLInputElement).value);
 
@@ -97,16 +119,16 @@ export class CommentsComponent {
       alert('Please type something before you try to comment.');
       return;
     }
-    
-    if(currentID != null && currentUser != null){
+
+    if (currentID != null && currentUser != null) {
       newComment = new CommentData(currentID, text, currentUser);
     }
-    
+
     //UPLOAD NEW COMMENT TO DATABASE
-    if(newComment && this.postID){
+    if (newComment && this.postID) {
       await POST_MANAGER.addComment(this.postID, newComment);
     }
-  
+
     //Reset Value
     ((document.getElementById("commentInput") as HTMLInputElement).value) = '';
 
@@ -117,11 +139,15 @@ export class CommentsComponent {
     }
   }
 
-  async deleteComment(comment : any){
+  /**
+   * Deletes the given comment from the database and reloads the comments section of the post.
+   * @param comment - The comment to be deleted.
+   */
+  async deleteComment(comment: any) {
     await POST_MANAGER.deleteComment(this.postID!, comment);
     //Reload page to make sure user can see the changes
     location.reload();
-    
+
   }
 
 }

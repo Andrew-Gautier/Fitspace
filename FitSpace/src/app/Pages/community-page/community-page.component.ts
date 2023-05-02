@@ -2,6 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { POST_MANAGER } from 'src/main';
 
+/**
+ * @author Jonathan Dofka, Zachary Spiggle
+ * @date 03/01/2023
+ * 
+ * This component handles the community page functionality
+ */
+
 @Component({
   selector: 'app-community-page',
   templateUrl: './community-page.component.html',
@@ -10,11 +17,16 @@ import { POST_MANAGER } from 'src/main';
 
 export class CommunityPageComponent implements OnInit{
 
-  //List of post data
+  /** The list of post data */
   posts : any[];
+
+  /** The number of posts to display in a single chunk */
   chunkSize =3;
 
-  //Default values
+  /**
+   * Initializes a new instance of the CommunityPageComponent class.
+   * @param router The Angular router for viewComments method.
+   */
   constructor(private router: Router){
     this.posts = []; 
     if(window.innerWidth < 600){
@@ -22,18 +34,26 @@ export class CommunityPageComponent implements OnInit{
     }
   }
 
-  //Initialize pots on load
+  /**
+   * Initializes the component.
+   */
   ngOnInit(): void {
     this.updatePosts();
   }
 
-  //Fill the posts variable with postdata
+  /**
+   * Updates the posts variable with 
+   * all of the post data into the displayed posts.
+   */
   async updatePosts(){
-    //Loads all posts into the displayed posts
     this.posts = await POST_MANAGER.loadAllPosts();
   }
 
-  //This routes to a new unique page based on id 
+  /**
+   * Routes to a new unique page based on id.
+   * @param id The id of the post 
+   * 
+   */
    viewComments(id: number): void {
     this.router.navigate(['comments', id]);
   }

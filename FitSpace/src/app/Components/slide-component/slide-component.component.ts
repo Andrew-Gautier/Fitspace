@@ -1,7 +1,13 @@
-import { Component, Injectable, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { getDownloadURL, ref } from 'firebase/storage';
 import { STORAGE } from 'src/main';
 
+/**
+ * @author Zachary Spiggle
+ * @date 3/27/23
+ * 
+ * Represents a slide component for displaying an image and text
+ */
 
 @Component({
   selector: 'app-slide-component',
@@ -10,35 +16,43 @@ import { STORAGE } from 'src/main';
 })
 export class SlideComponentComponent implements OnInit {
 
-  //Slide data
+  /** The URL of the slide image. */
   @Input() imgURL : string;
+  /** The text data for the slide. */
   @Input() textData : string;
 
-  //Image data
+  /** The downloaded image URL. */
   imageFromURL : string | null;
 
-  //On initialization, get the image data
+  /** Called after the component is initialized. */
   ngOnInit(): void {
     this.showimage();
   }
 
-  //Default values
+  /** Initializes default values. */
   constructor() { 
     this.imgURL = "";
     this.textData = ""
     this.imageFromURL = null;
   }
   
-  //Display the image (Download the image data to the local browser)
+   /**
+   * Downloads the image data and sets `imageFromURL`.
+   */
   async showimage() {
 
     //Get the reference to the link in the Firebase Storage
     let imageReference = ref(STORAGE, this.imgURL);
 
     //Download the image
-    getDownloadURL(imageReference).then(url => { 
+    try {
+      const url = await getDownloadURL(imageReference);
       this.imageFromURL = url; 
-    });
+    } catch (error) {
+      console.error(`Error downloading image: ${error}`);
+    }
   }
 
 }
+
+
