@@ -26,7 +26,7 @@ export class SlideComponentComponent implements OnInit {
 
   /** Called after the component is initialized. */
   ngOnInit(): void {
-    this.showimage();
+    this.showImage();
   }
 
   /** Initializes default values. */
@@ -39,7 +39,7 @@ export class SlideComponentComponent implements OnInit {
    /**
    * Downloads the image data and sets `imageFromURL`.
    */
-  async showimage() {
+  async showImage() {
 
     //Get the reference to the link in the Firebase Storage
     let imageReference = ref(STORAGE, this.imgURL);
