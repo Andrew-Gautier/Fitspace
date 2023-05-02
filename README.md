@@ -52,7 +52,7 @@ Leave comments on your favorite posts and interact with others. Its not a commun
 
 ![BMI Calculator ScreenShot](https://github.com/WVU-CS230-2023-01-Group11/FitSpace/blob/main/Readme%20Screenshots/BMI_Calculator.png?raw=true)
 
-Calculator your BMI and other fitness related equations with our built in tools. Know exactly what to do for you to meet your next goal.
+Calculate your BMI and other fitness related equations with our built in tools. Know exactly what to do for you to meet your next goal.
 
 
 <h2 style = "font-size: 20px;"><strong>Additional Features</strong></h2> 
