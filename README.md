@@ -38,10 +38,12 @@ Interact with others on our community page. View posts from verified trainers an
 
 <h1 style = "font-size: 20px;"><strong>Comments</strong></h1>
 ![alt text](https://github.com/WVU-CS230-2023-01-Group11/FitSpace/blob/main/Readme%20Screenshots/Comments.png?raw=true)
+
 Leave comments on your favorite posts and interact with others. Its not a community without each other.
 
 <h1 style = "font-size: 20px;"><strong>BMI Calculator</strong></h1>
 ![alt text](https://github.com/WVU-CS230-2023-01-Group11/FitSpace/blob/main/Readme%20Screenshots/Community.png?raw=true)
+
 Calculator your BMI and other fitness related equations with our built in tools. Know exactly what to do for you to meet your next goal.
 
 
