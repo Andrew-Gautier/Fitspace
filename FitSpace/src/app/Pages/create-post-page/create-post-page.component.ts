@@ -1,3 +1,10 @@
+/**
+ * @author Zachary Spiggle, Jonathan Dofka 
+ * @date 4/03/23
+ * 
+ * This object is used to create new posts
+ */
+
 import { Component } from '@angular/core';
 import { PostData } from 'src/app/Database/postData';
 import { POST_MANAGER, STORAGE, USER_MANAGER, hashFunction } from 'src/main';
@@ -30,7 +37,9 @@ export class CreatePostPageComponent {
 
   flexDirection = "";
 
-  //Default values
+  /**
+   * Constructor to provide defaul values for the preview object
+   */
   constructor() {
     this.previewTitle = "Preview";
     this.previewUsername = sessionStorage.getItem("currentUsername");;
@@ -42,7 +51,9 @@ export class CreatePostPageComponent {
     }
   }
 
-  //Runs when create post is pressed
+  /**
+   * Asynchronous method to upload the currently created workout to the firebase database
+   */
   async postWorkout() {
 
     let date = new Date();
@@ -111,7 +122,9 @@ export class CreatePostPageComponent {
 
   }
 
-  //Update the preview information
+  /**
+   * Asynchronous method to update the preview post for users to see how their post will look when submitted
+   */
   async updatePreview() {
 
     //Update title
@@ -126,7 +139,10 @@ export class CreatePostPageComponent {
     }
   }
 
-  //Create a new slide and save it until we upload
+
+  /**
+   * Creates a new slide, displays it in the preview and stores it for when the post is posted 
+   */
   async createSlide() {
 
     //Checks if we are under the max count of slides
@@ -178,7 +194,9 @@ export class CreatePostPageComponent {
 
   }
 
-  //Clear the input boxes for slides
+  /**
+   * Method to clear the input boxes for slides
+   */
   clearDescriptionAndImageFile(){
     //clearing boxes
     (document.getElementById('textInput') as HTMLTextAreaElement).value = '';
@@ -190,6 +208,9 @@ export class CreatePostPageComponent {
   }
 
   //Remove the most recently added slide
+  /**
+   * Method that removes the most recently added slide
+   */
   deleteSlide() {
     this.previewSlides.pop();
     this.loadedSlides.pop();
@@ -199,7 +220,9 @@ export class CreatePostPageComponent {
     this.clearImagePreview();
   }
 
-  //Cancel the post and clear all fields
+  /**
+   * Cancels the work in progress post and rests all fields
+   */
   cancelPost() {
     //Cleanup
     (document.getElementById("titleInput") as HTMLInputElement).value = ''; //deletes title box
@@ -215,7 +238,9 @@ export class CreatePostPageComponent {
 
   // IMAGE FUNCTIONS --------------------------------------
 
-  //When the image detects a change
+  /**
+   * Method that runs when the image input detects a change. Is used to update the preview image.
+   */
   async changedImage() {
     //Get image input
     var imageInput = document.getElementById("imageInput") as HTMLInputElement;
@@ -238,6 +263,9 @@ export class CreatePostPageComponent {
     }
   }
 
+  /**
+   * Clears the image preview
+   */
   clearImagePreview(){
     var imgPreview = document.getElementById("testImageDiv");
     if (imgPreview != null) {
@@ -246,15 +274,24 @@ export class CreatePostPageComponent {
     }
   }
 
-  //Helper functions 
-  //Source: https://dilshankelsen.com/convert-file-to-byte-array/
-  //Best solution I've found
+  //Helper functions
 
-  //return a byte array of current file (used to upload to storage)
+  /**
+   * Convery a file into a byte array
+   * 
+   * @param file File to be converted into byte array
+   * @returns a byte array of current file (used to upload to storage)
+   */
   async getAsByteArray(file: any): Promise<any> {
     return new Uint8Array(await this.readFile(file))
   }
 
+  /**
+   * Reads a file
+   * 
+   * @param file File to be read
+   * @returns a promise of a buffer to read the file
+   */
   async readFile(file: any): Promise<ArrayBufferLike> {
     return new Promise((resolve, reject) => {
       // Create file reader
