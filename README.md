@@ -30,7 +30,7 @@ Built with
 
 Customize your profile to be YOU. Help others connect with you and your brand.
 
-<h1 style = "font-size: 20px;"><strong>Post Creation</strong></h1>
+<h2 style = "font-size: 20px;"><strong>Post Creation</strong></h2>
 
 ![Create ScreenShot](https://github.com/WVU-CS230-2023-01-Group11/FitSpace/blob/main/Readme%20Screenshots/Create.png?raw=true)
 
