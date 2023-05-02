@@ -1,5 +1,5 @@
 # Fitspace
-![alt text](https://github.com/WVU-CS230-2023-01-Group11/FitSpace/blob/main/Readme%20Screenshots/Home.png?raw=true)
+![Welcome](https://github.com/WVU-CS230-2023-01-Group11/FitSpace/blob/main/Readme%20Screenshots/Home.png?raw=true)
 
 <pre>
     _______ __  _____                     
@@ -25,7 +25,7 @@ Built with
 <h1 style = "font-size: 24px;"><strong>Features</strong></h1>
 
 <h1 style = "font-size: 20px;"><strong>Profile Creation</strong></h1>
-![Profile ScreenShot](https://github.com/WVU-CS230-2023-01-Group11/FitSpace/blob/main/Readme%20Screenshots/Profile.png?raw=true)
+![Profile ScreenShot](/Readme%20Screenshots/Profile.png)
 
 Customize your profile to be YOU. Help others connect with you and your brand.
 
