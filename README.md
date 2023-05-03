@@ -12,6 +12,8 @@
 Welcome to FitSpace! A fitness social media application student project. 
 This application is meant to bridge the fitness community together, and help everyone reach their own fitness goals.
 
+You can access the site here: <a href="https://fitspace-ba5a9.web.app/">Fitspace</a>
+
 <h1 style = "font-size: 24px;"><strong>Framework</strong></h1>
 
 Built with
