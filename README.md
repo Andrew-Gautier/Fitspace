@@ -80,7 +80,7 @@ Calculate your BMI and other fitness related equations with our built in tools. 
     - Users are able to edit their profile page with their information so other users may reach out to them.
 
 
-<h1 style = "font-size: 24px;"><strong>API's & Refreneces </strong></h1>
+<h1 style = "font-size: 24px;"><strong>API's & References </strong></h1>
 
 - <a href="https://firebase.google.com/docs/"> Firebase Documentation</a>
 - <a href="https://angular.io/docs"> Angular Documentation</a>
@@ -109,7 +109,7 @@ If you have issues, navigate to the homepage of the website. There you will find
 - Brendan Bolduc
 - Jonathan Dofka
 - Olivia Ecock
-- Andrew Koyada
+- Andrew Gautier
 - Saipavan Koyada
 - Ryan Rudolph
 - Ian Rudy
